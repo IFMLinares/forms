@@ -5,7 +5,8 @@ from .views import (
     Proteccion,
     Insercion,
     Examen,
-    Documentacion
+    Documentacion,
+    Condiciones
 )
 
 app_name = 'core'
@@ -16,5 +17,6 @@ urlpatterns = [
     path('insercion/', Insercion.as_view(), name='insercion'),
     path('examen/', Examen.as_view(), name='examen'),
     path('documentacion/', Documentacion.as_view(), name='documentacion'),
+    path('condiciones/', Condiciones.as_view(), name='condiciones'),
 ]
 

@@ -19,3 +19,6 @@ class Examen(TemplateView):
 
 class Documentacion(TemplateView):
     template_name = 'documentacion.html'
+
+class Condiciones(TemplateView):
+    template_name = 'condiciones.html'
