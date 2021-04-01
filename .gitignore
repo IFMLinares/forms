@@ -1,2 +1,5 @@
 /db.sqlite3
-/requirements.txt
+/*.pyc
+/apps/formApp/__pycache__
+/apps/formApp/migrations
+/forms/__pycache__
