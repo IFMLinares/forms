@@ -3,3 +3,5 @@
 /apps/formApp/__pycache__
 /apps/formApp/migrations
 /forms/__pycache__
+apps/formApp/__pycache__/urls.cpython-37.pyc
+apps/formApp/__pycache__/views.cpython-37.pyc
