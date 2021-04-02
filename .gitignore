@@ -1,6 +1,4 @@
 /db.sqlite3
 /*.pyc
-apps/formApp/__pycache__
 apps/formApp/migrations
-forms/__pycache__
 formsHosho.code-workspace
