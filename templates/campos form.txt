@@ -1,8 +1,8 @@
-politicas y privacidad:
+POLITICAS Y PRIVACIDAD:
 
 concesionario
 
-insercion de vehiculos:
+INSERCION DE VEHICULOS:
 
 nombreComercial
 matricula
@@ -28,7 +28,7 @@ superCar
 suv
 cobertura
 
-datos del comprador:
+DATOS DEL COMPRADOR:
 
 nombreCompleto
 direccion
@@ -40,26 +40,105 @@ email
 documentoIdentidad
 duracionContrato
 
-documentacion:
+DOCUMENTACION:
 
 ruedaRepuesto1
 ruedaRepuesto2
+kitInflado
+trianguloEmergencia
+gato
+chalecoAltaVelocidad
+kitBombillas
+kitBombillasFusibles
+duplicadoLlaves
+codCard
+libreUsoMantenimiento
+fichaTecnica
+permisoCirculacion
+itv
+fechaITV
+estadoRevisiones
+mantenimientoPrevioEntrega
+correaServicio
+estadoBateria
+correaDistribucion
+ultimoMantenimiento
+ultimaITV
 
+EXAMEN VISUAL:
 
+carroceria
+descripcionCarroceria
+habitaculoTapiceria
+descripcionHabitaculoTapiceria
+habitaculoTapiceria2
+descripcionHabitaculoTapiceria2
+asientoRevestimientoAsiento
+descripcionAsientoRevestimientoAsiento
+neumaticosDelanteros
+descripcionNeumaticosDelanteros
+neumaticosTraseros
+descripcionNeumaticosTraseros
+volanteMotor
+descripcionVolanteMotor
+motor
+Explicacionmotor
+sistemaEscape
+explicacionsistemaEscape
+embrague
+descripcionEmbrague
+alimentacionInyeccion
+explicacionAlimentacionInyeccion
+cambio
+explicacionCambio
+motorArranqueAlternador
+explicacionMotorArranqueAlternador
+diferencialRepartidor
+explicacionDiferencialRepartidor
+cajaTranferencia
+explicacionCajaTranferencia
+organoDireccion
+explicacionOrganoDireccion
+rodamientoNeumaticos
+ExplicacionRodamientoNeumaticos
+direccionAsistida
+explicacionDireccionAsistida
+bombaDireccionAsistida
+explicacionbombaDireccionAsistida
+sistemaFrenado
+explicacionSistemaFrenado
+sistemaRefrigeracion
+explicacionSistemaRefrigeracion
+sistemaCalefaccion
+explicacionSistemaCalefaccion
+aireAcondicionado
+expliacionAireAcondicionado
+AbsEsp
+explicacionAbsEsp
+cuadroInstrumentos
+explicacionCuadroInstrumentos
+limpiaParabrisas
+explicacionLimpiaParabrisas
+bombaLimpiaparabrisas
+explicacionbombaLimpiaparabrisas
+sistemaElectrico
+explicacionSistemaElectrico
+cierreCentralizado
+expliacionCierreCentralizado
+alumbradoSeñalizacion
+expliacionAlumbradoSeñalizacion
+radioLector
+explicacionRadioLector
+navegador
+explicacionNavegador
+elevalunasElectrico
+explicacionElevalunasElectrico
+airBag
+explicacionAirBag
+antirrobo
+explicacionAntirrobo
+techoSolar
+expliacionTechoSolar
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+PROTECCION DE DATOS:
+fechaEntrega2

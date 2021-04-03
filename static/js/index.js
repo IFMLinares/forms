@@ -36,6 +36,11 @@ $('#siguiente').click(function (ev) {
 	console.log(count);
 })
 
+$('#fechaEntrega').change(function() {
+	var fecha = $('fechaEntrega').value;
+	alert(fecha);
+})
+
 $('#anterior').click(function (ev) {
 	ev.preventDefault;
 	if (count == 1) {

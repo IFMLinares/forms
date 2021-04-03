@@ -7,7 +7,8 @@ Hosho
 {% block content %}
 <div class="cuadro-informacion">
   <div class="politica-privacidad">
-    <form method="POST" action="index.html" id="form">
+    <form method="POST" action="" id="form">
+      {% csrf_token %}
       <div id="politica-privacidad">
         <div class="form-check politica-privacidad_checkbox">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -295,7 +296,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="kitInflado" id="kitInflado" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Kit de inflado</span>
               </label>
@@ -304,7 +305,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="trianguloEmergencia" id="trianguloEmergencia" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Triángulo de emergencia</span>
               </label>
@@ -313,7 +314,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="gato" id="gato" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Gato</span>
               </label>
@@ -322,7 +323,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="chalecoAltaVelocidad" id="chalecoAltaVelocidad" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Chaleco alta visibilidad</span>
               </label>
@@ -331,7 +332,16 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="kitBombillas" id="kitBombillas" value="1">
+                <span class="checkmark"></span>
+                <span class="label">Kit bombillas</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="kitBombillasFusibles" id="kitBombillasFusibles" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Kit bombillas - fusibles</span>
               </label>
@@ -340,7 +350,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="duplicadoLlaves" id="duplicadoLlaves" value="1">
                 <span class="checkmark"></span>
                 <span class="label">duplicado de llaves</span>
               </label>
@@ -349,7 +359,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="codCard" id="codCard" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Cod. Card </span>
               </label>
@@ -358,7 +368,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="libreUsoMantenimiento" id="libreUsoMantenimiento" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Libre uso y mantenimiento</span>
               </label>
@@ -367,7 +377,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="fichaTecnica" id="fichaTecnica" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Ficha Tecnica</span>
               </label>
@@ -376,7 +386,7 @@ Hosho
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="" id="" value="1">
+                <input type="checkbox" checked name="permisoCirculacion" id="permisoCirculacion" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Permiso de circulación</span>
               </label>
@@ -391,15 +401,15 @@ Hosho
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col ">
-                  <label for="">ITV</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Vencido</option>
-                    <option>Válido</option>
+                  <label for="itv">ITV</label>
+                  <select class="custom-select" id="itv" name="itv" required>
+                    <option value="vencido">Vencido</option>
+                    <option value="valido">Válido</option>
                   </select>
                 </div>
                 <div class="col insercion-vehiculos-date">
-                  <label for="">Fecha</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="" name="">
+                  <label for="fechaITV">Fecha</label>
+                  <input class="form-control" type="date" value="2021-03-25" id="fechaITV" name="fechaITV">
                 </div>
               </div>
             </div>
@@ -416,33 +426,33 @@ Hosho
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Estado revisiones</label>
-                  <select class="custom-select" id="" name="" required>
+                  <label for="estadoRevisiones">Estado revisiones</label>
+                  <select class="custom-select" id="estadoRevisiones" name="estadoRevisiones" required>
                     <option selected disabled value="">Según plan del constructor</option>
-                    <option>Regulados</option>
-                    <option>No documentados</option>
+                    <option value="regulados">Regulados</option>
+                    <option value="noDocumentado">No documentados</option>
                   </select>
                 </div>
                 <div class="col">
-                  <label for="">Manten. Previo a entrega</label>
-                  <select class="custom-select" id="" name="" required>
+                  <label for="mantenimientoPrevioEntrega">Manten. Previo a entrega</label>
+                  <select class="custom-select" id="mantenimientoPrevioEntrega" name="mantenimientoPrevioEntrega" required>
                     <option selected disabled value="">Ninguno</option>
-                    <option>Control/Relleno Niveles</option>
-                    <option>Cambio de aceite y filtro</option>
-                    <option>Revisión de motor</option>
-                    <option>Revisión completa</option>
+                    <option value="control/rellenoNiveles">Control/Relleno Niveles</option>
+                    <option value="cambioAceiteFiltro">Cambio de aceite y filtro</option>
+                    <option value="revisionMotor">Revisión de motor</option>
+                    <option value="revisionCompleta">Revisión completa</option>
                   </select>
                 </div>
                 <div class="col">
-                  <label for="">Correa de servicio</label>
-                  <select class="custom-select" id="" name="" required>
+                  <label for="correaServicio">Correa de servicio</label>
+                  <select class="custom-select" id="correaServicio" name="correaServicio" required>
                     <option selected disabled value="">No disponible</option>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                    <option value="buenascondiciones">Buenas condiciones</option>
+                    <option value="IntervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="condicionesNormalesUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
               </div>
@@ -451,25 +461,26 @@ Hosho
           <div class="insercion-vehiculos-form">
             <div class="form-row">
               <div class="col">
-                <label for="">Estado de batería</label>
-                <select class="custom-select" id="" name="" required>
-                  <option selected disabled value="">Buenas condiciones</option>
-                  <option>Intervención recomendada</option>
-                  <option>No disponible</option>
-                  <option>Condiciones normales de uso</option>
-                  <option>Reacondicionado</option>
-                  <option>Reparación necesaria</option>
+                <label for="estadoBateria">Estado de batería</label>
+                <select class="custom-select" id="estadoBateria" name="estadoBateria" required>
+                  <option selected disabled value="">Ninguno</option>
+                  <option value="buenasCondiciones">Buenas condiciones</option>
+                  <option value="intervencionNecesaria">Intervención recomendada</option>
+                  <option value="noDisponible">No disponible</option>
+                  <option value="condicionesNormales">Condiciones normales de uso</option>
+                  <option value="reacondicionado">Reacondicionado</option>
+                  <option value="reparacionNecesaria">Reparación necesaria</option>
                 </select>
               </div>
               <div class="col">
-                <label for="">Correa de distribución</label>
-                <select class="custom-select" id="" name="" required>
+                <label for="correaDistribucion">Correa de distribución</label>
+                <select class="custom-select" id="correaDistribucion" name="correaDistribucion" required>
                   <option selected disabled value="">Buenas condiciones</option>
-                  <option>Intervención recomendada</option>
-                  <option>No disponible</option>
-                  <option>Condiciones normales de uso</option>
-                  <option>Reacondicionado</option>
-                  <option>Reparación necesaria</option>
+                  <option value="intervencionRecomendada">Intervención recomendada</option>
+                  <option value="noDisponible">No disponible</option>
+                  <option value="condicionesNormales">Condiciones normales de uso</option>
+                  <option value="reacondicionado">Reacondicionado</option>
+                  <option value="reparacionNecesaria">Reparación necesaria</option>
                 </select>
               </div>
             </div>
@@ -477,27 +488,27 @@ Hosho
           <div class="insercion-vehiculos-form ">
             <div class="form-row">
               <div class="col">
-                <label for="">Último mantenimiento</label>
-                <input type="text" class="form-control" placeholder="Escribe aquí">
+                <label for="ultimoMantenimiento">Último mantenimiento</label>
+                <input type="text" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento">
               </div>
               <div class="col">
-                <label for="">Próximo mantenimiento</label>
-                <input type="text" class="form-control" placeholder="Escribe aquí">
+                <label for="proximoMantenimiento">Próximo mantenimiento</label>
+                <input type="text" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento">
               </div>
             </div>
           </div>
           <div class="insercion-vehiculos-form ">
             <div class="form-row">
               <div class="col documentacion-mantenimiento_form">
-                <label for="">ITV</label>
-                <select class="custom-select" id="" name="" required>
+                <label>ITV</label>
+                <select class="custom-select">
                   <option>Vencido</option>
                   <option>Válido</option>
                 </select>
               </div>
               <div class="col insercion-vehiculos-date">
-                <label for="">Última ITV</label>
-                <input class="form-control" type="date" value="2021-03-25" id="example-date-input">
+                <label for="ultimaITV">Última ITV</label>
+                <input class="form-control" type="date" value="2021-03-25" id="ultimaITV" name="ultimaITV">
               </div>
             </div>
           </div>
@@ -520,635 +531,653 @@ Hosho
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Carrocería</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="carroceria">Carrocería</label>
+                  <select class="custom-select" id="carroceria" name="carroceria" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción">
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionCarroceria" id="descripcionCarroceria">
                 </div>
                 <div class="col">
-                  <label for="">Habitáculo y tapicería</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="habitaculoTapiceria">Habitáculo y tapicería</label>
+                  <select class="custom-select" id="habitaculoTapiceria" name="habitaculoTapiceria" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción">
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionHabitaculoTapiceria" id="descripcionHabitaculoTapiceria">
                 </div>
                 <div class="col">
-                  <label for="">Habitáculo y tapicería</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="habitaculoTapiceria2">Habitáculo y tapicería</label>
+                  <select class="custom-select" id="habitaculoTapiceria2" name="habitaculoTapiceria2" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción...">
-                </div>
-              </div>
-            </div>
-            <div class="insercion-vehiculos-form">
-              <div class="form-row">
-                <div class="col">
-                  <label for="">Asiento y revestimiento del asiento</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
-                  </select>
-                  <input type="text" class="form-control" placeholder="Descripción...">
-                </div>
-                <div class="col">
-                  <label for="">Neumáticos delanteros</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
-                  </select>
-                  <input type="text" class="form-control" placeholder="Descripción...">
-                </div>
-                <div class="col">
-                  <label for="">Neumáticos traseros</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
-                  </select>
-                  <input type="text" class="form-control" placeholder="Descripción">
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionHabitaculoTapiceria2" id="descripcionHabitaculoTapiceria2">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Volante motor</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="asientoRevestimientoAsiento">Asiento y revestimiento del asiento</label>
+                  <select class="custom-select" id="asientoRevestimientoAsiento" name="asientoRevestimientoAsiento" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionAsientoRevestimientoAsiento" id="descripcionAsientoRevestimientoAsiento">
+                </div>
+                <div class="col">
+                  <label for="neumaticosDelanteros">Neumáticos delanteros</label>
+                  <select class="custom-select" id="neumaticosDelanteros" name="neumaticosDelanteros" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionNeumaticosDelanteros" id="descripcionNeumaticosDelanteros">
+                </div>
+                <div class="col">
+                  <label for="neumaticosTraseros">Neumáticos traseros</label>
+                  <select class="custom-select" id="neumaticosTraseros" name="neumaticosTraseros" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionNeumaticosTraseros" id="descripcionNeumaticosTraseros">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="volanteMotor">Volante motor</label>
+                  <select class="custom-select" id="volanteMotor" name="volanteMotor" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionVolanteMotor" id="descripcionVolanteMotor">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Motor</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="motor">Motor</label>
+                  <select class="custom-select" id="motor" name="motor" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="Explicacionmotor" id="Explicacionmotor">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Sistema de escape</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="sistemaEscape">Sistema de escape</label>
+                  <select class="custom-select" id="sistemaEscape" name="sistemaEscape" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionsistemaEscape" id="explicacionsistemaEscape">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Embrague</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="embrague">Embrague</label>
+                  <select class="custom-select" id="embrague" name="embrague" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionEmbrague" id="descripcionEmbrague">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Alimentacíon e Inyección</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="alimentacionInyeccion">Alimentacíon e Inyección</label>
+                  <select class="custom-select" id="alimentacionInyeccion" name="alimentacionInyeccion" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAlimentacionInyeccion" id="explicacionAlimentacionInyeccion">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Cambio</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="cambio">Cambio</label>
+                  <select class="custom-select" id="cambio" name="cambio" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCambio" id="explicacionCambio">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Motor de arranque/Alternador</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="motorArranqueAlternador">Motor de arranque/Alternador</label>
+                  <select class="custom-select" id="motorArranqueAlternador" name="motorArranqueAlternador" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="explicacionMotorArranqueAlternador" name="explicacionMotorArranqueAlternador">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Diferencial / Repartidor</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="diferencialRepartidor">Diferencial / Repartidor</label>
+                  <select class="custom-select" id="diferencialRepartidor" name="diferencialRepartidor" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDiferencialRepartidor" id="explicacionDiferencialRepartidor">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Caja de trasferencia</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="cajaTranferencia">Caja de trasferencia</label>
+                  <select class="custom-select" id="cajaTranferencia" name="cajaTranferencia" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCajaTranferencia" id="explicacionCajaTranferencia">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Organo de direccíon</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="organoDireccion">Organo de direccíon</label>
+                  <select class="custom-select" id="organoDireccion" name="organoDireccion" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionOrganoDireccion" id="explicacionOrganoDireccion">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Rodamiento de los neumáticos</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="rodamientoNeumaticos">Rodamiento de los neumáticos</label>
+                  <select class="custom-select" id="rodamientoNeumaticos" name="rodamientoNeumaticos" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="ExplicacionRodamientoNeumaticos" id="ExplicacionRodamientoNeumaticos">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Dirección asistida</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="direccionAsistida">Dirección asistida</label>
+                  <select class="custom-select" id="direccionAsistida" name="direccionAsistida" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDireccionAsistida" id="explicacionDireccionAsistida">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Bomba de la dirección asistida</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="bombaDireccionAsistida">Bomba de la dirección asistida</label>
+                  <select class="custom-select" id="bombaDireccionAsistida" name="bombaDireccionAsistida" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaDireccionAsistida" id="explicacionbombaDireccionAsistida">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Sistema de frenado</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="sistemaFrenado">Sistema de frenado</label>
+                  <select class="custom-select" id="sistemaFrenado" name="sistemaFrenado" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaFrenado" id="explicacionSistemaFrenado">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Sistema de refrigeración</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="sistemaRefrigeracion">Sistema de refrigeración</label>
+                  <select class="custom-select" id="sistemaRefrigeracion" name="sistemaRefrigeracion" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaRefrigeracion" id="explicacionSistemaRefrigeracion">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Sistema de calefacción ( aire )</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="sistemaCalefaccion">Sistema de calefacción ( aire )</label>
+                  <select class="custom-select" id="sistemaCalefaccion" name="sistemaCalefaccion" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaCalefaccion" id="explicacionSistemaCalefaccion">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Aire acondicionado</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="aireAcondicionado">Aire acondicionado</label>
+                  <select class="custom-select" id="aireAcondicionado" name="aireAcondicionado" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAireAcondicionado" id="expliacionAireAcondicionado">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">ABS/ ESP</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="AbsEsp">ABS/ ESP</label>
+                  <select class="custom-select" id="AbsEsp" name="AbsEsp" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAbsEsp" id="explicacionAbsEsp">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Cuadro de instrumentos</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="cuadroInstrumentos">Cuadro de instrumentos</label>
+                  <select class="custom-select" id="cuadroInstrumentos" name="cuadroInstrumentos" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCuadroInstrumentos" id="explicacionCuadroInstrumentos">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Limpiaparabrisas</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="limpiaParabrisas">Limpiaparabrisas</label>
+                  <select class="custom-select" id="limpiaParabrisas" name="limpiaParabrisas" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionLimpiaParabrisas" id="explicacionLimpiaParabrisas">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Sistema eléctrico</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="bombaLimpiaparabrisas">Bomba Limpiaparabrisas</label>
+                  <select class="custom-select" id="bombaLimpiaparabrisas" name="bombaLimpiaparabrisas" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaLimpiaparabrisas" id="explicacionbombaLimpiaparabrisas">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Cierre centralizado</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="sistemaElectrico">Sistema eléctrico</label>
+                  <select class="custom-select" id="sistemaElectrico" name="sistemaElectrico" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaElectrico" id="explicacionSistemaElectrico">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Alumbrado y señalización</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="cierreCentralizado">Cierre centralizado</label>
+                  <select class="custom-select" id="cierreCentralizado" name="cierreCentralizado" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionCierreCentralizado" id="expliacionCierreCentralizado">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Radio / Lector CD</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="alumbradoSeñalizacion">Alumbrado y señalización</label>
+                  <select class="custom-select" id="alumbradoSeñalizacion" name="alumbradoSeñalizacion" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAlumbradoSeñalizacion" id="expliacionAlumbradoSeñalizacion">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Navegador</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="radioLector">Radio / Lector CD</label>
+                  <select class="custom-select" id="radioLector" name="radioLector" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionRadioLector" id="explicacionRadioLector">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Elevalunas eléctrico</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="navegador">Navegador</label>
+                  <select class="custom-select" id="navegador" name="navegador" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionNavegador" id="explicacionNavegador">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Airbag</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="elevalunasElectrico">Elevalunas eléctrico</label>
+                  <select class="custom-select" id="elevalunasElectrico" name="elevalunasElectrico" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionElevalunasElectrico" id="explicacionElevalunasElectrico">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Antirrobo</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="airBag">Airbag</label>
+                  <select class="custom-select" id="airBag" name="airBag" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAirBag" id="explicacionAirBag">
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
-                  <label for="">Techo solar</label>
-                  <select class="custom-select" id="" name="" required>
-                    <option>Buenas condiciones</option>
-                    <option>Intervención recomendada</option>
-                    <option>No disponible</option>
-                    <option>Condiciones normales de uso</option>
-                    <option>Reacondicionado</option>
-                    <option>Reparación necesaria</option>
+                  <label for="antirrobo">Antirrobo</label>
+                  <select class="custom-select" id="antirrobo" name="antirrobo" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAntirrobo" id="explicacionAntirrobo">
                 </div>
               </div>
             </div>
-
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="techoSolar">Techo solar</label>
+                  <select class="custom-select" id="techoSolar" name="techoSolar" required>
+                    <option value="buenasCondiciones">Buenas condiciones</option>
+                    <option value="intervencionRecomendada">Intervención recomendada</option>
+                    <option value="noDisponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="reacondicionado">Reacondicionado</option>
+                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionTechoSolar" id="expliacionTechoSolar">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1562,8 +1591,8 @@ Hosho
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col insercion-vehiculos-date">
-                  <label for="example-date-input" class="col col-form-label">Fecha de entrega</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="example-date-input">
+                  <label for="fechaEntrega2" class="col col-form-label">Fecha de entrega</label>
+                  <input class="form-control" type="date" value="2021-03-25" id="fechaEntrega2" name="fechaEntrega2">
                 </div>
                 <div class="col insercion-vehiculos-date documentacion-mantenimiento_form">
                   <label for="example-date-input" class="col col-form-label">Fecha de inicio</label>

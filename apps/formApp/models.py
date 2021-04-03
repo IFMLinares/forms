@@ -24,7 +24,9 @@ class DatosVehiculo(models.Model):
     modelo = models.CharField(max_length=240)
     alimentacion = models.CharField(max_length=240)
     clase_de_cont = models.CharField(max_length=240) #clase de control
-    prime_matr  = models.DateField() #primera matricula
+    prime_matr  = models.CharField(max_length=240) #primera matricula
+    version = models.CharField(max_length=240)
+    bastidor = models.CharField(max_length=240)
     potencia_KW = models.CharField(max_length=240)
     nro_propietarios_Privados  = models.CharField(max_length=240)
     nro_propietarios_profesionales = models.CharField(max_length=240)
@@ -35,7 +37,7 @@ class DatosVehiculo(models.Model):
     fecha_activacion = models.DateField()
 
     def __str__(self):
-        retornar = 'Matricula ' + self.matricula + '\n Marca: ' + self.marca + '\n Modelo: ' + self.modelo + '\n Alimentacion: ' + self.alimentacion + '\n clase de cont: ' + self.clase_de_cont + '\n Primer matricula: ' + self.prime_matr.strftime('%d/%m/%Y') + '\n potencia_KW: ' + self.potencia_KW + '\n nro propietarios Privados: ' + self.nro_propietarios_Privados + '\n nro propietarios profesionales: ' + self.nro_propietarios_profesionales + '\n cilindrada: ' + self.cilindrada + '\n color: ' + self.color + '\n fecha_entrega: ' + self.fecha_entrega.strftime('%d/%m/%Y') + '\n fecha_inicio: ' + self.fecha_inicio.strftime('%d/%m/%Y') + '\n fecha_activacion: ' + self.fecha_activacion.strftime('%d/%m/%Y')
+        retornar = 'Matricula ' + self.matricula + '\n Marca: ' + self.marca + '\n Modelo: ' + self.modelo + '\n Alimentacion: ' + self.alimentacion + '\n clase de cont: ' + self.clase_de_cont + '\n Primer matricula: ' + self.prime_matr + '\n potencia_KW: ' + self.potencia_KW + '\n nro propietarios Privados: ' + self.nro_propietarios_Privados + '\n nro propietarios profesionales: ' + self.nro_propietarios_profesionales + '\n cilindrada: ' + self.cilindrada + '\n color: ' + self.color + '\n fecha_entrega: ' + self.fecha_entrega.strftime('%d/%m/%Y') + '\n fecha_inicio: ' + self.fecha_inicio.strftime('%d/%m/%Y') + '\n fecha_activacion: ' + self.fecha_activacion.strftime('%d/%m/%Y')
         return retornar
 
     class Meta:
@@ -71,6 +73,7 @@ class DatosComprador(models.Model):
 class Documentacion(models.Model):
     rueda_repuesto1 = models.BooleanField()
     rueda_repuesto2 = models.BooleanField()
+    duplicado_llaves = models.BooleanField()
     kit_inflado = models.BooleanField()
     triangulo_emergencia = models.BooleanField()
     gato = models.BooleanField()
