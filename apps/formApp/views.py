@@ -333,8 +333,6 @@ class FormInsercion(LoginRequiredMixin, TemplateView):
 
         form.save()
 
-        print('Guardado exitosamente')
-
         return render(self.request, 'insercion.html')
 
 # Vista de contrato
@@ -423,8 +421,6 @@ class FormContrato(LoginRequiredMixin, TemplateView):
             total = total
         )
         contrato.save()
-
-        print('Guardado exitosamente')
 
         return render(self.request, 'contrato.html')
 
