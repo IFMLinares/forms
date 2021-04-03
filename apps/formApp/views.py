@@ -2,12 +2,23 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Form, DatosVehiculo, Suplemento, DatosComprador, Documentacion, Mantenimiento, ExamenVisual
+from .models import (
+    Form,
+    DatosVehiculo,
+    Suplemento,
+    DatosComprador,
+    Documentacion,
+    Mantenimiento,
+    ExamenVisual,
+    Contrato
+)
 
 
 # Create your views here.
-class FormContrato(LoginRequiredMixin, TemplateView):
-    template_name = 'index.html'
+
+# Vista de insercion de vehiculos
+class FormInsercion(LoginRequiredMixin, TemplateView):
+    template_name = 'insercion.html'
 
     def post(self, *args, **kwargs):
         # POLITICAS Y PRIVACIDAD:
@@ -307,6 +318,7 @@ class FormContrato(LoginRequiredMixin, TemplateView):
         examenVisual.save()
 
         form = Form(
+            usuario= self.request.user,
             concesionario = concesionario,
             insercion_de_Vehiculo = nombreComercial,
             duracion_del_contrato = duracionContrato
@@ -323,15 +335,104 @@ class FormContrato(LoginRequiredMixin, TemplateView):
 
         print('Guardado exitosamente')
 
-        return render(self.request, 'index.html')
+        return render(self.request, 'insercion.html')
 
-def index(request):
+# Vista de contrato
+class FormContrato(LoginRequiredMixin, TemplateView):
+    template_name = 'contrato.html'
+
+    def post(self, *args, **kwargs):
+        contratoLocales = self.request.POST['contratoLocales']
+        print(contratoLocales)
+        fecha = self.request.POST['fecha']
+        firmante = self.request.POST['firmante']
+        nacido = self.request.POST['nacido']
+        fechaNacimiento = self.request.POST['fechaNacimiento']
+        residenciaSede = self.request.POST['residenciaSede']
+        telefono = self.request.POST['telefono']
+        profesion = self.request.POST['profesion']
+        CifNif = self.request.POST['CifNif']
+        vendedor = self.request.POST['vendedor']
+        marca = self.request.POST['marca']
+        version = self.request.POST['version']
+        modelo = self.request.POST['modelo']
+        bastidor = self.request.POST['bastidor']
+        estadoEncontrado = self.request.POST['estadoEncontrado']
+        estadoEncontradoDescripcion = self.request.POST['estadoEncontradoDescripcion']
+        marceEmpresa = self.request.POST['marceEmpresa']
+        versionEmpresa = self.request.POST['versionEmpresa']
+        modeloEmpresa = self.request.POST['modeloEmpresa']
+        bastidorEmpresa = self.request.POST['bastidorEmpresa']
+        fechaPrimeraMatriculacion = self.request.POST['fechaPrimeraMatriculacion']
+        equivalenteAcordado = self.request.POST['equivalenteAcordado']
+        equivalenteAcordadoMonto = self.request.POST['equivalenteAcordadoMonto']
+        abonadoComprador = self.request.POST['abonadoComprador']
+        abonadoCompradorMonto = self.request.POST['abonadoCompradorMonto']
+        PrecioAcordado = self.request.POST['PrecioAcordado']
+        valorVehiculoRetirado = self.request.POST['valorVehiculoRetirado']
+        depostoGarantiaPagado = self.request.POST['depostoGarantiaPagado']
+        sociedadFinanciera = self.request.POST['sociedadFinanciera']
+        nroProtocolo = self.request.POST['nroProtocolo']
+        importaFinanciado = self.request.POST['importaFinanciado']
+        gastosInstruccionSello = self.request.POST['gastosInstruccionSello']
+        nroPlazos = self.request.POST['nroPlazos']
+        importePlazos = self.request.POST['importePlazos']
+        lugar = self.request.POST['lugar']
+        fecha2 = self.request.POST['fecha2']
+
+        total = (int(PrecioAcordado) + int(valorVehiculoRetirado)) - int(depostoGarantiaPagado)
+
+        contrato = Contrato(
+            usuario = self.request.user,
+            contratoLocales = contratoLocales,
+            fecha = fecha,
+            firmante = firmante,
+            nacido = nacido,
+            fechaNacimiento = fechaNacimiento,
+            residenciaSede = residenciaSede,
+            telefono = telefono,
+            profesion = profesion,
+            CifNif = CifNif,
+            vendedor = vendedor,
+            marca = marca,
+            version = version,
+            modelo = modelo,
+            bastidor = bastidor,
+            estadoEncontrado = estadoEncontrado,
+            estadoEncontradoDescripcion = estadoEncontradoDescripcion,
+            marceEmpresa = marceEmpresa,
+            versionEmpresa = versionEmpresa,
+            modeloEmpresa = modeloEmpresa,
+            bastidorEmpresa = bastidorEmpresa,
+            fechaPrimeraMatriculacion = fechaPrimeraMatriculacion,
+            equivalenteAcordado = equivalenteAcordado,
+            equivalenteAcordadoMonto = equivalenteAcordadoMonto,
+            abonadoComprador = abonadoComprador,
+            abonadoCompradorMonto = abonadoCompradorMonto,
+            PrecioAcordado = PrecioAcordado,
+            valorVehiculoRetirado = valorVehiculoRetirado,
+            depostoGarantiaPagado = depostoGarantiaPagado,
+            sociedadFinanciera = sociedadFinanciera,
+            nroProtocolo = nroProtocolo,
+            importaFinanciado = importaFinanciado,
+            gastosInstruccionSello = gastosInstruccionSello,
+            nroPlazos = nroPlazos,
+            importePlazos = importePlazos,
+            lugar = lugar,
+            fecha2 = fecha2,
+            total = total
+        )
+        contrato.save()
+
+        print('Guardado exitosamente')
+
+        return render(self.request, 'contrato.html')
+
+def inicio(request):
     if request.user.is_authenticated:
-        return redirect('form/')
+        return redirect('core:insercion')
     else:
         return redirect('accounts/login')
-
-
 
 
 

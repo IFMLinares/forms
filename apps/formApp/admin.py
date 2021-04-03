@@ -1,13 +1,15 @@
 from django.contrib import admin
 from .models import (
-    User, 
-    Form, 
-    DatosVehiculo, 
-    Suplemento, 
-    DatosComprador, 
-    Documentacion, 
+    User,
+    Form,
+    DatosVehiculo,
+    Suplemento,
+    DatosComprador,
+    Documentacion,
     Mantenimiento,
-    ExamenVisual)
+    ExamenVisual,
+    Contrato
+    )
 # Register your models here.
 
 class FormAdmin(admin.ModelAdmin):
@@ -22,7 +24,6 @@ class FormAdmin(admin.ModelAdmin):
     search_fields = [
         'datos_del_Vehiculo__matricula'
     ]
-    
     list_display = (
         'concesionario',
         'get_matricula'
@@ -35,6 +36,7 @@ class FormAdmin(admin.ModelAdmin):
 
 admin.site.register(User)
 admin.site.register(Form, FormAdmin)
+admin.site.register(Contrato)
 # admin.site.register(DatosVehiculo)
 # admin.site.register(Suplemento)
 # admin.site.register(DatosComprador)

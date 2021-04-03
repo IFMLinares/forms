@@ -1,0 +1,373 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hosho
+{% endblock %}
+
+{% block content %}
+<!--inicio de cuadro de informacion-->
+<form action="" method="POST" class="insercion-vehiculos-form">
+  <div class="cuadro-informacion">
+    <div class="documentacion-mantenimiento col-12">
+      <div class="documentacion-mantenimiento_p">
+        <p>
+          Contrato
+        </p>
+      </div>
+      <div class="insercion-vehiculos-form_bloque">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input class="check-box-group" type="radio" value="Contrato en locales comerciales" name="contratoLocales"
+                  id="contratoLocalesComerciales">
+                <span class="checkmark"></span>
+                <span class="label">Contrato en Locales Comerciales</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input class="check-box-group" type="radio" value="contratoFueraLocalesComerciales"
+                  name="contratoLocales" id="contratoFueraLocalesComerciales">
+                <span class="checkmark"></span>
+                <span class="label">Contrato Fuera locales Comerciales</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-date">
+          <label for="fecha">Fecha</label>
+          <input class="form-control" name="fecha" id="fecha" type="date" value="2021-03-25">
+        </div>
+        <div class="insercion-vehiculos-form ">
+          <div class="form-row">
+            <div class="col">
+              <label for="firmante">El/La firmante</label>
+              <input type="text" class="form-control" name="firmante" id="firmante" placeholder="Escribe aquí">
+            </div>
+            <div class="col">
+              <label for="nacido">Nacido/a</label>
+              <input type="text" class="form-control" name="nacido" id="nacido" placeholder="Escribe aquí">
+            </div>
+            <div class="col insercion-vehiculos-date">
+              <label for="fechaNacimiento">Fecha</label>
+              <input class="form-control" name="fechaNacimiento" id="fechaNacimiento" type="date" value="2021-03-25">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="residenciaSede">Residente / con sede en</label>
+              <input type="text" class="form-control" name="residenciaSede" id="residenciaSede"
+                placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="telefono">Télefono</label>
+              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Escribe aquí">
+            </div>
+            <div class="col">
+              <label for="profesion">Profesión</label>
+              <input type="text" class="form-control" name="profesion" id="profesion" placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col-6">
+              <label for="CifNif">C.I.F / N.I.F</label>
+              <input type="text" class="form-control" name="CifNif" id="CifNif" placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="documentacion-mantenimiento col-12">
+      <div class="insercion-vehiculos-form_bloque">
+        <div class="documentacion-mantenimiento_p_pequeno">
+          <p>
+            Siendo informado de las Condiciones Generales de Venta al dorso notificadas que declara de aceptar
+            plenamente, confiere a la respetable
+          </p>
+        </div>
+        <div class="insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="vendedor">Vendedor</label>
+              <input type="text" class="form-control" name="vendedor" id="vendedor" placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="marca">Marca</label>
+              <input type="text" class="form-control" name="marca" id="marca" placeholder="Escribe aquí">
+            </div>
+            <div class="col">
+              <label for="version">Versión</label>
+              <input type="text" class="form-control" name="version" id="version" placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="modelo">Modelo</label>
+              <input type="text" class="form-control" name="modelo" id="modelo" placeholder="Escribe aquí">
+            </div>
+            <div class="col">
+              <label for="bastidor">Bastidor</label>
+              <input type="text" class="form-control" name="bastidor" id="bastidor" placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="documentacion-mantenimiento col-12">
+      <div class="insercion-vehiculos-form_bloque">
+        <div class="documentacion-mantenimiento_p_pequeno">
+          <p>
+            En el estado en que se encuentra, establecido en su presencia, a las condiciones Generales al reverso
+            entregadas, tomando nota tambien de que el vendedor hara la venta:
+          </p>
+        </div>
+        <div class="insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <div class="check-box-group">
+                <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                  <input class="check-box-group" type="radio" value="Propietario" name="estadoEncontrado"
+                    id="propietario">
+                  <span class="checkmark"></span>
+                  <span class="label">Como propietario del mismo</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="check-box-group">
+                <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                  <input class="check-box-group" type="radio" value="arregloEspacial" name="estadoEncontrado"
+                    id="ordenEspacial">
+                  <span class="checkmark"></span>
+                  <span class="label">Con arreglo a la orden espacial a tal efecto otorgado por el Sr.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Sr." name="estadoEncontradoDescripcion">
+        </div>
+      </div>
+    </div>
+    <div class="documentacion-mantenimiento col-12">
+      <div class="insercion-vehiculos-form_bloque">
+        <div class="documentacion-mantenimiento_p_pequeno">
+          <p>
+            La empresa vende. retirará el siguiente vehículo:
+          </p>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="marceEmpresa">Marca</label>
+              <input name="marceEmpresa" id="marceEmpresa" type="text" class="form-control" placeholder="Escribe aquí">
+            </div>
+            <div class="col">
+              <label for="versionEmpresa">Versión</label>
+              <input name="versionEmpresa" id="versionEmpresa" type="text" class="form-control"
+                placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col">
+              <label for="modeloEmpresa">Modelo</label>
+              <input name="modeloEmpresa" id="modeloEmpresa" type="text" class="form-control"
+                placeholder="Escribe aquí">
+            </div>
+            <div class="col">
+              <label for="bastidorEmpresa">Bastidor</label>
+              <input name="bastidorEmpresa" id="bastidorEmpresa" type="text" class="form-control"
+                placeholder="Escribe aquí">
+            </div>
+          </div>
+        </div>
+        <div class="col insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="col-6 insercion-vehiculos-date">
+              <label for="fechaPrimeraMatriculacion">Fecha 1º Matriculación</label>
+              <input name="fechaPrimeraMatriculacion" id="fechaPrimeraMatriculacion" class="form-control" type="date"
+                value="2021-03-25" id="example-date-input">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="documentacion-mantenimiento col-12">
+      <div class="insercion-vehiculos-form_bloque">
+        <div class="insercion-vehiculos-form">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <div class="check-box-group">
+                <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                  <input value="1" name="equivalenteAcordado" id="equivalenteAcordado" type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  <span class="label">Por el equivalente acordado igual a €</span>
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <input name="equivalenteAcordadoMonto" id="equivalenteAcordadoMonto" type="text" class="form-control"
+                placeholder="Escribe aquí">
+            </div>
+          </div>
+          <div class="documentacion-mantenimiento_p_pequeno">
+            <p>
+              con transferencia del vehículo retirado en manos del vendedor, en el respeto de las normas vigentes.
+            </p>
+          </div>
+          <div class="form-group col">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input value="1" name="abonadoComprador" id="abonadoComprador" type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span class="label">Abonando al comprador, en cuenta precio de la venta, el importe que será
+                  realizado de la venta del mismo por cuenta del vendedor y en virtud a su mandato a vender gratis
+                  con precio mínimo garantizado de €.</span>
+              </label>
+            </div>
+            <div class="col">
+              <input name="abonadoCompradorMonto" id="abonadoCompradorMonto" type="text" class="form-control"
+                placeholder="Escribe aquí">
+            </div>
+            <div class="documentacion-mantenimiento_p_pequeno">
+              <p>
+                Dicho importe es determinado según el estado de uso a la fecha de la presente y como derivada de
+                la ficha ajunta y salvo descuentos por deterioro sucesivos a hoy a la fecha de entrega del dicho
+                vehículo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12">
+          <div class="documentacion-mantenimiento_i">
+          </div>
+          <div class="col insercion-vehiculos-form">
+            <div class="form-row">
+              <div class="col-4">
+                <label for="PrecioAcordado">Precio acordado del vehículo</label>
+                <input name="PrecioAcordado" id="PrecioAcordado" type="number" class="form-control"
+                  placeholder="€ Monto ">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12">
+          <div class="col insercion-vehiculos-form_monto">
+            <div class="form-row">
+              <div class="col-4">
+                <label for="valorVehiculoRetirado">Valor vehículo retirado</label>
+                <input name="valorVehiculoRetirado" id="valorVehiculoRetirado" type="number" class="form-control"
+                  placeholder="€ Monto ">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12">
+          <div class="col insercion-vehiculos-form">
+            <div class="form-row">
+              <div class="col-4">
+                <label for="depostoGarantiaPagado">Depósito de garantía pagado</label>
+                <input name="depostoGarantiaPagado" id="depostoGarantiaPagado" type="number" class="form-control"
+                  placeholder="€ Monto ">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12">
+          <div class="insercion-vehiculos-form_bloque">
+            <div class="documentacion-mantenimiento_p_pequeno">
+              <p>
+                Financiación / Leasing
+              </p>
+            </div>
+            <div class="col insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="sociedadFinanciera">Sociedad financiera</label>
+                  <input name="sociedadFinanciera" id="sociedadFinanciera" type="text" class="form-control"
+                    placeholder="Escribe aquí">
+                </div>
+                <div class="col">
+                  <label for="nroProtocolo">Nº Protocolo</label>
+                  <input name="nroProtocolo" id="nroProtocolo" type="text" class="form-control"
+                    placeholder="Escribe aquí">
+                </div>
+              </div>
+            </div>
+            <div class="col insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="importaFinanciado">Importe Financiado €</label>
+                  <input name="importaFinanciado" id="importaFinanciado" type="text" class="form-control"
+                    placeholder="Escribe aquí">
+                </div>
+                <div class="col">
+                  <label for="gastosInstruccionSello">Gastos Instrucción/Sello €</label>
+                  <input name="gastosInstruccionSello" id="gastosInstruccionSello" type="text" class="form-control"
+                    placeholder="Escribe aquí">
+                </div>
+              </div>
+            </div>
+            <div class="col insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="nroPlazos">N° Plazos</label>
+                  <input name="nroPlazos" id="nroPlazos" type="text" class="form-control" placeholder="Escribe aquí">
+                </div>
+                <div class="col">
+                  <label for="importePlazos">Importe Plazos €</label>
+                  <input name="importePlazos" id="importePlazos" type="text" class="form-control"
+                    placeholder="Escribe aquí">
+                </div>
+              </div>
+            </div>
+            <div class="col insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="lugar">Lugar</label>
+                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí">
+                </div>
+                <div class="col-6 insercion-vehiculos-date">
+                  <label for="fecha2">Fecha</label>
+                  <input name="fecha2" id="fecha2" class="form-control" type="date" value="2021-03-25"
+                    id="example-date-input">
+                </div>
+              </div>
+            </div>
+            <div class="documentacion-mantenimiento_p">
+              <p>
+                <i class='bx bx-images'></i>
+                Contrato
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-principal_botones">
+      <button type="submit" class="menu-principal_botones-color">CONFIRMAR</button>
+    </div>
+    <!--inicio de boton-->
+  </div>
+</form>
+{% endblock %}

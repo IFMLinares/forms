@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from datetime import datetime
 
@@ -185,6 +186,7 @@ class ExamenVisual(models.Model):
         return retornar
 
 class Form(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     concesionario = models.CharField(max_length=240)
     insercion_de_Vehiculo = models.CharField(max_length=240)
     datos_del_Vehiculo = models.OneToOneField(DatosVehiculo, on_delete=models.CASCADE)
@@ -197,6 +199,46 @@ class Form(models.Model):
 
     def __str__(self):
         return self.concesionario
+
+class Contrato(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    contratoLocales = models.CharField(max_length=12)
+    fecha = models.DateField()
+    firmante = models.CharField(max_length=12)
+    nacido = models.CharField(max_length=12)
+    fechaNacimiento = models.DateField()
+    residenciaSede = models.CharField(max_length=12)
+    telefono = models.CharField(max_length=12)
+    profesion = models.CharField(max_length=12)
+    CifNif = models.CharField(max_length=12)
+    vendedor = models.CharField(max_length=12)
+    marca = models.CharField(max_length=12)
+    version = models.CharField(max_length=12)
+    modelo = models.CharField(max_length=12)
+    bastidor = models.CharField(max_length=12)
+    estadoEncontrado = models.CharField(max_length=12)
+    estadoEncontradoDescripcion = models.CharField(max_length=12)
+    marceEmpresa = models.CharField(max_length=12)
+    versionEmpresa = models.CharField(max_length=12)
+    modeloEmpresa = models.CharField(max_length=12)
+    bastidorEmpresa = models.CharField(max_length=12)
+    fechaPrimeraMatriculacion = models.DateField()
+    equivalenteAcordado = models.CharField(max_length=12)
+    equivalenteAcordadoMonto = models.CharField(max_length=12)
+    abonadoComprador = models.CharField(max_length=12)
+    abonadoCompradorMonto = models.CharField(max_length=12)
+    PrecioAcordado = models.CharField(max_length=12)
+    valorVehiculoRetirado = models.CharField(max_length=12)
+    depostoGarantiaPagado = models.CharField(max_length=12)
+    sociedadFinanciera = models.CharField(max_length=12)
+    nroProtocolo = models.CharField(max_length=12)
+    importaFinanciado = models.CharField(max_length=12)
+    gastosInstruccionSello = models.CharField(max_length=12)
+    nroPlazos = models.CharField(max_length=12)
+    importePlazos = models.CharField(max_length=12)
+    lugar = models.CharField(max_length=12)
+    fecha2 = models.DateField()
+    total = models.FloatField()
 
 
 
