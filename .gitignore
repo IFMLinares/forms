@@ -1,5 +1,1 @@
 /db.sqlite3
-/*.pyc
-forms/__pycache__/settings.cpython-37.pyc
-.gitignore
-forms/__pycache__/urls.cpython-37.pyc
