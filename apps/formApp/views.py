@@ -1,7 +1,15 @@
+import os
+from django.conf import settings
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.contrib.staticfiles import finders
+from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.views.generic import TemplateView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic import TemplateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import (
     Form,
     DatosVehiculo,
@@ -17,7 +25,9 @@ from .models import (
 # Create your views here.
 
 # Vista de insercion de vehiculos
-class FormInsercion(LoginRequiredMixin, TemplateView):
+
+
+class FormInsercionView(LoginRequiredMixin, TemplateView):
     template_name = 'insercion.html'
 
     def post(self, *args, **kwargs):
@@ -45,7 +55,7 @@ class FormInsercion(LoginRequiredMixin, TemplateView):
         fechaInicio = self.request.POST['fechaInicio']
         fechaActivacion = self.request.POST['fechaActivacion']
 
-        #suplementos
+        # suplementos
         cuatroxcuatro = self.request.POST['cuatroxcuatro']
         cambioautomatico = self.request.POST['cambioautomatico']
         vehiculoComercial = self.request.POST['vehiculoComercial']
@@ -168,146 +178,146 @@ class FormInsercion(LoginRequiredMixin, TemplateView):
         expliacionTechoSolar = self.request.POST['expliacionTechoSolar']
 
         datosVehiculo = DatosVehiculo(
-            matricula = matricula,
-            marca = marca,
-            modelo = modelo,
-            version = version,
-            bastidor = bastidor,
-            alimentacion = alimentacion,
-            clase_de_cont = claseControl,
-            prime_matr = primeraMatricula,
-            potencia_KW = potenciaKW,
-            nro_propietarios_Privados = nroPropietariosPrivados,
-            nro_propietarios_profesionales = nroPropietariosProfesionales,
-            cilindrada = cilindrada,
-            color = color,
-            fecha_entrega = fechaEntrega,
-            fecha_inicio = fechaInicio,
-            fecha_activacion = fechaActivacion
+            matricula=matricula,
+            marca=marca,
+            modelo=modelo,
+            version=version,
+            bastidor=bastidor,
+            alimentacion=alimentacion,
+            clase_de_cont=claseControl,
+            prime_matr=primeraMatricula,
+            potencia_KW=potenciaKW,
+            nro_propietarios_Privados=nroPropietariosPrivados,
+            nro_propietarios_profesionales=nroPropietariosProfesionales,
+            cilindrada=cilindrada,
+            color=color,
+            fecha_entrega=fechaEntrega,
+            fecha_inicio=fechaInicio,
+            fecha_activacion=fechaActivacion
         )
 
         suplementos = Suplemento(
-            cuatro_por_cuatro = cuatroxcuatro,
-            super_Car = superCar,
-            cambio_autom = cambioautomatico,
-            suv = suv,
-            vehiculo_comercial = vehiculoComercial,
-            cobertura = cobertura
+            cuatro_por_cuatro=cuatroxcuatro,
+            super_Car=superCar,
+            cambio_autom=cambioautomatico,
+            suv=suv,
+            vehiculo_comercial=vehiculoComercial,
+            cobertura=cobertura
         )
 
         datosDelComprador = DatosComprador(
-            nombre_Completo = nombreCompleto,
-            codigo_postal = codigoPostal,
-            localidad_Provincia_Pais = localidad,
-            email = email,
-            direccion = direccion,
-            numero_de_telefono = numeroTelefono,
-            numero_de_movil = numeroMovil,
-            documento_identidad = documentoIdentidad
+            nombre_Completo=nombreCompleto,
+            codigo_postal=codigoPostal,
+            localidad_Provincia_Pais=localidad,
+            email=email,
+            direccion=direccion,
+            numero_de_telefono=numeroTelefono,
+            numero_de_movil=numeroMovil,
+            documento_identidad=documentoIdentidad
         )
 
         documentacion = Documentacion(
-            rueda_repuesto1 = ruedaRepuesto1,
-            rueda_repuesto2 = ruedaRepuesto2,
-            duplicado_llaves = duplicadoLlaves,
-            kit_inflado = kitInflado,
-            triangulo_emergencia = trianguloEmergencia,
-            gato = gato,
-            chaleco_alta_visibilidad = chalecoAltaVelocidad,
-            kit_bombillas = kitBombillas,
-            kit_bombillas_fusibles = kitBombillasFusibles,
-            cod_card = codCard,
-            libre_uso_mantenimiento = libreUsoMantenimiento,
-            ficha_tecnica = fichaTecnica,
-            permiso_circulacion = permisoCirculacion,
-            itv = itv,
-            fecha = fechaITV
+            rueda_repuesto1=ruedaRepuesto1,
+            rueda_repuesto2=ruedaRepuesto2,
+            duplicado_llaves=duplicadoLlaves,
+            kit_inflado=kitInflado,
+            triangulo_emergencia=trianguloEmergencia,
+            gato=gato,
+            chaleco_alta_visibilidad=chalecoAltaVelocidad,
+            kit_bombillas=kitBombillas,
+            kit_bombillas_fusibles=kitBombillasFusibles,
+            cod_card=codCard,
+            libre_uso_mantenimiento=libreUsoMantenimiento,
+            ficha_tecnica=fichaTecnica,
+            permiso_circulacion=permisoCirculacion,
+            itv=itv,
+            fecha=fechaITV
         )
 
         mantenimiento = Mantenimiento(
-            estado_revisiones = estadoRevisiones,
-            mantenimiento_previo_entrega = mantenimientoPrevioEntrega,
-            correa_servicio = correaServicio,
-            estado_bateria = estadoBateria,
-            correa_distribucion = correaDistribucion,
-            ultimo_mantenimiento = ultimoMantenimiento,
-            proximo_mantenimiento = proximoMantenimiento,
-            ultima_ITV = ultimaITV
+            estado_revisiones=estadoRevisiones,
+            mantenimiento_previo_entrega=mantenimientoPrevioEntrega,
+            correa_servicio=correaServicio,
+            estado_bateria=estadoBateria,
+            correa_distribucion=correaDistribucion,
+            ultimo_mantenimiento=ultimoMantenimiento,
+            proximo_mantenimiento=proximoMantenimiento,
+            ultima_ITV=ultimaITV
         )
 
         examenVisual = ExamenVisual(
-            carroceria = carroceria,
-            descripcion_carroceria = descripcionCarroceria,
-            habitaculo_tapiceria_1 = habitaculoTapiceria,
-            descripcion_habitaculo_tapiceria_1 = descripcionHabitaculoTapiceria,
-            habitaculo_tapiceria_2 = habitaculoTapiceria2,
-            descripcion_habitaculo_tapiceria_2 = descripcionHabitaculoTapiceria2,
-            asiento_revestimiento_asiento = asientoRevestimientoAsiento,
-            descripcion_asiento_revestimiento_asiento = descripcionAsientoRevestimientoAsiento,
-            neumaticos_delanteros = neumaticosDelanteros,
-            descripcion_neumaticos_delanteros = descripcionNeumaticosDelanteros,
-            neumaticos_traseros = neumaticosTraseros,
-            descripcion_neumaticos_traseros = descripcionNeumaticosTraseros,
-            volante_motor = volanteMotor,
-            explicacion_detallada_volante_motor = descripcionVolanteMotor,
-            motor = motor,
-            explicacion_detallada_motor = Explicacionmotor,
-            sistema_escape = sistemaEscape,
-            explicacion_detallada_sistema_escape = explicacionsistemaEscape,
-            embrague = embrague,
-            explicacion_detallada_embrague = descripcionEmbrague,
-            alimentacion_inyeccion = alimentacionInyeccion,
-            explicacion_detallada_alimentacion_inyeccion = explicacionAlimentacionInyeccion,
-            cambio = cambio,
-            explicacion_detallada_cambio = explicacionCambio,
-            moto_arranque_alternador = motorArranqueAlternador,
-            explicacion_detallada_moto_arranque_alternador = explicacionMotorArranqueAlternador,
-            diferencial_repartidor = diferencialRepartidor,
-            explicacion_detallada_diferencial_repartidor = explicacionDiferencialRepartidor,
-            caja_transferencia = cajaTranferencia,
-            explicacion_detallada_caja_transferencia = explicacionCajaTranferencia,
-            organo_direccion = organoDireccion,
-            explicacion_detallada_organo_direccion = explicacionOrganoDireccion,
-            rodamiento_neumaticos = rodamientoNeumaticos,
-            explicacion_detallada_rodamiento_neumaticos = ExplicacionRodamientoNeumaticos,
-            direccion_asistida = direccionAsistida,
-            explicacion_detallada_direccion_asistida = explicacionDireccionAsistida,
-            bomba_direccion_asistida = bombaDireccionAsistida,
-            explicacion_detallada_bomba_direccion_asistida = explicacionbombaDireccionAsistida,
-            sistema_frenado = sistemaFrenado,
-            explicacion_detallada_sistema_frenado = explicacionSistemaFrenado,
-            sistema_refrigeracion = sistemaRefrigeracion,
-            explicacion_detallada_sistema_refrigeracion = explicacionSistemaRefrigeracion,
-            sistema_calefaccion = sistemaCalefaccion,
-            explicacion_detallada_sistema_calefaccion = explicacionSistemaCalefaccion,
-            aire_acondicionado = aireAcondicionado,
-            explicacion_detallada_aire_acondicionado = expliacionAireAcondicionado,
-            abs_esp = AbsEsp,
-            explicacion_detallada_abs_esp = explicacionAbsEsp,
-            cuadro_instrumentos = cuadroInstrumentos,
-            explicacion_detallada_cuadro_instrumentos = explicacionCuadroInstrumentos,
-            limpiaparabrisas = limpiaParabrisas,
-            explicacion_detallada_limpiaparabrisas = explicacionLimpiaParabrisas,
-            bomba_limpiaparabrisas = bombaLimpiaparabrisas,
-            explicacion_detallada_bomba_limpiaparabrisas = explicacionbombaLimpiaparabrisas,
-            sistema_electrico = sistemaElectrico,
-            explicacion_detallada_sistema_electrico = explicacionSistemaElectrico,
-            cierre_centralizado = cierreCentralizado,
-            explicacion_detallada_cierre_centralizado = expliacionCierreCentralizado,
-            alumbrado_señalizacion = alumbradoSeñalizacion,
-            explicacion_detallada_alumbrado_señalizacion = expliacionAlumbradoSeñalizacion,
-            radio_lectorCD = radioLector,
-            explicacion_detallada_radio_lectorCD = explicacionRadioLector,
-            navegador = navegador,
-            explicacion_detallada_navegador = explicacionNavegador,
-            elevalunas_electrico = elevalunasElectrico,
-            explicacion_detallada_elevalunas_electrico = explicacionElevalunasElectrico,
-            airbag = airBag,
-            explicacion_detallada_airbag = explicacionAirBag,
-            antirrobo = antirrobo,
-            explicacion_detallada_antirrobo = explicacionAntirrobo,
-            techo_solar = techoSolar,
-            explicacion_detallada_techo_solar = expliacionTechoSolar
+            carroceria=carroceria,
+            descripcion_carroceria=descripcionCarroceria,
+            habitaculo_tapiceria_1=habitaculoTapiceria,
+            descripcion_habitaculo_tapiceria_1=descripcionHabitaculoTapiceria,
+            habitaculo_tapiceria_2=habitaculoTapiceria2,
+            descripcion_habitaculo_tapiceria_2=descripcionHabitaculoTapiceria2,
+            asiento_revestimiento_asiento=asientoRevestimientoAsiento,
+            descripcion_asiento_revestimiento_asiento=descripcionAsientoRevestimientoAsiento,
+            neumaticos_delanteros=neumaticosDelanteros,
+            descripcion_neumaticos_delanteros=descripcionNeumaticosDelanteros,
+            neumaticos_traseros=neumaticosTraseros,
+            descripcion_neumaticos_traseros=descripcionNeumaticosTraseros,
+            volante_motor=volanteMotor,
+            explicacion_detallada_volante_motor=descripcionVolanteMotor,
+            motor=motor,
+            explicacion_detallada_motor=Explicacionmotor,
+            sistema_escape=sistemaEscape,
+            explicacion_detallada_sistema_escape=explicacionsistemaEscape,
+            embrague=embrague,
+            explicacion_detallada_embrague=descripcionEmbrague,
+            alimentacion_inyeccion=alimentacionInyeccion,
+            explicacion_detallada_alimentacion_inyeccion=explicacionAlimentacionInyeccion,
+            cambio=cambio,
+            explicacion_detallada_cambio=explicacionCambio,
+            moto_arranque_alternador=motorArranqueAlternador,
+            explicacion_detallada_moto_arranque_alternador=explicacionMotorArranqueAlternador,
+            diferencial_repartidor=diferencialRepartidor,
+            explicacion_detallada_diferencial_repartidor=explicacionDiferencialRepartidor,
+            caja_transferencia=cajaTranferencia,
+            explicacion_detallada_caja_transferencia=explicacionCajaTranferencia,
+            organo_direccion=organoDireccion,
+            explicacion_detallada_organo_direccion=explicacionOrganoDireccion,
+            rodamiento_neumaticos=rodamientoNeumaticos,
+            explicacion_detallada_rodamiento_neumaticos=ExplicacionRodamientoNeumaticos,
+            direccion_asistida=direccionAsistida,
+            explicacion_detallada_direccion_asistida=explicacionDireccionAsistida,
+            bomba_direccion_asistida=bombaDireccionAsistida,
+            explicacion_detallada_bomba_direccion_asistida=explicacionbombaDireccionAsistida,
+            sistema_frenado=sistemaFrenado,
+            explicacion_detallada_sistema_frenado=explicacionSistemaFrenado,
+            sistema_refrigeracion=sistemaRefrigeracion,
+            explicacion_detallada_sistema_refrigeracion=explicacionSistemaRefrigeracion,
+            sistema_calefaccion=sistemaCalefaccion,
+            explicacion_detallada_sistema_calefaccion=explicacionSistemaCalefaccion,
+            aire_acondicionado=aireAcondicionado,
+            explicacion_detallada_aire_acondicionado=expliacionAireAcondicionado,
+            abs_esp=AbsEsp,
+            explicacion_detallada_abs_esp=explicacionAbsEsp,
+            cuadro_instrumentos=cuadroInstrumentos,
+            explicacion_detallada_cuadro_instrumentos=explicacionCuadroInstrumentos,
+            limpiaparabrisas=limpiaParabrisas,
+            explicacion_detallada_limpiaparabrisas=explicacionLimpiaParabrisas,
+            bomba_limpiaparabrisas=bombaLimpiaparabrisas,
+            explicacion_detallada_bomba_limpiaparabrisas=explicacionbombaLimpiaparabrisas,
+            sistema_electrico=sistemaElectrico,
+            explicacion_detallada_sistema_electrico=explicacionSistemaElectrico,
+            cierre_centralizado=cierreCentralizado,
+            explicacion_detallada_cierre_centralizado=expliacionCierreCentralizado,
+            alumbrado_señalizacion=alumbradoSeñalizacion,
+            explicacion_detallada_alumbrado_señalizacion=expliacionAlumbradoSeñalizacion,
+            radio_lectorCD=radioLector,
+            explicacion_detallada_radio_lectorCD=explicacionRadioLector,
+            navegador=navegador,
+            explicacion_detallada_navegador=explicacionNavegador,
+            elevalunas_electrico=elevalunasElectrico,
+            explicacion_detallada_elevalunas_electrico=explicacionElevalunasElectrico,
+            airbag=airBag,
+            explicacion_detallada_airbag=explicacionAirBag,
+            antirrobo=antirrobo,
+            explicacion_detallada_antirrobo=explicacionAntirrobo,
+            techo_solar=techoSolar,
+            explicacion_detallada_techo_solar=expliacionTechoSolar
         )
 
         datosVehiculo.save()
@@ -318,10 +328,10 @@ class FormInsercion(LoginRequiredMixin, TemplateView):
         examenVisual.save()
 
         form = Form(
-            usuario= self.request.user,
-            concesionario = concesionario,
-            insercion_de_Vehiculo = nombreComercial,
-            duracion_del_contrato = duracionContrato
+            usuario=self.request.user,
+            concesionario=concesionario,
+            insercion_de_Vehiculo=nombreComercial,
+            duracion_del_contrato=duracionContrato
         )
 
         form.datos_del_Vehiculo = datosVehiculo
@@ -336,7 +346,9 @@ class FormInsercion(LoginRequiredMixin, TemplateView):
         return render(self.request, 'insercion.html')
 
 # Vista de contrato
-class FormContrato(LoginRequiredMixin, TemplateView):
+
+
+class FormContratoView(LoginRequiredMixin, TemplateView):
     template_name = 'contrato.html'
 
     def post(self, *args, **kwargs):
@@ -378,69 +390,76 @@ class FormContrato(LoginRequiredMixin, TemplateView):
         lugar = self.request.POST['lugar']
         fecha2 = self.request.POST['fecha2']
 
-        total = (int(PrecioAcordado) + int(valorVehiculoRetirado)) - int(depostoGarantiaPagado)
+        total = (int(PrecioAcordado) + int(valorVehiculoRetirado)) - \
+            int(depostoGarantiaPagado)
 
         contrato = Contrato(
-            usuario = self.request.user,
-            contratoLocales = contratoLocales,
-            fecha = fecha,
-            firmante = firmante,
-            nacido = nacido,
-            fechaNacimiento = fechaNacimiento,
-            residenciaSede = residenciaSede,
-            telefono = telefono,
-            profesion = profesion,
-            CifNif = CifNif,
-            vendedor = vendedor,
-            marca = marca,
-            version = version,
-            modelo = modelo,
-            bastidor = bastidor,
-            estadoEncontrado = estadoEncontrado,
-            estadoEncontradoDescripcion = estadoEncontradoDescripcion,
-            marceEmpresa = marceEmpresa,
-            versionEmpresa = versionEmpresa,
-            modeloEmpresa = modeloEmpresa,
-            bastidorEmpresa = bastidorEmpresa,
-            fechaPrimeraMatriculacion = fechaPrimeraMatriculacion,
-            equivalenteAcordado = equivalenteAcordado,
-            equivalenteAcordadoMonto = equivalenteAcordadoMonto,
-            abonadoComprador = abonadoComprador,
-            abonadoCompradorMonto = abonadoCompradorMonto,
-            PrecioAcordado = PrecioAcordado,
-            valorVehiculoRetirado = valorVehiculoRetirado,
-            depostoGarantiaPagado = depostoGarantiaPagado,
-            sociedadFinanciera = sociedadFinanciera,
-            nroProtocolo = nroProtocolo,
-            importaFinanciado = importaFinanciado,
-            gastosInstruccionSello = gastosInstruccionSello,
-            nroPlazos = nroPlazos,
-            importePlazos = importePlazos,
-            lugar = lugar,
-            fecha2 = fecha2,
-            total = total
+            usuario=self.request.user,
+            contratoLocales=contratoLocales,
+            fecha=fecha,
+            firmante=firmante,
+            nacido=nacido,
+            fechaNacimiento=fechaNacimiento,
+            residenciaSede=residenciaSede,
+            telefono=telefono,
+            profesion=profesion,
+            CifNif=CifNif,
+            vendedor=vendedor,
+            marca=marca,
+            version=version,
+            modelo=modelo,
+            bastidor=bastidor,
+            estadoEncontrado=estadoEncontrado,
+            estadoEncontradoDescripcion=estadoEncontradoDescripcion,
+            marceEmpresa=marceEmpresa,
+            versionEmpresa=versionEmpresa,
+            modeloEmpresa=modeloEmpresa,
+            bastidorEmpresa=bastidorEmpresa,
+            fechaPrimeraMatriculacion=fechaPrimeraMatriculacion,
+            equivalenteAcordado=equivalenteAcordado,
+            equivalenteAcordadoMonto=equivalenteAcordadoMonto,
+            abonadoComprador=abonadoComprador,
+            abonadoCompradorMonto=abonadoCompradorMonto,
+            PrecioAcordado=PrecioAcordado,
+            valorVehiculoRetirado=valorVehiculoRetirado,
+            depostoGarantiaPagado=depostoGarantiaPagado,
+            sociedadFinanciera=sociedadFinanciera,
+            nroProtocolo=nroProtocolo,
+            importaFinanciado=importaFinanciado,
+            gastosInstruccionSello=gastosInstruccionSello,
+            nroPlazos=nroPlazos,
+            importePlazos=importePlazos,
+            lugar=lugar,
+            fecha2=fecha2,
+            total=total
         )
         contrato.save()
 
         return render(self.request, 'contrato.html')
+
+
+class PdfView(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        try:
+            template = get_template('pdf.html')
+            context = {'insercion': insercion}
+            html = template.render(context)
+            response = HttpResponse(content_type='application/pdf')
+            # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+            pisa_status = pisa.CreatePDF(
+                html, dest=response)
+            # if error then show some funy view
+            if pisa_status.err:
+                return HttpResponse('We had some errors <pre>' + html + '</pre>')
+            return response
+        except:
+            pass
+        HttpResponseRedirect(reverse_lazy('core:inicio'))
+
 
 def inicio(request):
     if request.user.is_authenticated:
         return redirect('core:insercion')
     else:
         return redirect('accounts/login')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
