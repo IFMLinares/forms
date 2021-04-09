@@ -241,5 +241,9 @@ class Insercion(models.Model):
     def __str__(self):
         return self.concesionario
 
+    class Meta:
+        verbose_name = "Inserción"
+        verbose_name_plural = "Inserciones"
+
 
 

@@ -78,7 +78,7 @@
                         <h4>{{ insercion.concesionario }}</h4>
                         <span>Duracion del contrato: {{ insercion.duracion_del_contrato }}</span>
                         <p>Matricula: {{ insercion.datos_del_Vehiculo.matricula }}</p>
-                        {% if insercion.cotratro %}
+                        {% if insercion.contrato %}
                         Formulario de contrato: <input type="checkbox" name="insercion" id="insercion" checked readonly>
                         <br>
                         <a href="{% url 'core:pdf-incersion' pk=insercion.pk %}" target="_blank">Generar PDF De la insercion</a>
@@ -92,6 +92,9 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                <h2>No Tienes ningún registro.</h2>
+                <p>Ingresa una nuevo vehículo: &nbsp;&nbsp;<a href="{% url 'core:insercion' %}" class="btn btn-primary">Inserción</a></p>
                 {% endif %}
             </div>
         </div>

@@ -4,17 +4,11 @@ from django.urls import reverse
 from .models import (
     User,
     Insercion,
-    DatosVehiculo,
-    Suplemento,
-    DatosComprador,
-    Documentacion,
-    Mantenimiento,
-    ExamenVisual,
     Contrato
     )
 # Register your models here.
 
-class FormAdmin(admin.ModelAdmin):
+class InsercionAdmin(admin.ModelAdmin):
 
     def pdf_actions(self, obj):
         return format_html(
@@ -48,12 +42,55 @@ class FormAdmin(admin.ModelAdmin):
     get_matricula.short_description = 'Matricula'
     get_matricula.admin_order_field = 'datos_del_Vehiculo__matricula'
 
+class ContratoAdmin(admin.ModelAdmin):
+    readonly_fields = (
+        'usuario',
+        'contratoLocales',
+        'fecha',
+        'firmante',
+        'nacido',
+        'fechaNacimiento',
+        'residenciaSede',
+        'telefono',
+        'profesion',
+        'CifNif',
+        'vendedor',
+        'marca',
+        'version',
+        'modelo',
+        'bastidor',
+        'estadoEncontrado',
+        'estadoEncontradoDescripcion',
+        'marceEmpresa',
+        'versionEmpresa',
+        'modeloEmpresa',
+        'bastidorEmpresa',
+        'fechaPrimeraMatriculacion',
+        'equivalenteAcordado',
+        'equivalenteAcordadoMonto',
+        'abonadoComprador',
+        'abonadoCompradorMonto',
+        'PrecioAcordado',
+        'valorVehiculoRetirado',
+        'depostoGarantiaPagado',
+        'sociedadFinanciera',
+        'nroProtocolo',
+        'importaFinanciado',
+        'gastosInstruccionSello',
+        'nroPlazos',
+        'importePlazos',
+        'lugar',
+        'fecha2',
+        'total'
+    )
+    list_display = (
+        'usuario',
+        'contratoLocales',
+        'marca',
+        'modelo',
+    )
+
+
 admin.site.register(User)
-admin.site.register(Insercion, FormAdmin)
-admin.site.register(Contrato)
-# admin.site.register(DatosVehiculo)
-# admin.site.register(Suplemento)
-# admin.site.register(DatosComprador)
-# admin.site.register(Documentacion)
-# admin.site.register(Mantenimiento)
-# admin.site.register(ExamenVisual)
+admin.site.register(Insercion, InsercionAdmin)
+admin.site.register(Contrato, ContratoAdmin)

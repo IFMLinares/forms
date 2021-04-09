@@ -555,7 +555,7 @@ class UserView(LoginRequiredMixin, ListView):
     template_name = 'usuario.html'
     context_object_name = 'insercion'
     def get_queryset(self):
-        return Insercion.objects.filter(usuario=self.request.user)
+        return Insercion.objects.filter(usuario=self.request.user).order_by('-id')
 
 def inicio(request):
     if request.user.is_authenticated:
