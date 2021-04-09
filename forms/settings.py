@@ -25,7 +25,7 @@ SECRET_KEY = 'o)hl5t8=kvzjro-m1ulg87-v9o(^fg5*geez*tu%1)jetik-)1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ifmlinares.pythonanywhere.com', 'localhost']
 
 
 # Application definition
