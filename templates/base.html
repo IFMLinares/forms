@@ -20,6 +20,7 @@
     <div class="container menu-principal_container">
         <div class="row">
             <div class="menu-principal">
+                {% block header %}
                 <header>
                     <nav class="menu">
                         <ul class="nav justify-content-center ">
@@ -53,6 +54,7 @@
                         </ul>
                     </nav>
                 </header>
+                {% endblock %}
                 {% block content %}
                 Contenido
                 {% endblock %}

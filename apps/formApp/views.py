@@ -7,11 +7,11 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, DetailView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import (
-    Form,
+    Insercion,
     DatosVehiculo,
     Suplemento,
     DatosComprador,
@@ -25,8 +25,6 @@ from .models import (
 # Create your views here.
 
 # Vista de insercion de vehiculos
-
-
 class FormInsercionView(LoginRequiredMixin, TemplateView):
     template_name = 'insercion.html'
 
@@ -327,33 +325,30 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
         mantenimiento.save()
         examenVisual.save()
 
-        form = Form(
+        insercion = Insercion(
             usuario=self.request.user,
             concesionario=concesionario,
             insercion_de_Vehiculo=nombreComercial,
             duracion_del_contrato=duracionContrato
         )
 
-        form.datos_del_Vehiculo = datosVehiculo
-        form.suplementos = suplementos
-        form.datos_del_comprador = datosDelComprador
-        form.documentacion = documentacion
-        form.mantenimiento = mantenimiento
-        form.examen_visual = examenVisual
+        insercion.datos_del_Vehiculo = datosVehiculo
+        insercion.suplementos = suplementos
+        insercion.datos_del_comprador = datosDelComprador
+        insercion.documentacion = documentacion
+        insercion.mantenimiento = mantenimiento
+        insercion.examen_visual = examenVisual
 
-        form.save()
+        insercion.save()
 
-        return render(self.request, 'insercion.html')
+        return redirect('core:contrato', insercion.pk)
 
 # Vista de contrato
-
-
 class FormContratoView(LoginRequiredMixin, TemplateView):
     template_name = 'contrato.html'
 
     def post(self, *args, **kwargs):
         contratoLocales = self.request.POST['contratoLocales']
-        print(contratoLocales)
         fecha = self.request.POST['fecha']
         firmante = self.request.POST['firmante']
         nacido = self.request.POST['nacido']
@@ -435,31 +430,135 @@ class FormContratoView(LoginRequiredMixin, TemplateView):
         )
         contrato.save()
 
-        return render(self.request, 'contrato.html')
+        pk = kwargs.pop('pk')
+        insercion = Insercion.objects.get(pk=pk)
+        insercion.contrato = contrato
 
+        insercion.save()
 
-class PdfView(LoginRequiredMixin, View):
+        return redirect('core:user')
 
-    def get(self, request, *args, **kwargs):
-        try:
-            template = get_template('pdf.html')
-            context = {'insercion': insercion}
+def pdfInsercion(request, pk):
+
+    def link_callback(uri, rel):
+        """
+        Convert HTML URIs to absolute system paths so xhtml2pdf can access those
+        resources
+        """
+        result = finders.find(uri)
+        if result:
+            if not isinstance(result, (list, tuple)):
+                    result = [result]
+            result = list(os.path.realpath(path) for path in result)
+            path=result[0]
+        else:
+            sUrl = settings.STATIC_URL        # Typically /static/
+            sRoot = settings.STATIC_ROOT      # Typically /home/userX/project_static/
+            mUrl = settings.MEDIA_URL         # Typically /media/
+            mRoot = settings.MEDIA_ROOT       # Typically /home/userX/project_static/media/
+
+            if uri.startswith(mUrl):
+                    path = os.path.join(mRoot, uri.replace(mUrl, ""))
+            elif uri.startswith(sUrl):
+                    path = os.path.join(sRoot, uri.replace(sUrl, ""))
+            else:
+                return uri
+
+        # make sure that file exists
+        if not os.path.isfile(path):
+            raise Exception(
+                'media URI must start with %s or %s' % (sUrl, mUrl)
+            )
+        return path
+
+    try:
+        template = get_template('pdf.html')
+        insercion = Insercion.objects.filter(pk=pk)
+        if insercion.exists():
+            context = {
+                'insercion': insercion,
+                'icon': '{}{}'.format(settings.STATIC_URL, 'img/autos.png')
+            }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')
             # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
             pisa_status = pisa.CreatePDF(
-                html, dest=response)
+                html, dest=response, link_callback=link_callback)
             # if error then show some funy view
             if pisa_status.err:
                 return HttpResponse('We had some errors <pre>' + html + '</pre>')
             return response
-        except:
-            pass
-        HttpResponseRedirect(reverse_lazy('core:inicio'))
+        else:
+            return HttpResponse('Consulta invalida')
+    except:
+        pass
+    HttpResponseRedirect(reverse_lazy('core:inicio'))
 
+def pdfContrato(request, pk):
+
+    def link_callback(uri, rel):
+        """
+        Convert HTML URIs to absolute system paths so xhtml2pdf can access those
+        resources
+        """
+        result = finders.find(uri)
+        if result:
+            if not isinstance(result, (list, tuple)):
+                    result = [result]
+            result = list(os.path.realpath(path) for path in result)
+            path=result[0]
+        else:
+            sUrl = settings.STATIC_URL        # Typically /static/
+            sRoot = settings.STATIC_ROOT      # Typically /home/userX/project_static/
+            mUrl = settings.MEDIA_URL         # Typically /media/
+            mRoot = settings.MEDIA_ROOT       # Typically /home/userX/project_static/media/
+
+            if uri.startswith(mUrl):
+                    path = os.path.join(mRoot, uri.replace(mUrl, ""))
+            elif uri.startswith(sUrl):
+                    path = os.path.join(sRoot, uri.replace(sUrl, ""))
+            else:
+                return uri
+
+        # make sure that file exists
+        if not os.path.isfile(path):
+            raise Exception(
+                'media URI must start with %s or %s' % (sUrl, mUrl)
+            )
+        return path
+
+    try:
+        template = get_template('pdfContrato.html')
+        contrato = Insercion.objects.filter(pk=pk)
+        if contrato.exists():
+            context = {
+                'contrato': contrato,
+                'icon': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png')
+            }
+            html = template.render(context)
+            response = HttpResponse(content_type='application/pdf')
+            # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+            pisa_status = pisa.CreatePDF(
+                html, dest=response, link_callback=link_callback)
+            # if error then show some funy view
+            if pisa_status.err:
+                return HttpResponse('We had some errors <pre>' + html + '</pre>')
+            return response
+        else:
+            return HttpResponse('Consulta invalida')
+    except:
+        pass
+    HttpResponseRedirect(reverse_lazy('core:inicio'))
+
+class UserView(LoginRequiredMixin, ListView):
+    model = Insercion
+    template_name = 'usuario.html'
+    context_object_name = 'insercion'
+    def get_queryset(self):
+        return Insercion.objects.filter(usuario=self.request.user)
 
 def inicio(request):
     if request.user.is_authenticated:
-        return redirect('core:insercion')
+        return redirect('core:user')
     else:
         return redirect('accounts/login')

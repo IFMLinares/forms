@@ -185,21 +185,6 @@ class ExamenVisual(models.Model):
         retornar = 'Carrocería: ' + self.carroceria +'\n Descripción de Carrocería: ' + self.descripcion_carroceria + '\n' + '\n Habitáculo y Tapicería' + self.habitaculo_tapiceria_1 + '\n Descripción Habitáculo y tapicería 1: ' + self.descripcion_habitaculo_tapiceria_1 + '\n' + '\n Habitáculo y tapicería 2:' + self.habitaculo_tapiceria_2 + '\n Descripción Habitáculo y tapicería 2:' + self.descripcion_habitaculo_tapiceria_2 + '\n' + '\n Asiento y revestimiento del asiento' + self.asiento_revestimiento_asiento + '\n Descripción Asiento y revestimiento del asiento:' + self.descripcion_asiento_revestimiento_asiento + '\n' + '\n Neumáticos delanteros' + self.neumaticos_delanteros + '\n Descripción Neumáticos delanteros: ' + self.descripcion_neumaticos_delanteros + '\n' + '\n Neumáticos traseros' + self.neumaticos_traseros + '\n Descripción Neumáticos traseros: ' + self.descripcion_neumaticos_traseros + '\n' + '\n Volante motor:' + self.volante_motor + '\n Explicación detallada Volante motor: ' + self.explicacion_detallada_volante_motor + '\n' + '\n Motor:' + self.motor + '\n Explicación detallada Motor: ' + self.explicacion_detallada_motor + '\n' + '\n Sistema de escape:' + self.sistema_escape + '\n Explicación detallada Sistema de escape: ' + self.explicacion_detallada_sistema_escape + '\n' + '\n Embrague:' + self.embrague + '\n Explicación detallada Embrague: ' + self.explicacion_detallada_embrague + '\n' + '\n Alimentación e inyección:' + self.alimentacion_inyeccion + '\n Explicación detallada Alimentación e inyección: ' + self.explicacion_detallada_alimentacion_inyeccion + '\n' + '\n Cambio:' + self.cambio + '\n Explicación detallada Cambio: ' + self.explicacion_detallada_cambio + '\n' + '\n Motor de arranque/Alternador:' + self.moto_arranque_alternador + '\n Explicación detallada Motor de arranque/Alternador: ' + self.explicacion_detallada_moto_arranque_alternador + '\n'  + '\n Diferencial / Repartidor:' + self.diferencial_repartidor + '\n Explicación detallada Diferencial / Repartidor: ' + self.explicacion_detallada_diferencial_repartidor + '\n' + '\n Caja de trasferencia:' + self.caja_transferencia + '\n Explicación detallada Caja de trasferencia: ' + self.explicacion_detallada_caja_transferencia + '\n'  + '\n Organo de direccíon:' + self.organo_direccion + '\n Explicación detallada Organo de direccíon: ' + self.explicacion_detallada_organo_direccion + '\n' + '\n Rodamiento de los neumáticos:' + self.rodamiento_neumaticos + '\n Explicación detallada : Rodamiento de los neumáticos' + self.explicacion_detallada_rodamiento_neumaticos  + '\n' + '\n Dirección asistida:' + self.direccion_asistida + '\n Explicación detallada Dirección asistida: ' + self.explicacion_detallada_direccion_asistida + '\n' + '\n Bomba de la dirección asistida:' + self.bomba_direccion_asistida + '\n Explicación detallada Bomba de la dirección asistida: ' + self.explicacion_detallada_bomba_direccion_asistida  + '\n' + '\n Sistema de frenado:' + self.sistema_frenado + '\n Explicación detallada Sistema de frenado: ' + self.explicacion_detallada_sistema_frenado  + '\n' + '\n Sistema de refrigeración:' + self.sistema_refrigeracion + '\n Explicación detallada Sistema de refrigeración: ' + self.explicacion_detallada_sistema_refrigeracion  + '\n' + '\n Sistema de calefacción ( aire ):' + self.sistema_calefaccion + '\n Explicación detallada Sistema de calefacción ( aire ): ' + self.explicacion_detallada_sistema_calefaccion  + '\n'  + '\n Aire acondicionado:' + self.aire_acondicionado + '\n Explicación detallada Aire acondicionado: ' + self.explicacion_detallada_aire_acondicionado  + '\n'  + '\n ABS/ ESP:' + self.abs_esp + '\n Explicación detallada ABS/ ESP: ' + self.explicacion_detallada_abs_esp  + '\n' + '\n Cuadro de instrumentos:' + self.cuadro_instrumentos + '\n Explicación detallada Cuadro de instrumentos: ' + self.explicacion_detallada_cuadro_instrumentos + '\n' + '\n Limpiaparabrisas:' + self.limpiaparabrisas + '\n Explicación detallada Limpiaparabrisas: ' + self.explicacion_detallada_limpiaparabrisas  + '\n' + '\n Bomba limpiaparabrisas:' + self.bomba_limpiaparabrisas + '\n Explicación detallada Bomba limpiaparabrisas: ' + self.explicacion_detallada_bomba_limpiaparabrisas  + '\n' + '\n Sistema eléctrico:' + self.sistema_electrico + '\n Explicación detallada Sistema eléctrico: ' + self.explicacion_detallada_sistema_electrico  + '\n' + '\n Sistema Electrico:' + self.sistema_electrico + '\n Explicación detallada : ' + self.explicacion_detallada_sistema_electrico  + '\n' + '\n Cierre centralizado:' + self.cierre_centralizado + '\n Explicación detallada Cierre centralizado: ' + self.explicacion_detallada_cierre_centralizado  + '\n' + '\n Alumbrado y señalización:' + self.alumbrado_señalizacion + '\n Explicación detallada Alumbrado y señalización: ' + self.explicacion_detallada_alumbrado_señalizacion  + '\n' + '\n Radio / Lector CD:' + self.radio_lectorCD + '\n Explicación detallada Radio / Lector CD: ' + self.explicacion_detallada_radio_lectorCD  + '\n' + '\n Navegador:' + self.navegador + '\n Explicación detallada Navegador: ' + self.explicacion_detallada_navegador  + '\n' + '\n Elevalunas eléctrico:' + self.elevalunas_electrico + '\n Explicación detallada Elevalunas eléctrico: ' + self.explicacion_detallada_elevalunas_electrico  + '\n' + '\n Airbag:' + self.airbag + '\n Explicación detallada Airbag: ' + self.explicacion_detallada_airbag  + '\n' + '\n Antirrobo:' + self.antirrobo + '\n Explicación detallada Antirrobo: ' + self.explicacion_detallada_antirrobo  + '\n' + '\n Techo solar:' + self.techo_solar + '\n Explicación detallada Techo solar: ' + self.explicacion_detallada_techo_solar 
         return retornar
 
-class Form(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    concesionario = models.CharField(max_length=240)
-    insercion_de_Vehiculo = models.CharField(max_length=240)
-    datos_del_Vehiculo = models.OneToOneField(DatosVehiculo, on_delete=models.CASCADE)
-    suplementos = models.OneToOneField(Suplemento, on_delete=models.CASCADE)
-    datos_del_comprador = models.OneToOneField(DatosComprador, on_delete=models.CASCADE)
-    duracion_del_contrato = models.CharField(max_length=240)
-    documentacion = models.OneToOneField(Documentacion, on_delete=models.CASCADE)
-    mantenimiento = models.OneToOneField(Mantenimiento, on_delete=models.CASCADE)
-    examen_visual = models.OneToOneField(ExamenVisual, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.concesionario
-
 class Contrato(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     contratoLocales = models.CharField(max_length=12)
@@ -239,6 +224,22 @@ class Contrato(models.Model):
     lugar = models.CharField(max_length=12)
     fecha2 = models.DateField()
     total = models.FloatField()
+
+class Insercion(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    concesionario = models.CharField(max_length=240)
+    insercion_de_Vehiculo = models.CharField(max_length=240)
+    datos_del_Vehiculo = models.OneToOneField(DatosVehiculo, on_delete=models.CASCADE)
+    suplementos = models.OneToOneField(Suplemento, on_delete=models.CASCADE)
+    datos_del_comprador = models.OneToOneField(DatosComprador, on_delete=models.CASCADE)
+    duracion_del_contrato = models.CharField(max_length=240)
+    documentacion = models.OneToOneField(Documentacion, on_delete=models.CASCADE)
+    mantenimiento = models.OneToOneField(Mantenimiento, on_delete=models.CASCADE)
+    examen_visual = models.OneToOneField(ExamenVisual, on_delete=models.CASCADE)
+    contrato = models.OneToOneField(Contrato, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.concesionario
 
 
 

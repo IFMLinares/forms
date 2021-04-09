@@ -428,31 +428,31 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="estadoRevisiones">Estado revisiones</label>
                   <select class="custom-select" id="estadoRevisiones" name="estadoRevisiones" required>
-                    <option selected disabled value="">Según plan del constructor</option>
+                    <option selected value="Segun plan del constructor">Según plan del constructor</option>
                     <option value="regulados">Regulados</option>
-                    <option value="noDocumentado">No documentados</option>
+                    <option value="No Documentado">No documentados</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="mantenimientoPrevioEntrega">Manten. Previo a entrega</label>
                   <select class="custom-select" id="mantenimientoPrevioEntrega" name="mantenimientoPrevioEntrega" required>
-                    <option selected disabled value="">Ninguno</option>
-                    <option value="control/rellenoNiveles">Control/Relleno Niveles</option>
-                    <option value="cambioAceiteFiltro">Cambio de aceite y filtro</option>
-                    <option value="revisionMotor">Revisión de motor</option>
-                    <option value="revisionCompleta">Revisión completa</option>
+                    <option selected value="Ninguno">Ninguno</option>
+                    <option value="Control/rellenoNiveles">Control/Relleno Niveles</option>
+                    <option value="Cambio Aceite y Filtro">Cambio de aceite y filtro</option>
+                    <option value="Revision Motor">Revisión de motor</option>
+                    <option value="Revision Completa">Revisión completa</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="correaServicio">Correa de servicio</label>
                   <select class="custom-select" id="correaServicio" name="correaServicio" required>
-                    <option selected disabled value="">No disponible</option>
-                    <option value="buenascondiciones">Buenas condiciones</option>
-                    <option value="IntervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
-                    <option value="condicionesNormalesUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option selected value="No Disponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="Condiciones Normales de Uso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
               </div>
@@ -463,24 +463,24 @@ Inserción de vehiculos
               <div class="col">
                 <label for="estadoBateria">Estado de batería</label>
                 <select class="custom-select" id="estadoBateria" name="estadoBateria" required>
-                  <option selected disabled value="">Ninguno</option>
-                  <option value="buenasCondiciones">Buenas condiciones</option>
+                  <option selected value="Ninguno">Ninguno</option>
+                  <option value="Buenas Condiciones">Buenas condiciones</option>
                   <option value="intervencionNecesaria">Intervención recomendada</option>
-                  <option value="noDisponible">No disponible</option>
+                  <option value="No Disponible">No disponible</option>
                   <option value="condicionesNormales">Condiciones normales de uso</option>
-                  <option value="reacondicionado">Reacondicionado</option>
-                  <option value="reparacionNecesaria">Reparación necesaria</option>
+                  <option value="Reacondicionado">Reacondicionado</option>
+                  <option value="Reparacion Necesaria">Reparación necesaria</option>
                 </select>
               </div>
               <div class="col">
                 <label for="correaDistribucion">Correa de distribución</label>
                 <select class="custom-select" id="correaDistribucion" name="correaDistribucion" required>
-                  <option selected disabled value="">Buenas condiciones</option>
-                  <option value="intervencionRecomendada">Intervención recomendada</option>
-                  <option value="noDisponible">No disponible</option>
+                  <option selected value="Ninguno">Buenas condiciones</option>
+                  <option value="Intervencion Recomendada">Intervención recomendada</option>
+                  <option value="No Disponible">No disponible</option>
                   <option value="condicionesNormales">Condiciones normales de uso</option>
-                  <option value="reacondicionado">Reacondicionado</option>
-                  <option value="reparacionNecesaria">Reparación necesaria</option>
+                  <option value="Reacondicionado">Reacondicionado</option>
+                  <option value="Reparacion Necesaria">Reparación necesaria</option>
                 </select>
               </div>
             </div>
@@ -533,36 +533,36 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="carroceria">Carrocería</label>
                   <select class="custom-select" id="carroceria" name="carroceria" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción" name="descripcionCarroceria" id="descripcionCarroceria">
                 </div>
                 <div class="col">
                   <label for="habitaculoTapiceria">Habitáculo y tapicería</label>
                   <select class="custom-select" id="habitaculoTapiceria" name="habitaculoTapiceria" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción" name="descripcionHabitaculoTapiceria" id="descripcionHabitaculoTapiceria">
                 </div>
                 <div class="col">
                   <label for="habitaculoTapiceria2">Habitáculo y tapicería</label>
                   <select class="custom-select" id="habitaculoTapiceria2" name="habitaculoTapiceria2" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción..." name="descripcionHabitaculoTapiceria2" id="descripcionHabitaculoTapiceria2">
                 </div>
@@ -573,36 +573,36 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="asientoRevestimientoAsiento">Asiento y revestimiento del asiento</label>
                   <select class="custom-select" id="asientoRevestimientoAsiento" name="asientoRevestimientoAsiento" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción..." name="descripcionAsientoRevestimientoAsiento" id="descripcionAsientoRevestimientoAsiento">
                 </div>
                 <div class="col">
                   <label for="neumaticosDelanteros">Neumáticos delanteros</label>
                   <select class="custom-select" id="neumaticosDelanteros" name="neumaticosDelanteros" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción..." name="descripcionNeumaticosDelanteros" id="descripcionNeumaticosDelanteros">
                 </div>
                 <div class="col">
                   <label for="neumaticosTraseros">Neumáticos traseros</label>
                   <select class="custom-select" id="neumaticosTraseros" name="neumaticosTraseros" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción" name="descripcionNeumaticosTraseros" id="descripcionNeumaticosTraseros">
                 </div>
@@ -613,12 +613,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="volanteMotor">Volante motor</label>
                   <select class="custom-select" id="volanteMotor" name="volanteMotor" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -632,12 +632,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="motor">Motor</label>
                   <select class="custom-select" id="motor" name="motor" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -651,12 +651,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaEscape">Sistema de escape</label>
                   <select class="custom-select" id="sistemaEscape" name="sistemaEscape" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -670,12 +670,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="embrague">Embrague</label>
                   <select class="custom-select" id="embrague" name="embrague" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -689,12 +689,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="alimentacionInyeccion">Alimentacíon e Inyección</label>
                   <select class="custom-select" id="alimentacionInyeccion" name="alimentacionInyeccion" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -708,12 +708,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cambio">Cambio</label>
                   <select class="custom-select" id="cambio" name="cambio" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -727,12 +727,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="motorArranqueAlternador">Motor de arranque/Alternador</label>
                   <select class="custom-select" id="motorArranqueAlternador" name="motorArranqueAlternador" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -746,12 +746,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="diferencialRepartidor">Diferencial / Repartidor</label>
                   <select class="custom-select" id="diferencialRepartidor" name="diferencialRepartidor" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -765,12 +765,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cajaTranferencia">Caja de trasferencia</label>
                   <select class="custom-select" id="cajaTranferencia" name="cajaTranferencia" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -784,12 +784,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="organoDireccion">Organo de direccíon</label>
                   <select class="custom-select" id="organoDireccion" name="organoDireccion" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -803,12 +803,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="rodamientoNeumaticos">Rodamiento de los neumáticos</label>
                   <select class="custom-select" id="rodamientoNeumaticos" name="rodamientoNeumaticos" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -822,12 +822,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="direccionAsistida">Dirección asistida</label>
                   <select class="custom-select" id="direccionAsistida" name="direccionAsistida" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -841,12 +841,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="bombaDireccionAsistida">Bomba de la dirección asistida</label>
                   <select class="custom-select" id="bombaDireccionAsistida" name="bombaDireccionAsistida" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -860,12 +860,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaFrenado">Sistema de frenado</label>
                   <select class="custom-select" id="sistemaFrenado" name="sistemaFrenado" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -879,12 +879,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaRefrigeracion">Sistema de refrigeración</label>
                   <select class="custom-select" id="sistemaRefrigeracion" name="sistemaRefrigeracion" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -898,12 +898,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaCalefaccion">Sistema de calefacción ( aire )</label>
                   <select class="custom-select" id="sistemaCalefaccion" name="sistemaCalefaccion" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -917,12 +917,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="aireAcondicionado">Aire acondicionado</label>
                   <select class="custom-select" id="aireAcondicionado" name="aireAcondicionado" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -936,12 +936,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="AbsEsp">ABS/ ESP</label>
                   <select class="custom-select" id="AbsEsp" name="AbsEsp" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -955,12 +955,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cuadroInstrumentos">Cuadro de instrumentos</label>
                   <select class="custom-select" id="cuadroInstrumentos" name="cuadroInstrumentos" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -974,12 +974,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="limpiaParabrisas">Limpiaparabrisas</label>
                   <select class="custom-select" id="limpiaParabrisas" name="limpiaParabrisas" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -993,12 +993,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="bombaLimpiaparabrisas">Bomba Limpiaparabrisas</label>
                   <select class="custom-select" id="bombaLimpiaparabrisas" name="bombaLimpiaparabrisas" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1012,12 +1012,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaElectrico">Sistema eléctrico</label>
                   <select class="custom-select" id="sistemaElectrico" name="sistemaElectrico" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1031,12 +1031,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cierreCentralizado">Cierre centralizado</label>
                   <select class="custom-select" id="cierreCentralizado" name="cierreCentralizado" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1050,12 +1050,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="alumbradoSeñalizacion">Alumbrado y señalización</label>
                   <select class="custom-select" id="alumbradoSeñalizacion" name="alumbradoSeñalizacion" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1069,12 +1069,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="radioLector">Radio / Lector CD</label>
                   <select class="custom-select" id="radioLector" name="radioLector" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1088,12 +1088,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="navegador">Navegador</label>
                   <select class="custom-select" id="navegador" name="navegador" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1107,12 +1107,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="elevalunasElectrico">Elevalunas eléctrico</label>
                   <select class="custom-select" id="elevalunasElectrico" name="elevalunasElectrico" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1126,12 +1126,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="airBag">Airbag</label>
                   <select class="custom-select" id="airBag" name="airBag" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1145,12 +1145,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="antirrobo">Antirrobo</label>
                   <select class="custom-select" id="antirrobo" name="antirrobo" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1164,12 +1164,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="techoSolar">Techo solar</label>
                   <select class="custom-select" id="techoSolar" name="techoSolar" required>
-                    <option value="buenasCondiciones">Buenas condiciones</option>
-                    <option value="intervencionRecomendada">Intervención recomendada</option>
-                    <option value="noDisponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
                     <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="reacondicionado">Reacondicionado</option>
-                    <option value="reparacionNecesaria">Reparación necesaria</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1629,8 +1629,8 @@ Inserción de vehiculos
           </div>
         </div>
       </div>
-
       <div class="menu-principal_botones">
+    <a href="{% url 'core:user' %}" class="menu-principal_botones-color" style='text-decoration:none;color:#f44336;'>Volver Al inicio</a>
         <button type="button" id="anterior" class="menu-principal_botones-color"
           style='text-decoration:none;color:#f44336;'>
           ANTERIOR

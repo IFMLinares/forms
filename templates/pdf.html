@@ -1,12 +1,391 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+{% load static %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
 </head>
+<style>
+  th,
+  td {
+    padding-bottom: 0.7px;
+  }
+
+  td {
+    text-align: center !important;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  th.table td.table {
+    padding-bottom: 2px;
+  }
+
+  .table-title {
+    font-size: 11px;
+  }
+</style>
+
 <body>
-    {{ insercion.usuario }}
+  {% for a in insercion %}
+  <!--inicio de cuadro de informacion-->
+  <div>
+    <hr>
+    <p class="table-title">
+      DATOS DEL COMPRADOR
+    </p>
+    <hr>
+    <table>
+      <tbody>
+        <tr>
+          <th>Nombre y Apellido/Razón social</th>
+          <td>{{ a.datos_del_comprador.nombre_Completo }}</td>
+          <th>C.I.F</th>
+          <td>{{ a.datos_del_comprador.documento_identidad }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Lugar y fecha de nacimiento</th>
+          <td>{{ a.contrato.nacido }} {{ a.contrato.fecha }}</td>
+          <th>Sujeto a inpuesto</th>
+          <td>
+            <div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Dirección</th>
+          <td>{{ a.datos_del_comprador.direccion }}</td>
+          <th>N.I.F</th>
+          <td>-----------</td>
+        </tr>
+        <tr>
+          <th scope="row">C.P/Localidad/Provincia</th>
+          <td>{{ a.datos_del_comprador.localidad_Provincia_Pais }}</td>
+          <th>Teléfono</th>
+          <td>{{ a.datos_del_comprador.numero_de_telefono }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Fax/E-mail</th>
+          <td>{{ a.datos_del_comprador.email }}</td>
+          <th>Móvil.</th>
+          <td>+{{ a.datos_del_comprador.numero_de_movil }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <hr>
+    <p class="table-title">
+      DATOS DE IDENTIFICACIÓN DEL VEHÍCULO
+    </p>
+    <hr>
+    <table>
+      <tbody>
+        <tr>
+          <th>Marca</th>
+          <td>{{ a.datos_del_Vehiculo.marca }}</td>
+          <th>Color</th>
+          <td>{{ a.datos_del_Vehiculo.color }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Modelo</th>
+          <td>{{ a.datos_del_Vehiculo.modelo }}</td>
+          <th>Cilindrada</th>
+          <td>
+            {{ a.datos_del_Vehiculo.cilindrada }}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Version</th>
+          <td>{{ a.datos_del_Vehiculo.version }}</td>
+          <th>Potencia</th>
+          <td>{{ a.datos_del_Vehiculo.potencia_KW }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Número de matricula</th>
+          <td>{{ a.datos_del_Vehiculo.matricula }}</td>
+          <th>Alimentación</th>
+          <td>{{ a.datos_del_Vehiculo.alimentacion }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Primera matriculación</th>
+          <td>{{ a.datos_del_Vehiculo.prime_matr }}</td>
+          <th scope="row">Numero de propietarios Profesionales</th>
+          <td>{{ a.datos_del_Vehiculo.nro_propietarios_profesionales }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Numero de bastidor</th>
+          <td>{{ a.datos_del_Vehiculo.bastidor }}</td>
+          <th scope="row">Numero de propietarios privados</th>
+          <td>{{ a.datos_del_Vehiculo.nro_propietarios_Privados }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <hr>
+    <p class="table-title">
+      DOTACIONES Y DOCUMENTOS
+    </p>
+    <hr>
+    <table>
+      <tbody>
+        <tr>
+          <th scope="row">Rueda de Repuesto</th>
+          <td>{{ a.documentacion.rueda_repuesto1|yesno:"Si,No" }}</td>
+          <th scope="row">Duplicado Llaves</th>
+          <td>{{ a.documentacion.duplicado_llaves|yesno:"Si,No" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Kit de inflado</th>
+          <td>{{ a.documentacion.kit_inflado|yesno:"Si,No" }}</td>
+          <th scope="row">Triángulo de Socorro</th>
+          <td>{{ a.documentacion.triangulo_emergencia|yesno:"Si,No" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Gato</th>
+          <td>{{ a.documentacion.gato|yesno:"Si,No" }}</td>
+          <th scope="row">Chaleco de Alta Visibilidad</th>
+          <td>{{ a.documentacion.chaleco_alta_visibilidad|yesno:"Si,No" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Kit de Fusibles</th>
+          <td>{{ a.documentacion.kit_bombillas_fusibles|yesno:"Si,No" }}</td>
+          <th scope="row">Kit de Bombillas</th>
+          <td>{{ a.documentacion.kit_bombillas|yesno:"Si,No" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ficha Técnica</th>
+          <td>{{ a.documentacion.ficha_tecnica|yesno:"Si,No" }}</td>
+          <th scope="row">Permiso de Circulación</th>
+          <td>{{ a.documentacion.permiso_circulacion|yesno:"Si,No" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">ITV</th>
+          <td>{{ a.documentacion.itv|yesno:"Si,No" }}</td>
+          <th scope="row">Vencimiento ITC</th>
+          <td>{{ a.documentacion.fecha|yesno:"Si,No" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Libro de Matenimiento y uso</th>
+          <td>{{ a.documentacion.libre_uso_mantenimiento|yesno:"Si,No" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <hr>
+    <p class="table-title">
+      DOTACIONES Y DOCUMENTOS
+    </p>
+    <hr>
+    <table>
+      <tbody>
+        <tr>
+          <th scope="row">Estado de Revisiones</th>
+          <td>{{ a.mantenimiento.estado_revisiones }}</td>
+          <th scope="row">Ultimo Mantenimiento</th>
+          <td>{{ a.mantenimiento.ultimo_mantenimiento }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Mantenimineto Pre-Entrega</th>
+          <td>{{ a.mantenimiento.mantenimiento_previo_entrega }}</td>
+          <th scope="row">Proximo Mantenimiento</th>
+          <td>{{ a.mantenimiento.proximo_mantenimiento }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Correa de Distribucion</th>
+          <td>{{ a.mantenimiento.correa_distribucion }}</td>
+          <th scope="row">Última revisión</th>
+          <td>{{ a.mantenimiento.ultimo_mantenimiento }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Correa de Servicio</th>
+          <td>{{ a.mantenimiento.correa_servicio }}</td>
+          <th scope="row">Estado de la batería</th>
+          <td>{{ a.mantenimiento.estado_bateria }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br><br><br>
+  <img src="http://localhost:8000{{ icon }}" alt="">
+  <br><br><br><br>
+  <div style="text-align: right; position: absolute; top: 500px;">
+    <p>Visto por el comprador________________________________________________________</p>
+  </div>
+  <br>
+  <div>
+    <hr>
+    <p class="table-title">
+      EXAMEN VISUAL
+    </p>
+    <hr>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Carroceria</th>
+          <td>{{ a.examen_visual.carroceria }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ventanas/Parabrisas</th>
+          <td>{{ a.examen_visual.limpiaparabrisas }}</td>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Habitáculo y tapicería</th>
+          <td>{{ a.examen_visual.habitaculo_tapiceria_1 }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Asiento y revestimiento del asiento</th>
+          <td>{{ a.examen_visual.asiento_revestimiento_asiento }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Neumáticos delanteros</th>
+          <td>{{ a.examen_visual.neumaticos_delanteros }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Neumáticos traseros</th>
+          <td>{{ a.examen_visual.neumaticos_traseros }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <hr>
+    <p class="table-title">
+      EXAMEN TÉCNICO
+    </p>
+    <hr>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Motor</th>
+          <td>{{ a.examen_visual.motor }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Volante motor</th>
+          <td>{{ a.examen_visual.volante_motor }}</td>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Sistema de escape</th>
+          <td>{{ a.examen_visual.sistema_escape }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Embrague</th>
+          <td>{{ a.examen_visual.embrague }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Alimentación e inyección</th>
+          <td>{{ a.examen_visual.alimentacion_inyeccion }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Cambio</th>
+          <td>{{ a.examen_visual.cambio }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Motor de arranque/Alternador</th>
+          <td>{{ a.examen_visual.moto_arranque_alternador }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Diferencial / Repartidor</th>
+          <td>{{ a.examen_visual.diferencial_repartidor }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Arbol de transmision</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Organo de dirección</th>
+          <td>{{ a.examen_visual.organo_direccion }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Rodamiento de los neumáticos</th>
+          <td>{{ a.examen_visual.rodamiento_neumaticos }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Dirección asistida</th>
+          <td>{{ a.examen_visual.direccion_asistida }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Bomba de la direcciñon asistida</th>
+          <td>{{ a.examen_visual.bomba_direccion_asistida }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Sistema de frenado</th>
+          <td>{{ a.examen_visual.sistema_frenado }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Sistema de refrigeración</th>
+          <td>{{ a.examen_visual.sistema_refrigeracion }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Sistema de calefacciñon (aire)</th>
+          <td>{{ a.examen_visual.sistema_calefaccion }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Aire acondicionado</th>
+          <td>{{ a.examen_visual.aire_acondicionado }}</td>
+        </tr>
+        <tr>
+          <th scope="row">ABS/ESP</th>
+          <td>{{ a.examen_visual.abs_esp }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Cuadro de instrumentos</th>
+          <td>{{ a.examen_visual.cuadro_instrumentos }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Limpiaparabrisas</th>
+          <td>{{ a.examen_visual.limpiaparabrisas }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Sistema eléctrico</th>
+          <td>{{ a.examen_visual.sistema_electrico }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Cierre centralizado</th>
+          <td>{{ a.examen_visual.cierre_centralizado }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Alumbrado y señalización</th>
+          <td>{{ a.examen_visual.alumbrado_señalizacion }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Radio / Lector CD</th>
+          <td>{{ a.examen_visual.radio_lectorCD }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Navegador</th>
+          <td>{{ a.examen_visual.navegador }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Elevalunas eléctrico</th>
+          <td>{{ a.examen_visual.elevalunas_electrico }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Airbag</th>
+          <td>{{ a.examen_visual.airbag }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Antirrobo</th>
+          <td>{{ a.examen_visual.antirrobo }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Techo solar</th>
+          <td>{{ a.examen_visual.techo_solar }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br>
+  <div style="text-align: right; position: absolute;">
+    <p>Visto por el comprador________________________________________________________</p>
+  </div>
+  {% endfor %}
 </body>
+
 </html>

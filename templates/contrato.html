@@ -3,10 +3,12 @@
 {% block title %}
 Contratos
 {% endblock %}
-
+{% block header %}
+{% endblock %}
 {% block content %}
 <!--inicio de cuadro de informacion-->
 <form action="" method="POST" class="insercion-vehiculos-form">
+<a href="{% url 'core:user' %}" class="menu-principal_botones-color" style='text-decoration:none;color:#f44336;'>Volver Al inicio</a>
   <div class="cuadro-informacion">
     <div class="documentacion-mantenimiento col-12">
       <div class="documentacion-mantenimiento_p">
