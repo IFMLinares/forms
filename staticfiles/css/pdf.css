@@ -1,0 +1,32 @@
+
+.cuadro-informacion{
+    width: 95.5%;
+    margin: 1rem;
+    font-size: 14px;
+}
+
+  .documentacion-mantenimiento_i{
+    background: #969696;
+    color: #000000;
+    font-size: 40px;
+    border: 1px solid #000000;
+    height: 40px;
+}
+
+.documentacion-mantenimiento_p{
+    padding: 0 0 0 1rem ;
+    background: #969696;
+    color: #000000;
+    font-size: 20px;
+    border: 1px solid #000000;
+}
+.documentacion-mantenimiento-p{
+    padding: 0 0 0 1rem ;
+    color: #000000;
+    font-size: 15px;
+    border: 1px solid #000000;
+}
+
+.tabla{
+    padding: 10px;
+}
