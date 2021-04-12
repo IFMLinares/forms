@@ -342,7 +342,7 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
 
         insercion.save()
 
-        return redirect('core:contrato', insercion.pk)
+        return redirect('core:contrato')
 
 # Vista de contrato
 class FormContratoView(LoginRequiredMixin, ListView):
