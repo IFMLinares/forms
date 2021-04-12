@@ -549,7 +549,8 @@ class UserView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = {'insercion': Insercion.objects.filter(usuario=self.request.user).order_by('-id'), 
-                    'contrato': Contrato.objects.filter(usuario=self.request.user).order_by('-id')}
+                    'contrato': Contrato.objects.filter(usuario=self.request.user).order_by('-id'),
+                    }
         return queryset
 
 def inicio(request):
