@@ -53,7 +53,7 @@
             <br><br><br><br><br>
             <ul>
                 <li>
-                    <a href="#top">
+                    <a href="{% url 'core:user' %}">
                         <span class="rect"></span>
                         <span class="circle"></span>
                         Inicio
@@ -61,13 +61,16 @@
                 </li>
                 <li>
                     <div class="input-group mb-3">
-                        <label for="matricula-search">Buscar Matrícula</label><br>
-                        <input type="text" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
+                        <form action="{% url 'core:search' %}" method="POST">
+                            {% csrf_token %}
+                        <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
+                        <input type="text" name="matricula" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" style="position: absolute; text-align: right;">
+                            <button class="btn btn-outline-secondary" type="submit" style="position: absolute; text-align: right;">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                             </button>
                         </div>
+                        </form>
                     </div>
                 </li>
                 <li>

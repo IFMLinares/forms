@@ -561,3 +561,14 @@ def inicio(request):
 def add_user_logout_view(request):
     logout(request)
     return redirect('account_signup')
+
+def search(request):
+    if request.method=='POST':
+        matricula = request.POST['matricula']
+        insercion = Insercion.objects.filter(datos_del_Vehiculo__matricula=matricula)
+        query = {
+            'insercion': insercion
+        }
+        return render(request, 'usuario.html', query)
+    else:
+        return redirect('core:user')
