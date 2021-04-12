@@ -19,7 +19,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
-
+    <script src="https://kit.fontawesome.com/14e81ff543.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
 </head>
 
@@ -43,13 +43,14 @@
             </nav>
         </div>
     </header>
-
     <div class="sidebar-navigation hidde-sm hidden-xs">
         <div class="logo">
             <a href="#">HOSHO GARANTÍA S.L</a>
-            <img src="{% static 'img/logo.png' %}" alt="">
+            <img src="{% static 'img/logo.png' %}" alt="" width="115px" height="115px">
+            <br>
         </div>
         <nav>
+            <br><br><br><br><br>
             <ul>
                 <li>
                     <a href="#top">
@@ -57,6 +58,17 @@
                         <span class="circle"></span>
                         Inicio
                     </a>
+                </li>
+                <li>
+                    <div class="input-group mb-3">
+                        <label for="matricula-search">Buscar Matrícula</label><br>
+                        <input type="text" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" style="position: absolute; text-align: right;">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <a href="#">
@@ -70,6 +82,13 @@
                                 <span class="rect"></span>
                                 <span class="circle"></span>
                                 insercion de vehiculos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'core:contrato' %}" target="_blank">
+                                <span class="rect"></span>
+                                <span class="circle"></span>
+                                Contrato Compra y Venta
                             </a>
                         </li>
                     </ul>

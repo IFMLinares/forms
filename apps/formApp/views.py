@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView, View, DetailView, ListView
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import (
@@ -344,8 +345,13 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
         return redirect('core:contrato', insercion.pk)
 
 # Vista de contrato
-class FormContratoView(LoginRequiredMixin, TemplateView):
+class FormContratoView(LoginRequiredMixin, ListView):
+    model = Insercion
     template_name = 'contrato.html'
+    context_object_name = 'query'
+    def get_queryset(self):
+        queryset = self.model.objects.all().order_by('-id')
+        return queryset
 
     def post(self, *args, **kwargs):
         contratoLocales = self.request.POST['contratoLocales']
@@ -429,12 +435,6 @@ class FormContratoView(LoginRequiredMixin, TemplateView):
             total=total
         )
         contrato.save()
-
-        pk = kwargs.pop('pk')
-        insercion = Insercion.objects.get(pk=pk)
-        insercion.contrato = contrato
-
-        insercion.save()
 
         return redirect('core:user')
 
@@ -545,12 +545,19 @@ def pdfContrato(request, pk):
 class UserView(LoginRequiredMixin, ListView):
     model = Insercion
     template_name = 'usuario.html'
-    context_object_name = 'insercion'
+    context_object_name = 'query'
+
     def get_queryset(self):
-        return Insercion.objects.filter(usuario=self.request.user).order_by('-id')
+        queryset = {'insercion': Insercion.objects.filter(usuario=self.request.user).order_by('-id'), 
+                    'contrato': Contrato.objects.filter(usuario=self.request.user).order_by('-id')}
+        return queryset
 
 def inicio(request):
     if request.user.is_authenticated:
         return redirect('core:user')
     else:
         return redirect('accounts/login')
+
+def add_user_logout_view(request):
+    logout(request)
+    return redirect('account_signup')

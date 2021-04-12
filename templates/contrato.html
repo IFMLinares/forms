@@ -7,6 +7,8 @@ Contratos
 {% endblock %}
 {% block content %}
 <!--inicio de cuadro de informacion-->
+
+
 <form action="" method="POST" class="insercion-vehiculos-form">
 <a href="{% url 'core:user' %}" class="menu-principal_botones-color" style='text-decoration:none;color:#f44336;'>Volver Al inicio</a>
   <div class="cuadro-informacion">
@@ -18,6 +20,17 @@ Contratos
       </div>
       <div class="insercion-vehiculos-form_bloque">
         {% csrf_token %}
+        <div class="col">
+          <label for="insercion">Seleccione una inserción de vehículo</label>
+          <select class="custom-select" id="insercion" name="insercion" required>
+            {% for q in query %}
+              {% if q.contrato %}
+              {% else %}
+                <option value="{{ q.pk }}">Matrícula: {{ q.datos_del_Vehiculo.matricula }}. Marca:{{ q.datos_del_Vehiculo.marca }}  Modelo:{{ q.datos_del_Vehiculo.modelo }} </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
         <div class="form-row">
           <div class="form-group col-md-4">
             <div class="check-box-group">
@@ -347,12 +360,12 @@ Contratos
               <div class="form-row">
                 <div class="col">
                   <label for="lugar">Lugar</label>
-                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí">
+                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí" required>
                 </div>
                 <div class="col-6 insercion-vehiculos-date">
                   <label for="fecha2">Fecha</label>
                   <input name="fecha2" id="fecha2" class="form-control" type="date" value="2021-03-25"
-                    id="example-date-input">
+                    id="example-date-input" required>
                 </div>
               </div>
             </div>

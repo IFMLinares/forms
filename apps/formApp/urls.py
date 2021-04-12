@@ -7,17 +7,19 @@ from .views import (
     inicio,
     pdfInsercion,
     pdfContrato,
-    UserView
+    UserView,
+    add_user_logout_view
 )
 
 app_name = 'core'
 
 urlpatterns = [
     path('insercion/', FormInsercionView.as_view(), name='insercion'),
-    path('contrato/<pk>/', FormContratoView.as_view(), name='contrato'),
+    path('contrato/', FormContratoView.as_view(), name='contrato'),
     path('usuario/', UserView.as_view(), name='user'),
     path('pdfInsercion/<pk>/', pdfInsercion, name='pdf-incersion'),
     path('pdfContrato/<pk>/', pdfContrato, name='pdf-contrato'),
     path('', inicio, name='inicio'),
+    path('signup/', add_user_logout_view, name="signup")
 ]
 

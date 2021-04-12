@@ -13,6 +13,10 @@ def boleanoString(boleano):
 
 class User(AbstractUser):
     phone = models.CharField(max_length=12)
+    nombre_Razon_Social = models.CharField(max_length=60)
+    nro_IDentificación_Fiscal_NIF = models.CharField(max_length=60)
+    direccion = models.CharField(max_length=60)
+    codigo_postal = models.CharField(max_length=60)
 
     class Meta:
         db_table = 'auth_user'

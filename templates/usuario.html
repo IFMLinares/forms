@@ -52,43 +52,21 @@
 
 <div class="page-content">
     <section id="featured" class="content-section">
-        <div class="section-heading">
-            <!-- <h1>Información<br><em>completa</em></h1>
-            <p>Información almacenada del formulario</p> -->
-        </div>
+        <!-- <div class="section-heading">
+            <h1>Información<br><em>completa</em></h1>
+            <p>Información almacenada del formulario</p>
+        </div> -->
         <div class="section-content">
+            <h1 style="text-align: left;">Contratos:</h1>
             <div class="owl-carousel owl-theme">
-                <!-- <div class="item">
-                    <div class="text-content">
-                        <div class="container">
-                            <span style="font-size: 20px; color: rgb(80, 67, 67);">Agregar nueva:</span>
-                            <a href="{% url 'core:insercion' %}" class="btn btn-primary">insercion</a>
-                        </div>
-                        <br>
-                        <div class="container">
-                            <span style="font-size: 20px; color: rgb(80, 67, 67);">Agregar nuevo:</span>
-                            <a href="" class="btn btn-primary">Contrato</a>
-                        </div>
-                    </div>
-                </div> -->
-                {% if insercion %}
-                {% for insercion in insercion %}
+                {% if query.insercion %}
+                {% for insercion in query.insercion %}
                 <div class="item">
                     <div class="text-content">
                         <h4>{{ insercion.concesionario }}</h4>
-                        <span>Duracion del contrato: {{ insercion.duracion_del_contrato }}</span>
-                        <p>Matricula: {{ insercion.datos_del_Vehiculo.matricula }}</p>
-                        {% if insercion.contrato %}
-                        Formulario de contrato: <input type="checkbox" name="insercion" id="insercion" checked readonly>
+                        <a href="{% url 'core:pdf-incersion' pk=insercion.pk %}"><span>Inserción de Vehículo</span></a>
+                        <a href="{% url 'core:pdf-contrato' pk=insercion.pk %}"><span>Contrato COMPRAVENTA</span></a>
                         <br>
-                        <a href="{% url 'core:pdf-incersion' pk=insercion.pk %}" target="_blank">Generar PDF De la insercion</a>
-                        <br>
-                        <a href="{% url 'core:pdf-contrato' pk=insercion.pk %}" target="_blank">Generar PDF Del Contrato</a>
-                        {% else %}
-                        <span>
-                            <a href="{% url 'core:contrato' pk=insercion.pk %}">Añadir Contrato: </a>
-                        </span>
-                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
@@ -99,6 +77,5 @@
             </div>
         </div>
     </section>
-
 </div>
 {% endblock %}

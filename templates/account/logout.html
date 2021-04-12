@@ -8,7 +8,7 @@
 {% block content %}
 <form class="form-signin" method="POST" action="{% url 'account_logout' %}">
   {% csrf_token %}
-  <img  src="{% static 'img/logo.png' %}" alt="" style="padding-left: 25%;">
+  <img  src="{% static 'img/logo.png' %}" width="250px" style="padding-left: 15%;">
   <h1>{% trans "Sign Out" %}</h1>
   <p>{% trans 'Are you sure you want to sign out?' %}</p>
   {% if redirect_field_value %}

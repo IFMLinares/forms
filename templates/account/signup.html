@@ -1,21 +1,78 @@
-{% extends "account/base.html" %}
+{% extends "admin/base_site.html" %}
+{% load crispy_forms_tags %}
+{% load i18n static %}
 
-{% load i18n %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}">
+{{ form.media }}
+{% endblock %}
 
-{% block title %}{% trans "Signup" %}{% endblock %}
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
-
+<form class="form-signin" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  <h1>{% trans "Sign Up" %}</h1>
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
+  <div class="form-row">
+    {{ form.username.errors }}
+    {{ form.username.label_tag }}
+    {{ form.username }}
+  </div>
+  <div class="form-row">
+    {{ form.email.errors }}
+    {{ form.email.label_tag }}
+    {{ form.email }}
+  </div>
+  <div class="form-row">
+    {{ form.nombre_Razon_Social.errors }}
+    {{ form.nombre_Razon_Social.label_tag }}
+    {{ form.nombre_Razon_Social }}
+  </div>
+  <div class="form-row">
+    {{ form.nro_IDentificación_Fiscal_NIF.errors }}
+    {{ form.nro_IDentificación_Fiscal_NIF.label_tag }}
+    {{ form.nro_IDentificación_Fiscal_NIF }}
+  </div>
+  <div class="form-row">
+    {{ form.direccion.errors }}
+    {{ form.direccion.label_tag }} <br>
+    {{ form.direccion }}
+  </div>
+  <div class="form-row">
+    {{ form.codigo_postal.errors }}
+    {{ form.codigo_postal.label_tag }}<br>
+    {{ form.codigo_postal }}
+  </div>
+  <div class="form-row">
+    {{ form.phone.errors }}
+    {{ form.phone.label_tag }}<br>
+    {{ form.phone }}
+  </div>
+  <div class="form-row">
+    {{ form.password1.errors }}
+    {{ form.password1.label_tag }}<br>
+    {{ form.password1 }}
+  </div>
+  <div class="form-row">
+    {{ form.password2.errors }}
+    {{ form.password2.label_tag }}<br>
+    {{ form.password2 }}
+  </div>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit" value="Registrar Nueva cuenta">
+    <br>
+  <a href="/admin/">¿Regresar al administrado?</a>
+  </div>
 </form>
-
 {% endblock %}
