@@ -3,6 +3,7 @@ from django.conf import settings
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.contrib.staticfiles import finders
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -341,7 +342,7 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
         insercion.examen_visual = examenVisual
 
         insercion.save()
-
+        messages.success(self.request, 'Inserción Añadida Exitosamente')
         return redirect('core:contrato')
 
 # Vista de contrato
@@ -436,7 +437,19 @@ class FormContratoView(LoginRequiredMixin, ListView):
         )
         contrato.save()
 
+        messages.success(self.request, 'Contrato añadido exitosamente')
         return redirect('core:user')
+
+class UserView(LoginRequiredMixin, ListView):
+    model = Insercion
+    template_name = 'usuario.html'
+    context_object_name = 'query'
+
+    def get_queryset(self):
+        queryset = {'insercion': Insercion.objects.filter(usuario=self.request.user).order_by('-id'), 
+                    'contrato': Contrato.objects.filter(usuario=self.request.user).order_by('-id'),
+                    }
+        return queryset
 
 def pdfInsercion(request, pk):
 
@@ -541,17 +554,6 @@ def pdfContrato(request, pk):
     except:
         pass
     HttpResponseRedirect(reverse_lazy('core:inicio'))
-
-class UserView(LoginRequiredMixin, ListView):
-    model = Insercion
-    template_name = 'usuario.html'
-    context_object_name = 'query'
-
-    def get_queryset(self):
-        queryset = {'insercion': Insercion.objects.filter(usuario=self.request.user).order_by('-id'), 
-                    'contrato': Contrato.objects.filter(usuario=self.request.user).order_by('-id'),
-                    }
-        return queryset
 
 def inicio(request):
     if request.user.is_authenticated:

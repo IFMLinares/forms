@@ -7,7 +7,17 @@ Contratos
 {% endblock %}
 {% block content %}
 <!--inicio de cuadro de informacion-->
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+      {% endif %}
 
 <form action="" method="POST" class="insercion-vehiculos-form">
 <a href="{% url 'core:user' %}" class="menu-principal_botones-color" style='text-decoration:none;color:#f44336;'>Volver Al inicio</a>
