@@ -6,6 +6,7 @@ from django.contrib.staticfiles import finders
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.shortcuts import render
+from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView, View, DetailView, ListView
@@ -39,6 +40,7 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
 
         # DATOS DEL VEHICULO
         matricula = self.request.POST['matricula']
+        transmision = self.request.POST['transmision']
         marca = self.request.POST['marca']
         modelo = self.request.POST['modelo']
         alimentacion = self.request.POST['alimentacion']
@@ -78,7 +80,6 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
 
         # DOCUMENTACION:
         ruedaRepuesto1 = self.request.POST['ruedaRepuesto1']
-        ruedaRepuesto2 = self.request.POST['ruedaRepuesto2']
         kitInflado = self.request.POST['kitInflado']
         trianguloEmergencia = self.request.POST['trianguloEmergencia']
         gato = self.request.POST['gato']
@@ -179,6 +180,7 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
 
         datosVehiculo = DatosVehiculo(
             matricula=matricula,
+            transmision=transmision,
             marca=marca,
             modelo=modelo,
             version=version,
@@ -218,7 +220,6 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
 
         documentacion = Documentacion(
             rueda_repuesto1=ruedaRepuesto1,
-            rueda_repuesto2=ruedaRepuesto2,
             duplicado_llaves=duplicadoLlaves,
             kit_inflado=kitInflado,
             triangulo_emergencia=trianguloEmergencia,
@@ -355,6 +356,7 @@ class FormContratoView(LoginRequiredMixin, ListView):
         return queryset
 
     def post(self, *args, **kwargs):
+        insercion_pk = self.request.POST['insercion']
         contratoLocales = self.request.POST['contratoLocales']
         fecha = self.request.POST['fecha']
         firmante = self.request.POST['firmante']
@@ -436,6 +438,10 @@ class FormContratoView(LoginRequiredMixin, ListView):
             total=total
         )
         contrato.save()
+
+        insercion = Insercion.objects.get(pk=insercion_pk)
+        insercion.contrato = contrato
+        insercion.save()
 
         messages.success(self.request, 'Contrato añadido exitosamente')
         return redirect('core:user')
@@ -561,7 +567,7 @@ def inicio(request):
     else:
         return redirect('accounts/login')
 
-def add_user_logout_view(request):
+# def add_user_logout_view(request):
     logout(request)
     return redirect('account_signup')
 

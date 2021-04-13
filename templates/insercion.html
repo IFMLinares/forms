@@ -85,7 +85,7 @@ Inserción de vehiculos
                   <input type="text" class="form-control" placeholder="Escribe aquí" name="alimentacion" id="alimentacion">
                 </div>
                 <div class="col">
-                  <label for="claseControl">Clase de Cont.</label>
+                  <label for="claseControl">Clase de Tracción.</label>
                   <input type="text" class="form-control" placeholder="Escribe aquí" name="claseControl" id="claseControl">
                 </div>
                 <div class="col insercion-vehiculos-date">
@@ -111,7 +111,7 @@ Inserción de vehiculos
                   <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosPrivados" name="nroPropietariosPrivados">
                 </div>
                 <div class="col">
-                  <label for="nroPropietariosProfesionales">N° Propiestarios profesionales</label>
+                  <label for="nroPropietariosProfesionales">N° Prop profesionales</label>
                   <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosProfesionales" name="nroPropietariosProfesionales">
                 </div>
                 <div class="col">
@@ -129,6 +129,15 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="color">Color</label>
                   <input type="text" class="form-control" placeholder="Escribe aquí" id="color" name="color">
+                </div>
+                <div class="col">
+                  <label for="transmision">Transmisión</label>
+                <select class="custom-select" id="transmision" name="transmision" required id="transmision">
+                  <option value="" disabled selected>Transmisión</option>
+                  <option value="Manual">Manual</option>
+                  <option value="automatico">Automatico</option>
+                  <option value="dual">Transmisión dual</option>
+                </select>
                 </div>
               </div>
             </div>
@@ -279,15 +288,6 @@ Inserción de vehiculos
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                 <input type="checkbox" checked name="ruedaRepuesto1" id="ruedaRepuesto1" value="1">
-                <span class="checkmark"></span>
-                <span class="label">Rueda de repuesto</span>
-              </label>
-            </div>
-          </div>
-          <div class="form-group col-md-3">
-            <div class="check-box-group">
-              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="ruedaRepuesto2" id="ruedaRepuesto2" value="1">
                 <span class="checkmark"></span>
                 <span class="label">Rueda de repuesto</span>
               </label>
@@ -1580,42 +1580,26 @@ Inserción de vehiculos
               relacionadas con los clientes y manifiesto mi consentimiento. También se me ha informado de la
               posibilidad de ejercitar los derechos de acceso, rectificación, cancelación y oposición,
               indicándolo por
-              escrito a HOSHO GARANTÍA con domicilio en la Avenida del Arroyo Juncal 1, Portal 7, Piso Bajo,
-              Puerta D,
-              Navalcarnero, Comunidad de Madrid, España.
+              escrito a HOSHO GARANTÍA con domicilio en la Calle Niza, número 2, escalera centro, primero b, Móstoles, Madrid. CP 28936
               <br><br>
               Los datos personales sean cedidos por HOSHO GARANTÍA a las entidades que prestan servicios a la
               misma.
               </p>
             </div>
-            <div class="insercion-vehiculos-form">
+            <!-- <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col insercion-vehiculos-date">
                   <label for="fechaEntrega2" class="col col-form-label">Fecha de entrega</label>
                   <input class="form-control" type="date" value="2021-03-25" id="fechaEntrega2" name="fechaEntrega2">
                 </div>
-                <div class="col insercion-vehiculos-date documentacion-mantenimiento_form">
-                  <label for="example-date-input" class="col col-form-label">Fecha de inicio</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="example-date-input">
-                </div>
-                <div class="col insercion-vehiculos-date documentacion-mantenimiento_form">
-                  <label for="example-date-input" class="col col-form-label">Fecha de activación</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="example-date-input">
-                </div>
               </div>
-            </div>
+            </div> -->
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col insercion-vehiculos-date">
                   <img src="img/logo-empresa.png" alt="">
                   <p>
                     CENTRO DE OPERACIONES Y SOPORTE
-                    <br>
-                    <br>
-                    Asistencia telefónica
-                    <br>
-                    <br>
-                    +34655802423
                     <br>
                     <br>
                     E-mail: <a href="" style='color:#f44336;'>infocliente@hoshogarantia.com</a>

@@ -154,6 +154,14 @@ ACCOUNT_SIGNUP_REDIRECT_URL = LOGIN_REDIRECT_URL
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+EMAIL_TIMEOUT = 5
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = 'titolfalcon@gmail.com'
+EMAIL_HOST_PASSWORD = '01022010ab$'
+EMAIL_SUBJECT_PREFIX = 'sadasd'
+
 
 # crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

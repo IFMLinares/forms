@@ -8,7 +8,7 @@ from .views import (
     pdfInsercion,
     pdfContrato,
     UserView,
-    add_user_logout_view,
+    # add_user_logout_view,
     search
 )
 
@@ -21,7 +21,7 @@ urlpatterns = [
     path('pdfInsercion/<pk>/', pdfInsercion, name='pdf-incersion'),
     path('pdfContrato/<pk>/', pdfContrato, name='pdf-contrato'),
     path('', inicio, name='inicio'),
-    path('signup/', add_user_logout_view, name="signup"),
+    # path('signup/', add_user_logout_view, name="signup"),
     path('search/', search, name="search")
 ]
 

@@ -102,6 +102,20 @@ class ContratoAdmin(admin.ModelAdmin):
         'modelo',
     )
 
+# class UsuarioAdmin(admin.ModelAdmin):
+#     change_form_template = 'index.html'
+
+#     def get_osm_info(self):
+#         # ...
+#         pass
+
+#     def change_view(self, request, object_id, form_url='index.html', extra_context=None):
+#         extra_context = extra_context or {}
+#         extra_context['osm_data'] = self.get_osm_info()
+#         return super().change_view(
+#             request, object_id, form_url, extra_context=extra_context,
+#         )
+
 
 admin.site.register(User)
 admin.site.register(Insercion, InsercionAdmin)

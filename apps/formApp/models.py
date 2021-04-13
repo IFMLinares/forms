@@ -25,6 +25,7 @@ class User(AbstractUser):
 
 class DatosVehiculo(models.Model):
     matricula = models.CharField(max_length=240)
+    transmision = models.CharField(max_length=240)
     marca = models.CharField(max_length=240)
     modelo = models.CharField(max_length=240)
     alimentacion = models.CharField(max_length=240)
@@ -77,7 +78,6 @@ class DatosComprador(models.Model):
 
 class Documentacion(models.Model):
     rueda_repuesto1 = models.BooleanField()
-    rueda_repuesto2 = models.BooleanField()
     duplicado_llaves = models.BooleanField()
     kit_inflado = models.BooleanField()
     triangulo_emergencia = models.BooleanField()
@@ -94,7 +94,7 @@ class Documentacion(models.Model):
     fecha = models.DateField()
 
     def __str__(self):
-        retornar = 'Rueda de Repuesto 1: ' + boleanoString(self.rueda_repuesto1) + '\n Rueda de Repuesto 2: ' + boleanoString(self.rueda_repuesto2) + '\n Kit de Inflado: ' + boleanoString(self.kit_inflado) + '\n Triángulo de emergencia: ' + boleanoString(self.triangulo_emergencia)  + '\n Gato: ' + boleanoString(self.gato)  + '\n Chaleco de alta visibilidad: ' + boleanoString(self.chaleco_alta_visibilidad)  + '\n Kit de bombillas' + boleanoString(self.kit_bombillas)  + '\n Kit de bombillas Fusibles' + boleanoString(self.kit_bombillas_fusibles)  + '\n Cod card: ' + boleanoString(self.cod_card)  + '\n Libre uso y mantenimiento' + boleanoString(self.libre_uso_mantenimiento)  + '\n Ficha técnia: ' + boleanoString(self.ficha_tecnica)  + '\n Permiso de circulación: ' + boleanoString(self.permiso_circulacion) 
+        retornar = 'Rueda de Repuesto 1: ' + boleanoString(self.rueda_repuesto1) + '\n Kit de Inflado: ' + boleanoString(self.kit_inflado) + '\n Triángulo de emergencia: ' + boleanoString(self.triangulo_emergencia)  + '\n Gato: ' + boleanoString(self.gato)  + '\n Chaleco de alta visibilidad: ' + boleanoString(self.chaleco_alta_visibilidad)  + '\n Kit de bombillas' + boleanoString(self.kit_bombillas)  + '\n Kit de bombillas Fusibles' + boleanoString(self.kit_bombillas_fusibles)  + '\n Cod card: ' + boleanoString(self.cod_card)  + '\n Libre uso y mantenimiento' + boleanoString(self.libre_uso_mantenimiento)  + '\n Ficha técnia: ' + boleanoString(self.ficha_tecnica)  + '\n Permiso de circulación: ' + boleanoString(self.permiso_circulacion) 
         return retornar
 
 class Mantenimiento(models.Model):

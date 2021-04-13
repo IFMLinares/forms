@@ -204,6 +204,7 @@ header {
   height: 100px;
   width: 100%;
   display: inline-block;
+  padding-bottom: 5px;
 }
 
 .sidebar-navigation .logo em {
@@ -239,7 +240,7 @@ header {
   color: #fff;
   margin-top: 5px;
   text-decoration: none!important;
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 0.5px;
   text-transform: capitalize;
 }

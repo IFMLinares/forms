@@ -77,12 +77,12 @@
                         <h4>{{ insercion.concesionario }}</h4>
                         <a href="{% url 'core:pdf-incersion' pk=insercion.pk %}" target="_blank"><span>Inserción de Vehículo</span></a>
                         {% if insercion.contrato %}
-                            <a href="{% url 'core:contrato' %}" target="_blank">
-                                <span>AÑADIR: Contrato COMPRAVENTA</span>
-                            </a>
-                        {% else %}
                             <a href="{% url 'core:pdf-contrato' pk=insercion.pk %}" target="_blank">
                                 <span>Contrato COMPRAVENTA</span>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'core:contrato' %}" target="_blank">
+                                <span>AÑADIR: Contrato COMPRAVENTA</span>
                             </a>
                         {% endif %}
                         <br>
