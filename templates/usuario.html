@@ -53,19 +53,17 @@
 <div class="page-content">
     <section id="featured" class="content-section">
         <div class="section-heading">
-            <!-- <h1>Información<br><em>completa</em></h1>
-            <p>Información almacenada del formulario</p> -->
             {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                {% endfor %}
-            {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+      {% endif %}
         </div>
         <div class="section-content">
             <h1 style="text-align: left;">Contratos:</h1>

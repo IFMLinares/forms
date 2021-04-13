@@ -36,36 +36,36 @@ Contratos
             {% for q in query %}
               {% if q.contrato %}
               {% else %}
-                <option value="{{ q.pk }}">Matrícula: {{ q.datos_del_Vehiculo.matricula }}. Marca:{{ q.datos_del_Vehiculo.marca }}  Modelo:{{ q.datos_del_Vehiculo.modelo }} </option>
+                <option value="{{ q.pk }}">Matrícula: {{ q.datos_del_Vehiculo.matricula }}. Marca:{{ q.datos_del_Vehiculo.marca }}  Modelo:{{ q.datos_del_Vehiculo.modelo }}. {{ q.concesionario }} </option>
               {% endif %}
             {% endfor %}
           </select>
         </div>
-        <div class="form-row">
+        <div class="col insercion-vehiculos-date">
+          <label for="fecha">Fecha</label>
+          <input class="form-control" name="fecha" id="fecha" type="date" value="2021-03-25">
+        </div>
+        <div class="form-row" style="padding-left: 15px;">
           <div class="form-group col-md-4">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input class="check-box-group" type="radio" value="Contrato en locales comerciales" name="contratoLocales"
+                <input class="check-box-group" type="radio" value="Contrato en locales comerciales" name="contratoLocales" required
                   id="contratoLocalesComerciales">
                 <span class="checkmark"></span>
                 <span class="label">Contrato en Locales Comerciales</span>
               </label>
             </div>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-5" >
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                 <input class="check-box-group" type="radio" value="contratoFueraLocalesComerciales"
-                  name="contratoLocales" id="contratoFueraLocalesComerciales">
+                  name="contratoLocales" id="contratoFueraLocalesComerciales" required>
                 <span class="checkmark"></span>
                 <span class="label">Contrato Fuera locales Comerciales</span>
               </label>
             </div>
           </div>
-        </div>
-        <div class="col insercion-vehiculos-date">
-          <label for="fecha">Fecha</label>
-          <input class="form-control" name="fecha" id="fecha" type="date" value="2021-03-25">
         </div>
         <div class="insercion-vehiculos-form ">
           <div class="form-row">
