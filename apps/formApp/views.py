@@ -568,8 +568,8 @@ def inicio(request):
         return redirect('accounts/login')
 
 # def add_user_logout_view(request):
-    logout(request)
-    return redirect('account_signup')
+    # logout(request)
+    # return redirect('account_signup')
 
 def search(request):
     if request.method=='POST':
