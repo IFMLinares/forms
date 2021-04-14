@@ -11,7 +11,7 @@ Inserción de vehiculos
       {% csrf_token %}
       <div id="politica-privacidad">
         <div class="form-check politica-privacidad_checkbox">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
           <label class="form-check-label" for="exampleCheck1">Acepto la política de privacidad</label>
         </div>
         <br><br>
@@ -39,7 +39,7 @@ Inserción de vehiculos
           </div>
           <div class="form-group col-5 politica-privacidad_informacion-form-3">
             <label for="concesionario">Escribe aquí</label>
-            <input type="text" class="form-control" id="concesionario" name="concesionario">
+            <input type="text" class="form-control" id="concesionario" name="concesionario" required>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ Inserción de vehiculos
           </div>
           <div>
             <div class="form-group col insercion-vehiculos_informacion-form">
-              <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Nombre del Comercial">
+              <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Nombre del Comercial" required>
             </div>
           </div>
         </div>
@@ -66,15 +66,15 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="matricula">Matrícula</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="matricula" id="matricula">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="matricula" id="matricula" required>
                 </div>
                 <div class="col">
                   <label for="marca">Marca</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="marca" id="marca">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="marca" id="marca" required>
                 </div>
                 <div class="col">
                   <label for="modelo">Modelo</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="modelo" id="modelo">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="modelo" id="modelo" required>
                 </div>
               </div>
             </div>
@@ -82,41 +82,41 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="alimentacion">Alimentación</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="alimentacion" id="alimentacion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="alimentacion" id="alimentacion" required>
                 </div>
                 <div class="col">
                   <label for="claseControl">Clase de Tracción.</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="claseControl" id="claseControl">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="claseControl" id="claseControl" required>
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="primeraMatricula" class="col col-form-label">Prime matr.</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="primeraMatricula" name="primeraMatricula">
+                  <input class="form-control" type="date" value="2021-03-25" id="primeraMatricula" name="primeraMatricula" required>
                 </div>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-group">
                 <label for="version">Versión</label>
-                <input type="text" class="form-control" id="version" name="version" placeholder="Escribe aquí">
+                <input type="text" class="form-control" id="version" name="version" placeholder="Escribe aquí" required>
               </div>
             </div>
             <div class="insercion-vehiculos-form">
               <div class="form-row">
                 <div class="col">
                   <label for="potenciaKW">Potencia-KW</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="potenciaKW" name="potenciaKW">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="potenciaKW" name="potenciaKW"  required>
                 </div>
                 <div class="col">
                   <label for="nroPropietariosPrivados">N° Propietarios privados</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosPrivados" name="nroPropietariosPrivados">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosPrivados" name="nroPropietariosPrivados" required>
                 </div>
                 <div class="col">
                   <label for="nroPropietariosProfesionales">N° Prop profesionales</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosProfesionales" name="nroPropietariosProfesionales">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosProfesionales" name="nroPropietariosProfesionales" required>
                 </div>
                 <div class="col">
                   <label for="cilindrada">Cilindrada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="cilindrada" name="cilindrada">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="cilindrada" name="cilindrada" required>
                 </div>
               </div>
             </div>
@@ -124,15 +124,15 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="bastidor">Bastidor</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="bastidor" name="bastidor">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="bastidor" name="bastidor" required>
                 </div>
                 <div class="col">
                   <label for="color">Color</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="color" name="color">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="color" name="color" required>
                 </div>
                 <div class="col">
                   <label for="transmision">Transmisión</label>
-                <select class="custom-select" id="transmision" name="transmision" required id="transmision">
+                <select class="custom-select" id="transmision" name="transmision" required id="transmision" required>
                   <option value="" disabled selected>Transmisión</option>
                   <option value="Manual">Manual</option>
                   <option value="automatico">Automatico</option>
@@ -146,15 +146,15 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col insercion-vehiculos-date">
                 <label for="fechaEntrega" class="col col-form-label">Fecha de entrega</label>
-                <input class="form-control" type="date" value="2021-03-25" id="fechaEntrega" name="fechaEntrega">
+                <input class="form-control" type="date" value="2021-03-25" id="fechaEntrega" name="fechaEntrega" required>
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="fechaInicio" class="col col-form-label">Fecha de inicio</label>
-                <input class="form-control" type="date" value="2021-03-25" id="fechaInicio" name="fechaInicio">
+                <input class="form-control" type="date" value="2021-03-25" id="fechaInicio" name="fechaInicio" required>
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="fechaActivacion" class="col col-form-label">Fecha de activación</label>
-                <input class="form-control" type="date" value="2021-03-25" id="fechaActivacion" name="fechaActivacion">
+                <input class="form-control" type="date" value="2021-03-25" id="fechaActivacion" name="fechaActivacion" required>
               </div>
             </div>
           </div>
@@ -222,11 +222,11 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="nombreCompleto">Nombre completo</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nombreCompleto" name="nombreCompleto">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nombreCompleto" name="nombreCompleto" required>
                 </div>
                 <div class="col">
                   <label for="direccion">Dirección</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="direccion" name="direccion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="direccion" name="direccion" required>
                 </div>
               </div>
             </div>
@@ -234,11 +234,11 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="codigoPostal">Código postal</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="codigoPostal" name="codigoPostal">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="codigoPostal" name="codigoPostal" required>
                 </div>
                 <div class="col">
                   <label for="numeroTelefono">Número de teléfono</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="numeroTelefono" name="numeroTelefono">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="numeroTelefono" name="numeroTelefono" required>
                 </div>
               </div>
             </div>
@@ -246,11 +246,11 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="localidad">C.P./ Localidad - Provincia - Pais</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="localidad" id="localidad">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="localidad" id="localidad" required>
                 </div>
                 <div class="col">
                   <label for="numeroMovil">Número del Móvil</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="numeroMovil" id="numeroMovil">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="numeroMovil" id="numeroMovil" required>
                 </div>
               </div>
             </div>
@@ -258,11 +258,11 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="email" id="email">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="email" id="email" required>
                 </div>
                 <div class="col">
                   <label for="documentoIdentidad">D.N.I / CIF / NIC</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="documentoIdentidad" id="documentoIdentidad">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="documentoIdentidad" id="documentoIdentidad" required>
                 </div>
               </div>
             </div>
@@ -272,7 +272,7 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col-5">
                 <label for="duracionContrato">Duración del contrato</label>
-                <input type="text" class="form-control" placeholder="1 año" name="duracionContrato" id="duracionContrato">
+                <input type="text" class="form-control" placeholder="1 año" name="duracionContrato" id="duracionContrato" required>
               </div>
             </div>
           </div>
@@ -287,7 +287,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="ruedaRepuesto1" id="ruedaRepuesto1" value="1">
+                <input type="checkbox" checked name="ruedaRepuesto1" id="ruedaRepuesto1" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Rueda de repuesto</span>
               </label>
@@ -296,7 +296,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="kitInflado" id="kitInflado" value="1">
+                <input type="checkbox" checked name="kitInflado" id="kitInflado" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Kit de inflado</span>
               </label>
@@ -305,7 +305,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="trianguloEmergencia" id="trianguloEmergencia" value="1">
+                <input type="checkbox" checked name="trianguloEmergencia" id="trianguloEmergencia" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Triángulo de emergencia</span>
               </label>
@@ -314,7 +314,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="gato" id="gato" value="1">
+                <input type="checkbox" checked name="gato" id="gato" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Gato</span>
               </label>
@@ -323,7 +323,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="chalecoAltaVelocidad" id="chalecoAltaVelocidad" value="1">
+                <input type="checkbox" checked name="chalecoAltaVelocidad" id="chalecoAltaVelocidad" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Chaleco alta visibilidad</span>
               </label>
@@ -332,7 +332,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="kitBombillas" id="kitBombillas" value="1">
+                <input type="checkbox" checked name="kitBombillas" id="kitBombillas" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Kit bombillas</span>
               </label>
@@ -341,7 +341,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="kitBombillasFusibles" id="kitBombillasFusibles" value="1">
+                <input type="checkbox" checked name="kitBombillasFusibles" id="kitBombillasFusibles" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Kit bombillas - fusibles</span>
               </label>
@@ -350,7 +350,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="duplicadoLlaves" id="duplicadoLlaves" value="1">
+                <input type="checkbox" checked name="duplicadoLlaves" id="duplicadoLlaves" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">duplicado de llaves</span>
               </label>
@@ -359,7 +359,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="codCard" id="codCard" value="1">
+                <input type="checkbox" checked name="codCard" id="codCard" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Cod. Card </span>
               </label>
@@ -368,7 +368,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="libreUsoMantenimiento" id="libreUsoMantenimiento" value="1">
+                <input type="checkbox" checked name="libreUsoMantenimiento" id="libreUsoMantenimiento" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Libre uso y mantenimiento</span>
               </label>
@@ -377,7 +377,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="fichaTecnica" id="fichaTecnica" value="1">
+                <input type="checkbox" checked name="fichaTecnica" id="fichaTecnica" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Ficha Tecnica</span>
               </label>
@@ -386,7 +386,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="permisoCirculacion" id="permisoCirculacion" value="1">
+                <input type="checkbox" checked name="permisoCirculacion" id="permisoCirculacion" value="1" required>
                 <span class="checkmark"></span>
                 <span class="label">Permiso de circulación</span>
               </label>
@@ -409,7 +409,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="fechaITV">Fecha</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="fechaITV" name="fechaITV">
+                  <input class="form-control" type="date" value="2021-03-25" id="fechaITV" name="fechaITV" required>
                 </div>
               </div>
             </div>
@@ -489,11 +489,11 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col">
                 <label for="ultimoMantenimiento">Último mantenimiento</label>
-                <input type="text" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento">
+                <input type="text" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento" required required required>
               </div>
               <div class="col">
                 <label for="proximoMantenimiento">Próximo mantenimiento</label>
-                <input type="text" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento">
+                <input type="text" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento" required required required>
               </div>
             </div>
           </div>
@@ -501,14 +501,14 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col documentacion-mantenimiento_form">
                 <label>ITV</label>
-                <select class="custom-select">
+                <select class="custom-select" required required>
                   <option>Vencido</option>
                   <option>Válido</option>
                 </select>
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="ultimaITV">Última ITV</label>
-                <input class="form-control" type="date" value="2021-03-25" id="ultimaITV" name="ultimaITV">
+                <input class="form-control" type="date" value="2021-03-25" id="ultimaITV" name="ultimaITV" required>
               </div>
             </div>
           </div>
@@ -540,7 +540,7 @@ Inserción de vehiculos
                     <option value="Reacondicionado">Reacondicionado</option>
                     <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionCarroceria" id="descripcionCarroceria">
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionCarroceria" id="descripcionCarroceria" required>
                 </div>
                 <div class="col">
                   <label for="habitaculoTapiceria">Habitáculo y tapicería</label>
@@ -552,7 +552,7 @@ Inserción de vehiculos
                     <option value="Reacondicionado">Reacondicionado</option>
                     <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionHabitaculoTapiceria" id="descripcionHabitaculoTapiceria">
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionHabitaculoTapiceria" id="descripcionHabitaculoTapiceria" required>
                 </div>
                 <div class="col">
                   <label for="habitaculoTapiceria2">Habitáculo y tapicería</label>
@@ -564,7 +564,7 @@ Inserción de vehiculos
                     <option value="Reacondicionado">Reacondicionado</option>
                     <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionHabitaculoTapiceria2" id="descripcionHabitaculoTapiceria2">
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionHabitaculoTapiceria2" id="descripcionHabitaculoTapiceria2" required>
                 </div>
               </div>
             </div>
@@ -580,7 +580,7 @@ Inserción de vehiculos
                     <option value="Reacondicionado">Reacondicionado</option>
                     <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionAsientoRevestimientoAsiento" id="descripcionAsientoRevestimientoAsiento">
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionAsientoRevestimientoAsiento" id="descripcionAsientoRevestimientoAsiento"  required>
                 </div>
                 <div class="col">
                   <label for="neumaticosDelanteros">Neumáticos delanteros</label>
@@ -592,7 +592,7 @@ Inserción de vehiculos
                     <option value="Reacondicionado">Reacondicionado</option>
                     <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionNeumaticosDelanteros" id="descripcionNeumaticosDelanteros">
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionNeumaticosDelanteros" id="descripcionNeumaticosDelanteros" required>
                 </div>
                 <div class="col">
                   <label for="neumaticosTraseros">Neumáticos traseros</label>
@@ -604,7 +604,7 @@ Inserción de vehiculos
                     <option value="Reacondicionado">Reacondicionado</option>
                     <option value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
-                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionNeumaticosTraseros" id="descripcionNeumaticosTraseros">
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionNeumaticosTraseros" id="descripcionNeumaticosTraseros" required>
                 </div>
               </div>
             </div>
@@ -623,7 +623,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionVolanteMotor" id="descripcionVolanteMotor">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionVolanteMotor" id="descripcionVolanteMotor" required>
                 </div>
               </div>
             </div>
@@ -642,7 +642,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="Explicacionmotor" id="Explicacionmotor">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="Explicacionmotor" id="Explicacionmotor" required>
                 </div>
               </div>
             </div>
@@ -661,7 +661,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionsistemaEscape" id="explicacionsistemaEscape">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionsistemaEscape" id="explicacionsistemaEscape" required>
                 </div>
               </div>
             </div>
@@ -680,7 +680,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionEmbrague" id="descripcionEmbrague">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionEmbrague" id="descripcionEmbrague" required>
                 </div>
               </div>
             </div>
@@ -699,7 +699,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAlimentacionInyeccion" id="explicacionAlimentacionInyeccion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAlimentacionInyeccion" id="explicacionAlimentacionInyeccion" required>
                 </div>
               </div>
             </div>
@@ -718,7 +718,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCambio" id="explicacionCambio">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCambio" id="explicacionCambio" required>
                 </div>
               </div>
             </div>
@@ -737,7 +737,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" id="explicacionMotorArranqueAlternador" name="explicacionMotorArranqueAlternador">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="explicacionMotorArranqueAlternador" name="explicacionMotorArranqueAlternador"  required>
                 </div>
               </div>
             </div>
@@ -756,7 +756,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDiferencialRepartidor" id="explicacionDiferencialRepartidor">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDiferencialRepartidor" id="explicacionDiferencialRepartidor" required>
                 </div>
               </div>
             </div>
@@ -775,7 +775,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCajaTranferencia" id="explicacionCajaTranferencia">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCajaTranferencia" id="explicacionCajaTranferencia" required>
                 </div>
               </div>
             </div>
@@ -794,7 +794,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionOrganoDireccion" id="explicacionOrganoDireccion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionOrganoDireccion" id="explicacionOrganoDireccion" required>
                 </div>
               </div>
             </div>
@@ -813,7 +813,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="ExplicacionRodamientoNeumaticos" id="ExplicacionRodamientoNeumaticos">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="ExplicacionRodamientoNeumaticos" id="ExplicacionRodamientoNeumaticos" required>
                 </div>
               </div>
             </div>
@@ -832,7 +832,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDireccionAsistida" id="explicacionDireccionAsistida">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDireccionAsistida" id="explicacionDireccionAsistida" required>
                 </div>
               </div>
             </div>
@@ -851,7 +851,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaDireccionAsistida" id="explicacionbombaDireccionAsistida">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaDireccionAsistida" id="explicacionbombaDireccionAsistida" required>
                 </div>
               </div>
             </div>
@@ -870,7 +870,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaFrenado" id="explicacionSistemaFrenado">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaFrenado" id="explicacionSistemaFrenado" required>
                 </div>
               </div>
             </div>
@@ -889,7 +889,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaRefrigeracion" id="explicacionSistemaRefrigeracion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaRefrigeracion" id="explicacionSistemaRefrigeracion" required>
                 </div>
               </div>
             </div>
@@ -908,7 +908,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaCalefaccion" id="explicacionSistemaCalefaccion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaCalefaccion" id="explicacionSistemaCalefaccion" required>
                 </div>
               </div>
             </div>
@@ -927,7 +927,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAireAcondicionado" id="expliacionAireAcondicionado">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAireAcondicionado" id="expliacionAireAcondicionado" required>
                 </div>
               </div>
             </div>
@@ -946,7 +946,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAbsEsp" id="explicacionAbsEsp">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAbsEsp" id="explicacionAbsEsp" required>
                 </div>
               </div>
             </div>
@@ -965,7 +965,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCuadroInstrumentos" id="explicacionCuadroInstrumentos">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCuadroInstrumentos" id="explicacionCuadroInstrumentos" required>
                 </div>
               </div>
             </div>
@@ -984,7 +984,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionLimpiaParabrisas" id="explicacionLimpiaParabrisas">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionLimpiaParabrisas" id="explicacionLimpiaParabrisas" required>
                 </div>
               </div>
             </div>
@@ -1003,7 +1003,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaLimpiaparabrisas" id="explicacionbombaLimpiaparabrisas">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaLimpiaparabrisas" id="explicacionbombaLimpiaparabrisas" required>
                 </div>
               </div>
             </div>
@@ -1022,7 +1022,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaElectrico" id="explicacionSistemaElectrico">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaElectrico" id="explicacionSistemaElectrico" required>
                 </div>
               </div>
             </div>
@@ -1041,7 +1041,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionCierreCentralizado" id="expliacionCierreCentralizado">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionCierreCentralizado" id="expliacionCierreCentralizado" required>
                 </div>
               </div>
             </div>
@@ -1060,7 +1060,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAlumbradoSeñalizacion" id="expliacionAlumbradoSeñalizacion">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAlumbradoSeñalizacion" id="expliacionAlumbradoSeñalizacion" required>
                 </div>
               </div>
             </div>
@@ -1079,7 +1079,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionRadioLector" id="explicacionRadioLector">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionRadioLector" id="explicacionRadioLector" required>
                 </div>
               </div>
             </div>
@@ -1098,7 +1098,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionNavegador" id="explicacionNavegador">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionNavegador" id="explicacionNavegador" required>
                 </div>
               </div>
             </div>
@@ -1117,7 +1117,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionElevalunasElectrico" id="explicacionElevalunasElectrico">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionElevalunasElectrico" id="explicacionElevalunasElectrico" required>
                 </div>
               </div>
             </div>
@@ -1136,7 +1136,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAirBag" id="explicacionAirBag">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAirBag" id="explicacionAirBag" required>
                 </div>
               </div>
             </div>
@@ -1155,7 +1155,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAntirrobo" id="explicacionAntirrobo">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAntirrobo" id="explicacionAntirrobo" required>
                 </div>
               </div>
             </div>
@@ -1174,7 +1174,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="">Explicación detallada</label>
-                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionTechoSolar" id="expliacionTechoSolar">
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionTechoSolar" id="expliacionTechoSolar" required>
                 </div>
               </div>
             </div>
