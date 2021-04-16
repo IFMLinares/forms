@@ -67,6 +67,7 @@ function adelante(count) {
 		politica_privacidad.style.display = "none";
 		insercion_vehiculo.style.display = "block";
 		anterior.removeAttribute("disabled", "");
+		buttonRed(anterior);
 	} else if (count == 3) {
 		insercion_vehiculo.style.display = "none";
 		documentos_mantenimiento.style.display = "block";
@@ -80,10 +81,12 @@ function adelante(count) {
 		condiciones_servicio.style.display = "none";
 		proteccion_datos.style.display = "block";
 		siguiente.setAttribute("disabled", "");
+		buttonGray(siguiente);
 	} else {
 		proteccion_datos.style.display = "none";
 		politica_privacidad.style.display = "block";
 		siguiente.removeAttribute("disabled", "");
+		buttonGray(anterior);
 	}
 }
 
@@ -93,6 +96,7 @@ function atras(count) {
 		insercion_vehiculo.style.display = "none";
 		siguiente.removeAttribute("disabled", "");
 		anterior.setAttribute("disabled", "");
+		buttonGray(anterior);
 	} else if (count == 2) {
 		insercion_vehiculo.style.display = "block";
 		documentos_mantenimiento.style.display = "none";
@@ -106,9 +110,11 @@ function atras(count) {
 		condiciones_servicio.style.display = "block";
 		proteccion_datos.style.display = "none";
 		siguiente.removeAttribute("disabled", "");
+		buttonRed(siguiente);
 	} else {
 		proteccion_datos.style.display = "block";
 		politica_privacidad.style.display = "none";
+		buttonGray(siguiente);
 	}
 }
 
@@ -123,6 +129,8 @@ function mostrar(pagina) {
 		count = 1;
 		siguiente.removeAttribute("disabled", "");
 		anterior.setAttribute("disabled", "");
+		buttonGray(anterior);
+		buttonRed(siguiente);
 	} else if (pagina == 2) {
 		politica_privacidad.style.display = "none";
 		insercion_vehiculo.style.display = "block";
@@ -133,6 +141,8 @@ function mostrar(pagina) {
 		count = 2;
 		anterior.removeAttribute("disabled", "");
 		siguiente.removeAttribute("disabled", "");
+		buttonRed(anterior);
+		buttonRed(siguiente);
 	} else if (pagina == 3) {
 		politica_privacidad.style.display = "none";
 		insercion_vehiculo.style.display = "none";
@@ -143,6 +153,8 @@ function mostrar(pagina) {
 		count = 3;
 		anterior.removeAttribute("disabled", "");
 		siguiente.removeAttribute("disabled", "");
+		buttonRed(anterior);
+		buttonRed(siguiente);
 	} else if (pagina == 4) {
 		politica_privacidad.style.display = "none";
 		insercion_vehiculo.style.display = "none";
@@ -153,6 +165,8 @@ function mostrar(pagina) {
 		count = 4;
 		anterior.removeAttribute("disabled", "");
 		siguiente.removeAttribute("disabled", "");
+		buttonRed(anterior);
+		buttonRed(siguiente);
 	} else if (pagina == 5) {
 		politica_privacidad.style.display = "none";
 		insercion_vehiculo.style.display = "none";
@@ -163,6 +177,8 @@ function mostrar(pagina) {
 		count = 5;
 		anterior.removeAttribute("disabled", "");
 		siguiente.removeAttribute("disabled", "");
+		buttonRed(anterior);
+		buttonRed(siguiente);
 	} else {
 		politica_privacidad.style.display = "none";
 		insercion_vehiculo.style.display = "none";
@@ -173,5 +189,19 @@ function mostrar(pagina) {
 		count = 6;
 		siguiente.setAttribute("disabled", "");
 		anterior.removeAttribute("disabled", "");
+		buttonRed(anterior);
+		buttonGray(siguiente);
 	}
 }
+
+function buttonRed(buttonF){
+	buttonF.style.color = '#be1e2d';
+	buttonF.style.border = '2px solid #be1e2d';
+}
+
+function buttonGray(buttonF){
+	buttonF.style.color = '#808080';
+	buttonF.style.border = '2px solid #808080';
+}
+
+buttonGray(anterior);
