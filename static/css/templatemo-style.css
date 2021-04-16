@@ -708,7 +708,10 @@ header {
   .section-heading p {
     position: relative;
   }
-
+  .navbbar{
+    position: relative;
+    left: 23%;
+  }
   #featured {
     padding-left: 15px;
     padding-right: 15px;
