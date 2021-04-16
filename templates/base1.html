@@ -37,7 +37,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#top">Inicio</a></li>
                     <li>
-                        <div class="input-group mb-3">
+                        <div class="input-group navbbar">
                             <form action="{% url 'core:search' %}" method="POST">
                                 {% csrf_token %}
                             <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
@@ -54,7 +54,6 @@
                         <a href="#">
                             Llenar Información
                         </a>
-                        <ul>
                             <li>
                                 <a href="{% url 'core:insercion' %}" target="_blank">
                                     insercion de vehiculos
@@ -65,7 +64,6 @@
                                     Contrato Compra y Venta
                                 </a>
                             </li>
-                        </ul>
                     </li>
                     <li>
                         <a href="#featured">
