@@ -394,8 +394,7 @@ class FormContratoView(LoginRequiredMixin, ListView):
         lugar = self.request.POST['lugar']
         fecha2 = self.request.POST['fecha2']
 
-        total = (int(PrecioAcordado) - int(valorVehiculoRetirado)) - \
-            int(depostoGarantiaPagado)
+        total = int(PrecioAcordado) - (int(valorVehiculoRetirado) + int(depostoGarantiaPagado))
 
         contrato = Contrato(
             usuario=self.request.user,
