@@ -24,7 +24,6 @@ from .models import (
     Contrato
 )
 
-
 # Create your views here.
 
 # Vista de insercion de vehiculos
@@ -493,7 +492,7 @@ def pdfInsercion(request, pk):
             response = HttpResponse(content_type='application/pdf')
             # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
             pisa_status = pisa.CreatePDF(
-                html, dest=response, 
+                html, dest=response,
                 link_callback=link_callback)
             # if error then show some funy view
             if pisa_status.err:
