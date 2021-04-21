@@ -6,7 +6,13 @@ from django.urls import reverse
 from .models import (
     User,
     Insercion,
-    Contrato
+    Contrato,
+    DatosVehiculo
+    Suplemento,
+    DatosComprador,
+    Documentacion,
+    Mantenimiento,
+    ExamenVisual
     )
 # Register your models here.
 
