@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from import_export import resources
-from import_export.admin import rom django.urls import reverse
+from import_export.admin import ImportExportModelAdmin
+from django.urls import reverse
 from .models import (
     User,
     Insercion,
@@ -51,7 +52,7 @@ class ContratoResource(resources.ModelResource):
 #     class Meta:
 #         model = ExamenVisual
 
-class InsercionAdmin(admin.ModelAdmin):
+class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     resource_class = InsercionResource
 
@@ -99,7 +100,7 @@ class InsercionAdmin(admin.ModelAdmin):
     pdf_actions.short_description = 'IMPRIMIR'
     pdf_actions.allow_tags = True
 
-class ContratoAdmin(admin.ModelAdmin):
+class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ContratoResource
 
     readonly_fields = (
