@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from import_export import resources
-from import_export.admin import ImportExportModelAdmin
-from django.urls import reverse
+from import_export.admin import rom django.urls import reverse
 from .models import (
     User,
     Insercion,
@@ -16,43 +15,43 @@ from .models import (
     )
 # Register your models here.
 
-class InsercionResource(resources.ModelResource):
-    class Meta:
-        model = Insercion
+# class InsercionResource(resources.ModelResource):
+#     class Meta:
+#         model = Insercion
 
-class ContratoResource(resources.ModelResource):
-    class Meta:
-        model = Contrato
+# class ContratoResource(resources.ModelResource):
+#     class Meta:
+#         model = Contrato
 
-class UsuarioResource(resources.ModelResource):
-    class Meta:
-        model = User
+# class UsuarioResource(resources.ModelResource):
+#     class Meta:
+#         model = User
 
-class DatosVehiculoResource(resources.ModelResource):
-    class Meta:
-        model = DatosVehiculo
+# class DatosVehiculoResource(resources.ModelResource):
+#     class Meta:
+#         model = DatosVehiculo
 
-class SuplementoResource(resources.ModelResource):
-    class Meta:
-        model = Suplemento
+# class SuplementoResource(resources.ModelResource):
+#     class Meta:
+#         model = Suplemento
 
-class DatosCompradorResource(resources.ModelResource):
-    class Meta:
-        model = DatosComprador
+# class DatosCompradorResource(resources.ModelResource):
+#     class Meta:
+#         model = DatosComprador
 
-class DocumentacionResource(resources.ModelResource):
-    class Meta:
-        model = Documentacion
+# class DocumentacionResource(resources.ModelResource):
+#     class Meta:
+#         model = Documentacion
 
-class MantenimientoResource(resources.ModelResource):
-    class Meta:
-        model = Mantenimiento
+# class MantenimientoResource(resources.ModelResource):
+#     class Meta:
+#         model = Mantenimiento
 
-class ExamenVisualResource(resources.ModelResource):
-    class Meta:
-        model = ExamenVisual
+# class ExamenVisualResource(resources.ModelResource):
+#     class Meta:
+#         model = ExamenVisual
 
-class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+class InsercionAdmin(admin.ModelAdmin):
 
     resource_class = InsercionResource
 
@@ -100,7 +99,7 @@ class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     pdf_actions.short_description = 'IMPRIMIR'
     pdf_actions.allow_tags = True
 
-class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+class ContratoAdmin(admin.ModelAdmin):
     resource_class = ContratoResource
 
     readonly_fields = (
@@ -148,36 +147,7 @@ class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         'contratoLocales',
         'marca',
         'modelo',
-    )
 
-class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = UsuarioResource
-
-class DatosVehiculoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = DatosVehiculoResource
-
-class SuplementoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = SuplementoResource
-
-class DatosCompradorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = DatosCompradorResource
-
-class DocumentacionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = DocumentacionResource
-
-class MantenimientoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = MantenimientoResource
-
-class ExamenVisualAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = ExamenVisualResource
-
-
-admin.site.register(User, UserAdmin)
+admin.site.register(User)
 admin.site.register(Insercion, InsercionAdmin)
 admin.site.register(Contrato, ContratoAdmin)
-admin.site.register(DatosVehiculo, DatosVehiculoAdmin)
-admin.site.register(Suplemento, SuplementoAdmin)
-admin.site.register(DatosComprador, DatosCompradorAdmin)
-admin.site.register(Documentacion, DocumentacionAdmin)
-admin.site.register(Mantenimiento, MantenimientoAdmin)
-admin.site.register(ExamenVisual, ExamenVisualAdmin)
