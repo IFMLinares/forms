@@ -43,7 +43,7 @@ Contratos
         </div>
         <div class="col insercion-vehiculos-date">
           <label for="fecha">Fecha</label>
-          <input class="form-control" name="fecha" id="fecha" type="date" value="2021-03-25">
+          <input class="form-control" name="fecha" id="fecha" type="date" value="{{ contrato.fecha }}">
         </div>
         <div class="form-row" style="padding-left: 15px;">
           <div class="form-group col-md-4">
@@ -71,15 +71,15 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="firmante">El/La firmante</label>
-              <input type="text" class="form-control" name="firmante" id="firmante" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="firmante" id="firmante" placeholder="Escribe aquí" value="{{ contrato.firmante }}">
             </div>
             <div class="col">
               <label for="nacido">Nacido/a</label>
-              <input type="text" class="form-control" name="nacido" id="nacido" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="nacido" id="nacido" placeholder="Escribe aquí" value="{{ contrato.nacido }}">
             </div>
             <div class="col insercion-vehiculos-date">
               <label for="fechaNacimiento">Fecha</label>
-              <input class="form-control" name="fechaNacimiento" id="fechaNacimiento" type="date" value="2021-03-25">
+              <input class="form-control" name="fechaNacimiento" id="fechaNacimiento" type="date" value="{{ contrato.fechaNacimiento }}">
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ Contratos
             <div class="col">
               <label for="residenciaSede">Residente / con sede en</label>
               <input type="text" class="form-control" name="residenciaSede" id="residenciaSede"
-                placeholder="Escribe aquí">
+                placeholder="Escribe aquí" value="{{ contrato.residenciaSede }}">
             </div>
           </div>
         </div>
@@ -96,11 +96,11 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="telefono">Télefono</label>
-              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Escribe aquí" value="{{ contrato.telefono }}">
             </div>
             <div class="col">
               <label for="profesion">Profesión</label>
-              <input type="text" class="form-control" name="profesion" id="profesion" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="profesion" id="profesion" placeholder="Escribe aquí" value="{{ contrato.profesion }}">
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ Contratos
           <div class="form-row">
             <div class="col-6">
               <label for="CifNif">C.I.F / N.I.F</label>
-              <input type="text" class="form-control" name="CifNif" id="CifNif" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="CifNif" id="CifNif" placeholder="Escribe aquí" value="{{ contrato.CifNif }}">
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="vendedor">Vendedor</label>
-              <input type="text" class="form-control" name="vendedor" id="vendedor" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="vendedor" id="vendedor" placeholder="Escribe aquí" value="{{ contrato.vendedor }}">
             </div>
           </div>
         </div>
@@ -135,11 +135,11 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="marca">Marca</label>
-              <input type="text" class="form-control" name="marca" id="marca" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="marca" id="marca" placeholder="Escribe aquí" value="{{ contrato.marca }}">
             </div>
             <div class="col">
               <label for="version">Versión</label>
-              <input type="text" class="form-control" name="version" id="version" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="version" id="version" placeholder="Escribe aquí" value="{{ contrato.version }}">
             </div>
           </div>
         </div>
@@ -147,11 +147,11 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="modelo">Modelo</label>
-              <input type="text" class="form-control" name="modelo" id="modelo" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="modelo" id="modelo" placeholder="Escribe aquí" value="{{ contrato.modelo }}">
             </div>
             <div class="col">
               <label for="bastidor">Bastidor</label>
-              <input type="text" class="form-control" name="bastidor" id="bastidor" placeholder="Escribe aquí">
+              <input type="text" class="form-control" name="bastidor" id="bastidor" placeholder="Escribe aquí" value="{{ contrato.bastidor }}">
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ Contratos
               <div class="check-box-group">
                 <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                   <input class="check-box-group" type="radio" value="Propietario" name="estadoEncontrado"
-                    id="propietario">
+                    id="propietario" >
                   <span class="checkmark"></span>
                   <span class="label">Como Propietario del mismo</span>
                 </label>
@@ -203,12 +203,12 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="marceEmpresa">Marca</label>
-              <input name="marceEmpresa" id="marceEmpresa" type="text" class="form-control" placeholder="Escribe aquí">
+              <input name="marceEmpresa" id="marceEmpresa" type="text" class="form-control" placeholder="Escribe aquí" value="{{ contrato.marceEmpresa }}">
             </div>
             <div class="col">
               <label for="versionEmpresa">Versión</label>
               <input name="versionEmpresa" id="versionEmpresa" type="text" class="form-control"
-                placeholder="Escribe aquí">
+                placeholder="Escribe aquí" value="{{ contrato.versionEmpresa }}">
             </div>
           </div>
         </div>
@@ -217,12 +217,12 @@ Contratos
             <div class="col">
               <label for="modeloEmpresa">Modelo</label>
               <input name="modeloEmpresa" id="modeloEmpresa" type="text" class="form-control"
-                placeholder="Escribe aquí">
+                placeholder="Escribe aquí" value="{{ contrato.modeloEmpresa }}">
             </div>
             <div class="col">
               <label for="bastidorEmpresa">Bastidor</label>
               <input name="bastidorEmpresa" id="bastidorEmpresa" type="text" class="form-control"
-                placeholder="Escribe aquí">
+                placeholder="Escribe aquí" value="{{ contrato.bastidorEmpresa }}">
             </div>
           </div>
         </div>
@@ -231,7 +231,7 @@ Contratos
             <div class="col-6 insercion-vehiculos-date">
               <label for="fechaPrimeraMatriculacion">Fecha 1º Matriculación</label>
               <input name="fechaPrimeraMatriculacion" id="fechaPrimeraMatriculacion" class="form-control" type="date"
-                value="2021-03-25" id="example-date-input">
+              value="{{ contrato.fechaPrimeraMatriculacion }}" id="example-date-input">
             </div>
           </div>
         </div>
@@ -252,7 +252,7 @@ Contratos
             </div>
             <div class="col">
               <input name="equivalenteAcordadoMonto" id="equivalenteAcordadoMonto" type="text" class="form-control"
-                placeholder="Escribe aquí">
+                placeholder="Escribe aquí" value="{{ contrato.equivalenteAcordadoMonto }}">
             </div>
           </div>
           <div class="documentacion-mantenimiento_p_pequeno">
@@ -272,7 +272,7 @@ Contratos
             </div>
             <div class="col">
               <input name="abonadoCompradorMonto" id="abonadoCompradorMonto" type="text" class="form-control"
-                placeholder="Escribe aquí">
+                placeholder="Escribe aquí" value="{{ contrato.abonadoCompradorMonto }}">
             </div>
             <div class="documentacion-mantenimiento_p_pequeno">
               <p>
@@ -291,7 +291,7 @@ Contratos
               <div class="col-4">
                 <label for="PrecioAcordado">Precio acordado del vehículo</label>
                 <input name="PrecioAcordado" id="PrecioAcordado" type="number" class="form-control"
-                  placeholder="€ Monto " onclick="total()">
+                  placeholder="€ Monto " onclick="total()" value="{{ contrato.PrecioAcordado }}">
               </div>
             </div>
           </div>
@@ -302,7 +302,7 @@ Contratos
               <div class="col-4">
                 <label for="valorVehiculoRetirado">Valor vehículo retirado</label>
                 <input name="valorVehiculoRetirado" id="valorVehiculoRetirado" type="number" class="form-control"
-                  placeholder="€ Monto " onclick="total()">
+                  placeholder="€ Monto " onclick="total()" value="{{ contrato.valorVehiculoRetirado }}">
               </div>
             </div>
           </div>
@@ -313,7 +313,7 @@ Contratos
               <div class="col-4">
                 <label for="depostoGarantiaPagado">Depósito de garantía pagado</label>
                 <input name="depostoGarantiaPagado" id="depostoGarantiaPagado" type="number" class="form-control"
-                  placeholder="€ Monto ">
+                  placeholder="€ Monto " value="{{ contrato.depostoGarantiaPagado }}">
               </div>
             </div>
           </div>
@@ -339,12 +339,12 @@ Contratos
                 <div class="col">
                   <label for="sociedadFinanciera">Sociedad financiera</label>
                   <input name="sociedadFinanciera" id="sociedadFinanciera" type="text" class="form-control"
-                    placeholder="Escribe aquí">
+                    placeholder="Escribe aquí" value="{{ contrato.sociedadFinanciera }}">
                 </div>
                 <div class="col">
                   <label for="nroProtocolo">Nº Protocolo</label>
                   <input name="nroProtocolo" id="nroProtocolo" type="text" class="form-control"
-                    placeholder="Escribe aquí">
+                    placeholder="Escribe aquí" value="{{ contrato.nroProtocolo }}">
                 </div>
               </div>
             </div>
@@ -353,12 +353,12 @@ Contratos
                 <div class="col">
                   <label for="importaFinanciado">Importe Financiado €</label>
                   <input name="importaFinanciado" id="importaFinanciado" type="text" class="form-control"
-                    placeholder="Escribe aquí">
+                    placeholder="Escribe aquí" value="{{ contrato.importaFinanciado }}">
                 </div>
                 <div class="col">
                   <label for="gastosInstruccionSello">Gastos Instrucción/Sello €</label>
                   <input name="gastosInstruccionSello" id="gastosInstruccionSello" type="text" class="form-control"
-                    placeholder="Escribe aquí">
+                    placeholder="Escribe aquí" value="{{ contrato.gastosInstruccionSello }}">
                 </div>
               </div>
             </div>
@@ -371,7 +371,7 @@ Contratos
                 <div class="col">
                   <label for="importePlazos">Importe Plazos €</label>
                   <input name="importePlazos" id="importePlazos" type="text" class="form-control"
-                    placeholder="Escribe aquí">
+                    placeholder="Escribe aquí" value="{{ contrato.nroPlazos }}">
                 </div>
               </div>
             </div>
@@ -379,11 +379,11 @@ Contratos
               <div class="form-row">
                 <div class="col">
                   <label for="lugar">Lugar</label>
-                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí" >
+                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí" value="{{ contrato.lugar }}">
                 </div>
                 <div class="col-6 insercion-vehiculos-date">
                   <label for="fecha2">Fecha</label>
-                  <input name="fecha2" id="fecha2" class="form-control" type="date" value="2021-03-25"
+                  <input name="fecha2" id="fecha2" class="form-control" type="date" value="{{ contrato.fecha2 }}"
                     id="example-date-input" >
                 </div>
               </div>

@@ -1,0 +1,1635 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inserción de vehiculos
+{% endblock %}
+
+{% block content %}
+<div class="cuadro-informacion">
+  <div class="politica-privacidad">
+    <form method="POST" action="" id="form/">
+      {% csrf_token %}
+      <div id="politica-privacidad">
+        <div class="form-check politica-privacidad_checkbox">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+          <label class="form-check-label" for="exampleCheck1">Acepto la política de privacidad</label>
+        </div>
+        <br><br>
+        <div class="politica-privacidad_informacion">
+          <p>
+            Es necesario que aceptes la política de privacidad para poder continuar.
+            <br><br>
+            Responsable: Hosho Garantias, Siendo la finalidad; envío de mis publicaciones así como correos
+            comerciales.
+            <br><br>
+            La Legitimación; es gracias a tu consentimiento.
+            <br><br>
+            Destinarios; Tus datos se encuentran alojados en nuestra plataforma de email y nuestra base de datos
+            ubicada en Madrid
+            <br><br>
+            Podrás ejercer Tus derechos de acceso, rectificación, limitación, o suprimir tus datos en
+            administracion@hoshogarantias.com para más información consulte nuestra política de privacidad.
+          </p>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <label for="colFormLabelSm " class="politica-privacidad_informacion-form-1">CONCESIONARIO</label>
+            <p class="politica-privacidad_informacion-form-2">Cliente vendedor</p>
+          </div>
+          <div class="form-group col-5 politica-privacidad_informacion-form-3">
+            <label for="concesionario">Escribe aquí</label>
+            <input type="text" class="form-control" id="concesionario" name="concesionario" value="{{ insercion.concesionario }}">
+          </div>
+        </div>
+      </div>
+
+      <div id="insercion-vehiculo" style="display: none;">
+        <div class="cuadro-informacion">
+          <div class="insercion-vehiculos_h4">
+            <h4>Inserción de vehículos</h4>
+          </div>
+          <div>
+            <div class="form-group col insercion-vehiculos_informacion-form">
+              <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Nombre del Comercial" value="{{ insercion.insercion_de_vehiculo }}">
+            </div>
+          </div>
+        </div>
+        <div class="insercion-vehiculos">
+          <div class="insercion-vehiculos_p">
+            <p>
+              Datos identificativos del vehículo
+            </p>
+          </div>
+          <div class="insercion-vehiculos-form_bloque">
+            <div class="insercion-vehiculos-form ">
+              <div class="form-row">
+                <div class="col">
+                  <label for="matricula">Matrícula</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="matricula" id="matricula" value="{{ insercion.datos_del_Vehiculo.matricula }}">
+                </div>
+                <div class="col">
+                  <label for="marca">Marca</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="marca" id="marca" value="{{ insercion.datos_del_Vehiculo.marca }}">
+                </div>
+                <div class="col">
+                  <label for="modelo">Modelo</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="modelo" id="modelo" value="{{ insercion.datos_del_Vehiculo.modelo }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="alimentacion">Alimentación</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="alimentacion" id="alimentacion" value="{{ insercion.datos_del_Vehiculo.alimentacion }}">
+                </div>
+                <div class="col">
+                  <label for="claseControl">Clase de Tracción.</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="claseControl" id="claseControl" value="{{ insercion.datos_del_Vehiculo.clase_de_cont }}">
+                </div>
+                <div class="col insercion-vehiculos-date">
+                  <label for="primeraMatricula" class="col col-form-label">Prime matr.</label>
+                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" value="{{ insercion.datos_del_Vehiculo.prime_matr }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-group">
+                <label for="version">Versión</label>
+                <input type="text" class="form-control" id="version" name="version" placeholder="Escribe aquí" value="{{ insercion.version }}">
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="potenciaKW">Potencia-KW</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="potenciaKW" name="potenciaKW"  value="{{ insercion.datos_del_Vehiculo.potencia_KW }}">
+                </div>
+                <div class="col">
+                  <label for="nroPropietariosPrivados">N° Propietarios privados</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosPrivados" name="nroPropietariosPrivados" value="{{ insercion.datos_del_Vehiculo.nro_propietarios_Privados }}">
+                </div>
+                <div class="col">
+                  <label for="nroPropietariosProfesionales">N° Prop profesionales</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nroPropietariosProfesionales" name="nroPropietariosProfesionales" value="{{ insercion.datos_del_Vehiculo.nro_propietarios_profesionales }}">
+                </div>
+                <div class="col">
+                  <label for="cilindrada">Cilindrada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="cilindrada" name="cilindrada" value="{{ insercion.datos_del_Vehiculo.Cilindrada }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form ">
+              <div class="form-row">
+                <div class="col">
+                  <label for="bastidor">Bastidor</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="bastidor" name="bastidor" value="{{ insercion.datos_del_Vehiculo.bastidor }}">
+                </div>
+                <div class="col">
+                  <label for="color">Color</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="color" name="color" value="{{ insercion.datos_del_Vehiculo.color }}">
+                </div>
+                <div class="col">
+                  <label for="transmision">Transmisión</label>
+                <select class="custom-select" id="transmision" name="transmision"  id="transmision" value="{{ insercion.datos_del_Vehiculo.transmision }}">
+                  <option value="" disabled selected>Transmisión</option>
+                  <option value="Manual">Manual</option>
+                  <option value="automatico">Automatico</option>
+                  <option value="dual">Transmisión dual</option>
+                </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos-form insercion-vehiculos-form_bloque">
+            <div class="form-row">
+              <div class="col insercion-vehiculos-date">
+                <label for="fechaEntrega" class="col col-form-label">Fecha de entrega</label>
+                <input class="form-control" type="date"  id="fechaEntrega" name="fechaEntrega" value="{{ insercion.datos_del_Vehiculo.fecha_entrega }}">
+              </div>
+              <div class="col insercion-vehiculos-date">
+                <label for="fechaInicio" class="col col-form-label">Fecha de inicio</label>
+                <input class="form-control" type="date"  id="fechaInicio" name="fechaInicio" value="{{ insercion.datos_del_Vehiculo.fecha_inicio }}">
+              </div>
+              <div class="col insercion-vehiculos-date">
+                <label for="fechaActivacion" class="col col-form-label">Fecha de activación</label>
+                <input class="form-control" type="date"  id="fechaActivacion" name="fechaActivacion" value="{{ insercion.datos_del_Vehiculo.fecha_activacion }}">
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos_h4">
+            <h4>SUPLEMENTOS</h4>
+          </div>
+          <div class="insercion-vehiculos-form ">
+            <div class="form-row">
+              <div class="col">
+                <label for="cuatroxcuatro">4 x 4</label>
+                <select class="custom-select" id="cuatroxcuatro" name="cuatroxcuatro" value="{{ insercion.suplementos.cuatro_por_cuatro }}">
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="cambioautomatico">Cambio Autom.</label>
+                <select class="custom-select" id="cambioautomatico" name="cambioautomatico" value="{{ insercion.suplementos.cambio_autom }}">
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="vehiculoComercial">Vehículo comercial</label>
+                <select class="custom-select" id="vehiculoComercial" name="vehiculoComercial" value="{{ insercion.suplementos.vehiculo_comercial }}">
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos-form">
+            <div class="form-row">
+              <div class="col">
+                <label for="superCar">Super car</label>
+                <select class="custom-select" id="superCar" name="superCar" value="{{ insercion.suplementos.super_Car }}">
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="suv">Suv</label>
+                <select class="custom-select" id="suv" name="suv" value="{{ insercion.suplementos.suv }}">
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="cobertura">+ Cobertura</label>
+                <select class="custom-select" id="cobertura" name="cobertura" value="{{ insercion.suplementos.cobertura}">
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos-form_bloque">
+            <div class="insercion-vehiculos_p">
+              <p>
+                <i class='bx bxs-user'></i>
+                Datos del comprador
+              </p>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="nombreCompleto">Nombre completo</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="nombreCompleto" name="nombreCompleto" value="{{ insercion.datos_del_comprador.nombre_Completo }}">
+                </div>
+                <div class="col">
+                  <label for="direccion">Dirección</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="direccion" name="direccion" value="{{ insercion.datos_del_comprador.direccion }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="codigoPostal">Código postal</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="codigoPostal" name="codigoPostal" value="{{ insercion.datos_del_comprador.codigo_postal }}">
+                </div>
+                <div class="col">
+                  <label for="numeroTelefono">Número de teléfono</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="numeroTelefono" name="numeroTelefono" value="{{ insercion.datos_del_comprador.numero_de_telefono }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="localidad">C.P./ Localidad - Provincia - Pais</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="localidad" id="localidad" value="{{ insercion.datos_del_comprador.localidad_Provincia_Pais }}">
+                </div>
+                <div class="col">
+                  <label for="numeroMovil">Número del Móvil</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="numeroMovil" id="numeroMovil" value="{{ insercion.numero_de_movil }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" placeholder="Escribe aquí" name="email" id="email" value="{{ insercion.datos_del_comprador.email }}">
+                </div>
+                <div class="col">
+                  <label for="documentoIdentidad">D.N.I / CIF / NIC</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="documentoIdentidad" id="documentoIdentidad" value="{{ insercion.datos_del_comprador.documento_identidad }}">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insercion-vehiculos-form">
+            <div class="form-row">
+              <div class="col-5">
+                <label for="duracionContrato">Duración del contrato</label>
+                <input type="text" class="form-control" placeholder="1 año" name="duracionContrato" id="duracionContrato" value="{{ insercion.duracion_del_contrato }}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="documentos-mantenimiento" style="display: none;">
+        <div class="insercion-vehiculos_h4">
+          <h4>DOCUMENTACIÓN</h4>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="ruedaRepuesto1" id="ruedaRepuesto1" value="{{ insercion.duracion_del_contrato.rueda_repuesto1 }}">
+                <span class="checkmark"></span>
+                <span class="label">Rueda de repuesto</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="kitInflado" id="kitInflado" value="{{ insercion.duracion_del_contrato.kit_inflado }}" >
+                <span class="checkmark"></span>
+                <span class="label">Kit de inflado</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="trianguloEmergencia" id="trianguloEmergencia" value="{{ insercion.duracion_del_contrato.triangulo_emergencia }}" >
+                <span class="checkmark"></span>
+                <span class="label">Triángulo de emergencia</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="gato" id="gato" value="{{ insercion.duracion_del_contrato.gato }}" >
+                <span class="checkmark"></span>
+                <span class="label">Gato</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="chalecoAltaVelocidad" id="chalecoAltaVelocidad" value="{{ insercion.duracion_del_contrato.chaleco_alta_visibilidad }}" >
+                <span class="checkmark"></span>
+                <span class="label">Chaleco alta visibilidad</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="kitBombillas" id="kitBombillas" value="{{ insercion.duracion_del_contrato.kit_bombillas }}" >
+                <span class="checkmark"></span>
+                <span class="label">Kit bombillas</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="kitBombillasFusibles" id="kitBombillasFusibles" value="{{ insercion.duracion_del_contrato.kit_bombillas_fusibles }}" >
+                <span class="checkmark"></span>
+                <span class="label">Kit bombillas - fusibles</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="duplicadoLlaves" id="duplicadoLlaves" value="{{ insercion.duracion_del_contrato.duplicado_llaves }}" >
+                <span class="checkmark"></span>
+                <span class="label">duplicado de llaves</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="codCard" id="codCard" value="{{ insercion.duracion_del_contrato.cod_card }}" >
+                <span class="checkmark"></span>
+                <span class="label">Cod. Card </span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="libreUsoMantenimiento" id="libreUsoMantenimiento" value="{{ insercion.duracion_del_contrato.libre_uso_mantenimiento }}" >
+                <span class="checkmark"></span>
+                <span class="label">Libre uso y mantenimiento</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="fichaTecnica" id="fichaTecnica" value="{{ insercion.duracion_del_contrato.ficha_tecnica }}" >
+                <span class="checkmark"></span>
+                <span class="label">Ficha Tecnica</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="check-box-group">
+              <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
+                <input type="checkbox" checked name="permisoCirculacion" id="permisoCirculacion" value="{{ insercion.duracion_del_contrato.permiso_circulacion }}" >
+                <span class="checkmark"></span>
+                <span class="label">Permiso de circulación</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12">
+          <div class="documentacion-mantenimiento_i">
+            <i class='bx bxs-folder-open'></i>
+          </div>
+          <div class="insercion-vehiculos-form_bloque">
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col ">
+                  <label for="itv">ITV</label>
+                  <select class="custom-select" id="itv" name="itv" value="{{ insercion.duracion_del_contrato.itv }}">
+                    <option value="vencido">Vencido</option>
+                    <option value="valido">Válido</option>
+                  </select>
+                </div>
+                <div class="col insercion-vehiculos-date">
+                  <label for="fechaITV">Fecha</label>
+                  <input class="form-control" type="date"  id="fechaITV" name="fechaITV" value="{{ insercion.duracion_del_contrato.fecha }}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12">
+          <div class="documentacion-mantenimiento_p">
+            <p>
+              <i class='bx bxs-wrench'></i>
+              Mantenimiento
+            </p>
+          </div>
+          <div class="insercion-vehiculos-form_bloque">
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="estadoRevisiones">Estado revisiones</label>
+                  <select class="custom-select" id="estadoRevisiones" name="estadoRevisiones" value="{{ insercion.mantenimiento.estado_revisiones }}">
+                    <option selected value="Segun plan del constructor">Según plan del constructor</option>
+                    <option value="regulados">Regulados</option>
+                    <option value="No Documentado">No documentados</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="mantenimientoPrevioEntrega">Manten. Previo a entrega</label>
+                  <select class="custom-select" id="mantenimientoPrevioEntrega" name="mantenimientoPrevioEntrega" value="{{ insercion.mantenimiento.mantenimiento_previo_entrega }}">
+                    <option selected value="Ninguno">Ninguno</option>
+                    <option value="Control/rellenoNiveles">Control/Relleno Niveles</option>
+                    <option value="Cambio Aceite y Filtro">Cambio de aceite y filtro</option>
+                    <option value="Revision Motor">Revisión de motor</option>
+                    <option value="Revision Completa">Revisión completa</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="correaServicio">Correa de servicio</label>
+                  <select class="custom-select" id="correaServicio" name="correaServicio" value="{{ insercion.mantenimiento.correa_servicio }}">
+                    <option selected value="No Disponible">No disponible</option>
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="Condiciones Normales de Uso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos-form">
+            <div class="form-row">
+              <div class="col">
+                <label for="estadoBateria">Estado de batería</label>
+                <select class="custom-select" id="estadoBateria" name="estadoBateria" value="{{ insercion.mantenimiento.estado_bateria }}">
+                  <option selected value="Ninguno">Ninguno</option>
+                  <option value="Buenas Condiciones">Buenas condiciones</option>
+                  <option value="intervencionNecesaria">Intervención recomendada</option>
+                  <option value="No Disponible">No disponible</option>
+                  <option value="condicionesNormales">Condiciones normales de uso</option>
+                  <option value="Reacondicionado">Reacondicionado</option>
+                  <option value="Reparacion Necesaria">Reparación necesaria</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="correaDistribucion">Correa de distribución</label>
+                <select class="custom-select" id="correaDistribucion" name="correaDistribucion" value="{{ insercion.mantenimiento.correa_distribucion }}">
+                  <option selected value="Ninguno">Buenas condiciones</option>
+                  <option value="Intervencion Recomendada">Intervención recomendada</option>
+                  <option value="No Disponible">No disponible</option>
+                  <option value="condicionesNormales">Condiciones normales de uso</option>
+                  <option value="Reacondicionado">Reacondicionado</option>
+                  <option value="Reparacion Necesaria">Reparación necesaria</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos-form ">
+            <div class="form-row">
+              <div class="col">
+                <label for="ultimoMantenimiento">Último mantenimiento</label>
+                <input type="text" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento" value="{{ insercion.mantenimiento.ultimo_mantenimiento }}">
+              </div>
+              <div class="col">
+                <label for="proximoMantenimiento">Próximo mantenimiento</label>
+                <input type="text" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento"value="{{ insercion.mantenimiento.proximo_mantenimiento }}">
+              </div>
+            </div>
+          </div>
+          <div class="insercion-vehiculos-form ">
+            <div class="form-row">
+              <div class="col documentacion-mantenimiento_form">
+                <label>ITV</label>
+                <select class="custom-select" value="{{ insercion.mantenimiento.itv }}">
+                  <option>Vencido</option>
+                  <option>Válido</option>
+                </select>
+              </div>
+              <div class="col insercion-vehiculos-date">
+                <label for="ultimaITV">Última ITV</label>
+                <input class="form-control" type="date" value="{{ insercion.mantenimiento.ultima_ITV }}" id="ultimaITV" name="ultimaITV" >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="examen" style="display: none;">
+        <div class="insercion-vehiculos">
+          <div class="documentacion-mantenimiento_p">
+            <p>
+              <i class='bx bxs-file'></i>
+              Mantenimiento
+            </p>
+          </div>
+          <br><br>
+          <div class="insercion-vehiculos_h4">
+            <h4>EXAMEN VISUAL</h4>
+          </div>
+          <div class="insercion-vehiculos-form_bloque">
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="carroceria">Carrocería</label>
+                  <select class="custom-select" id="carroceria" name="carroceria" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionCarroceria" id="descripcionCarroceria" value="{{ insercion.examen_visual.descripcion_carroceria }}">
+                </div>
+                <div class="col">
+                  <label for="habitaculoTapiceria">Habitáculo y tapicería</label>
+                  <select class="custom-select" id="habitaculoTapiceria" name="habitaculoTapiceria" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionHabitaculoTapiceria" id="descripcionHabitaculoTapiceria" value="{{ insercion.examen_visual.descripcion_habitaculo_tapiceria_1 }}">
+                </div>
+                <div class="col">
+                  <label for="habitaculoTapiceria2">Habitáculo y tapicería</label>
+                  <select class="custom-select" id="habitaculoTapiceria2" name="habitaculoTapiceria2" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionHabitaculoTapiceria2" id="descripcionHabitaculoTapiceria2" value="{{ insercion.examen_visual.descripcion_habitaculo_tapiceria_2 }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="asientoRevestimientoAsiento">Asiento y revestimiento del asiento</label>
+                  <select class="custom-select" id="asientoRevestimientoAsiento" name="asientoRevestimientoAsiento" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionAsientoRevestimientoAsiento" id="descripcionAsientoRevestimientoAsiento"  value="{{ insercion.examen_visual.descripcion_asiento_revestimiento_asiento }}">
+                </div>
+                <div class="col">
+                  <label for="neumaticosDelanteros">Neumáticos delanteros</label>
+                  <select class="custom-select" id="neumaticosDelanteros" name="neumaticosDelanteros" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción..." name="descripcionNeumaticosDelanteros" id="descripcionNeumaticosDelanteros" value="{{ insercion.examen_visual.descripcion_neumaticos_delanteros }}">
+                </div>
+                <div class="col">
+                  <label for="neumaticosTraseros">Neumáticos traseros</label>
+                  <select class="custom-select" id="neumaticosTraseros" name="neumaticosTraseros" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Descripción" name="descripcionNeumaticosTraseros" id="descripcionNeumaticosTraseros" value="{{ insercion.examen_visual.descripcion_neumaticos_traseros }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="volanteMotor">Volante motor</label>
+                  <select class="custom-select" id="volanteMotor" name="volanteMotor" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionVolanteMotor" id="descripcionVolanteMotor" value="{{ insercion.examen_visual.explicacion_detallada_volante_motor }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="motor">Motor</label>
+                  <select class="custom-select" id="motor" name="motor" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="Explicacionmotor" id="Explicacionmotor"value="{{ insercion.examen_visual.explicacion_detallada_motor }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="sistemaEscape">Sistema de escape</label>
+                  <select class="custom-select" id="sistemaEscape" name="sistemaEscape" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionsistemaEscape" id="explicacionsistemaEscape" value="{{ insercion.examen_visual.explicacion_detallada_sistema_escape }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="embrague">Embrague</label>
+                  <select class="custom-select" id="embrague" name="embrague" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="descripcionEmbrague" id="descripcionEmbrague"value="{{ insercion.examen_visual.explicacion_detallada_embrague }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="alimentacionInyeccion">Alimentacíon e Inyección</label>
+                  <select class="custom-select" id="alimentacionInyeccion" name="alimentacionInyeccion" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAlimentacionInyeccion" id="explicacionAlimentacionInyeccion" value="{{ insercion.examen_visual.explicacion_detallada_alimentacion_inyeccion }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="cambio">Cambio</label>
+                  <select class="custom-select" id="cambio" name="cambio" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCambio" id="explicacionCambio" value="{{ insercion.examen_visual.explicacion_detallada_cambio }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="motorArranqueAlternador">Motor de arranque/Alternador</label>
+                  <select class="custom-select" id="motorArranqueAlternador" name="motorArranqueAlternador" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" id="explicacionMotorArranqueAlternador" name="explicacionMotorArranqueAlternador" value="{{ insercion.examen_visual.explicacion_detallada_moto_arranque_alternador }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="diferencialRepartidor">Diferencial / Repartidor</label>
+                  <select class="custom-select" id="diferencialRepartidor" name="diferencialRepartidor" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDiferencialRepartidor" id="explicacionDiferencialRepartidor" value="{{ insercion.examen_visual.explicacion_detallada_diferencial_repartidor }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="cajaTranferencia">Caja de trasferencia</label>
+                  <select class="custom-select" id="cajaTranferencia" name="cajaTranferencia" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCajaTranferencia" id="explicacionCajaTranferencia" value="{{ insercion.examen_visual.explicacion_detallada_caja_transferencia }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="organoDireccion">Organo de direccíon</label>
+                  <select class="custom-select" id="organoDireccion" name="organoDireccion" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionOrganoDireccion" id="explicacionOrganoDireccion" value="{{ insercion.examen_visual.explicacion_detallada_organo_direccion }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="rodamientoNeumaticos">Rodamiento de los neumáticos</label>
+                  <select class="custom-select" id="rodamientoNeumaticos" name="rodamientoNeumaticos" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="ExplicacionRodamientoNeumaticos" id="ExplicacionRodamientoNeumaticos" value="{{ insercion.examen_visual.explicacion_detallada_rodamiento_neumaticos }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="direccionAsistida">Dirección asistida</label>
+                  <select class="custom-select" id="direccionAsistida" name="direccionAsistida" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionDireccionAsistida" id="explicacionDireccionAsistida" value="{{ insercion.examen_visual.explicacion_detallada_direccion_asistida }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="bombaDireccionAsistida">Bomba de la dirección asistida</label>
+                  <select class="custom-select" id="bombaDireccionAsistida" name="bombaDireccionAsistida" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaDireccionAsistida" id="explicacionbombaDireccionAsistida" value="{{ insercion.examen_visual.explicacion_detallada_bomba_direccion_asistida }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="sistemaFrenado">Sistema de frenado</label>
+                  <select class="custom-select" id="sistemaFrenado" name="sistemaFrenado" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaFrenado" id="explicacionSistemaFrenado" value="{{ insercion.examen_visual.explicacion_detallada_sistema_frenado }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="sistemaRefrigeracion">Sistema de refrigeración</label>
+                  <select class="custom-select" id="sistemaRefrigeracion" name="sistemaRefrigeracion" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaRefrigeracion" id="explicacionSistemaRefrigeracion" value="{{ insercion.examen_visual.explicacion_detallada_sistema_refrigeracion }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="sistemaCalefaccion">Sistema de calefacción ( aire )</label>
+                  <select class="custom-select" id="sistemaCalefaccion" name="sistemaCalefaccion" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaCalefaccion" id="explicacionSistemaCalefaccion" value="{{ insercion.examen_visual.explicacion_detallada_sistema_calefaccion }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="aireAcondicionado">Aire acondicionado</label>
+                  <select class="custom-select" id="aireAcondicionado" name="aireAcondicionado" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAireAcondicionado" id="expliacionAireAcondicionado" value="{{ insercion.examen_visual.explicacion_detallada_aire_acondicionado }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="AbsEsp">ABS/ ESP</label>
+                  <select class="custom-select" id="AbsEsp" name="AbsEsp" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAbsEsp" id="explicacionAbsEsp" value="{{ insercion.examen_visual.explicacion_detallada_abs_esp }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="cuadroInstrumentos">Cuadro de instrumentos</label>
+                  <select class="custom-select" id="cuadroInstrumentos" name="cuadroInstrumentos" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionCuadroInstrumentos" id="explicacionCuadroInstrumentos" value="{{ insercion.examen_visual.explicacion_detallada_cuadro_instrumentos }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="limpiaParabrisas">Limpiaparabrisas</label>
+                  <select class="custom-select" id="limpiaParabrisas" name="limpiaParabrisas" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionLimpiaParabrisas" id="explicacionLimpiaParabrisas" value="{{ insercion.examen_visual.explicacion_detallada_limpiaparabrisas }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="bombaLimpiaparabrisas">Bomba Limpiaparabrisas</label>
+                  <select class="custom-select" id="bombaLimpiaparabrisas" name="bombaLimpiaparabrisas" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionbombaLimpiaparabrisas" id="explicacionbombaLimpiaparabrisas" value="{{ insercion.examen_visual.explicacion_detallada_bomba_limpiaparabrisas }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="sistemaElectrico">Sistema eléctrico</label>
+                  <select class="custom-select" id="sistemaElectrico" name="sistemaElectrico" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionSistemaElectrico" id="explicacionSistemaElectrico" value="{{ insercion.examen_visual.explicacion_detallada_sistema_electrico }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="cierreCentralizado">Cierre centralizado</label>
+                  <select class="custom-select" id="cierreCentralizado" name="cierreCentralizado" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionCierreCentralizado" id="expliacionCierreCentralizado" value="{{ insercion.examen_visual.explicacion_detallada_cierre_centralizado }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="alumbradoSeñalizacion">Alumbrado y señalización</label>
+                  <select class="custom-select" id="alumbradoSeñalizacion" name="alumbradoSeñalizacion" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionAlumbradoSeñalizacion" id="expliacionAlumbradoSeñalizacion" value="{{ insercion.examen_visual.explicacion_detallada_alumbrado_señalizacion }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="radioLector">Radio / Lector CD</label>
+                  <select class="custom-select" id="radioLector" name="radioLector" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionRadioLector" id="explicacionRadioLector" value="{{ insercion.examen_visual.explicacion_detallada_radio_lectorCD }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="navegador">Navegador</label>
+                  <select class="custom-select" id="navegador" name="navegador" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionNavegador" id="explicacionNavegador" value="{{ insercion.examen_visual.explicacion_detallada_navegador }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="elevalunasElectrico">Elevalunas eléctrico</label>
+                  <select class="custom-select" id="elevalunasElectrico" name="elevalunasElectrico" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionElevalunasElectrico" id="explicacionElevalunasElectrico" value="{{ insercion.examen_visual.explicacion_detallada_explicacion_detallada_elevalunas_electrico }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="airBag">Airbag</label>
+                  <select class="custom-select" id="airBag" name="airBag" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAirBag" id="explicacionAirBag" value="{{ insercion.examen_visual.explicacion_detallada_airbag }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="antirrobo">Antirrobo</label>
+                  <select class="custom-select" id="antirrobo" name="antirrobo" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="explicacionAntirrobo" id="explicacionAntirrobo" value="{{ insercion.examen_visual.explicacion_detallada_antirrobo }}">
+                </div>
+              </div>
+            </div>
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col">
+                  <label for="techoSolar">Techo solar</label>
+                  <select class="custom-select" id="techoSolar" name="techoSolar" >
+                    <option value="Buenas Condiciones">Buenas condiciones</option>
+                    <option value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option value="No Disponible">No disponible</option>
+                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option value="Reacondicionado">Reacondicionado</option>
+                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="">Explicación detallada</label>
+                  <input type="text" class="form-control" placeholder="Escribe aquí" name="expliacionTechoSolar" id="expliacionTechoSolar" value="{{ insercion.examen_visual.explicacion_detallada_techo_solar }}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="condiciones-servicio" style="display: none;">
+        <div class="documentacion-checkbox">
+          <div class="documentacion-mantenimiento col-12">
+            <div class="documentacion-mantenimiento_p">
+              <p>
+                Condiciones
+              </p>
+            </div>
+            <div class="insercion-vehiculos_h4 insercion-vehiculos-form_bloque">
+              <h4>CONDICIONES DEL SERVICIO</h4>
+              <p>El cliente que contrata la Garantía de Mecánica ofrecida por Hosho Garantía, tendrá derecho a
+                los
+                siguientes beneficios que se describen a continuación en el siguiente contrato:</p>
+            </div>
+            <div class="documentacion-mantenimiento_i">
+            </div>
+            <div class="condiciones-p insercion-vehiculos-form_bloque">
+              <p>En una parte, la Sociedad GRUPO HOSHO S.L, denominación comercial HOSHO GARANTÍA.
+                <br><br>
+                De la otra, el cliente que contrata los servicios ofrecidos por los servicios de garantía
+                mecánica de
+                la empresa HOSHO GARANTÍA.
+                <br>
+              <div class="condiciones-p_center">
+                <strong> INTERVENCION Y CAPACIDAD</strong>
+              </div>
+              <br>
+              Ambas partes se reconocen capacidad jurídico legal para el otorgamiento del presente contrato,
+              actuando
+              la empresa la HOSHO GARANTÍA y el titular del vehículo garantizado en su propio nombre y
+              representación.
+              <br>
+              <div class="condiciones-p_center">
+                <strong> EXPONEN</strong>
+              </div>
+              <br>
+              I.- HOSHO GARANTÍA, es una entidad de garantías de vehículos, que provee reparaciones a través de
+              un
+              contrato de garantía suscrito con el titular del vehículo garantizado y/o el vendedor.
+              <br><br>
+              II.- . HOSHO GARANTÍA no es una compañía de seguros, ni el presente contrato es una póliza de
+              seguros.
+              <br><br>
+              III.- La presente garantía no afecta a los derechos legales vigentes tiene el comprador, sino que
+              los
+              amplia, tanto si lo es en concepto de consumidor, persona física particular o persona jurídica
+              profesional.
+              <br>
+              <div class="condiciones-p_center">
+                <strong> CLÁUSULAS</strong>
+              </div>
+              <br>
+              <STRONG>PRIMERA</STRONG>
+              <br><br>
+              <STRong>OBJETO DE GARANTÍA</STRong>
+              <br>
+              Servicio sobre el que recae el presente contrato de garantía.
+              <br><br>
+              Descripción del vehículo objeto de garantía. Previa revisión y descripción detallada del estado
+              del
+              vehículo por parte de un técnico, de lo cual se deja constancia documental en este contrato de
+              garantía.
+              <br><br>
+              <strong>MARCA MODELO MATRÍCULA</strong>
+              <br><br>
+              <strong>BASTIDOR KILOMETRAJE AÑO DE MATRICULACIÓN</strong>
+              Información disponible en el formulario de contratación
+              <br><br>
+              El comprador, asume que se trata de un automóvil usado, y que por consiguiente se ha producido una
+              devaluación sobre los elementos y piezas que integran el conjunto del mismo, el garante responde
+              con
+              respecto del vehículo en cuestión, en el caso de que la vida útil de la pieza sea inferior a la
+              prevista
+              por el fabricante o a los usos habituales. Tras una revisión realizada en presencia del
+              propietario, se
+              ha podido determinar que el estado del vehículo es el siguiente:
+              <br><br>
+              <strong>Carrocería </strong>
+              <br>
+              Desgaste del vehículo
+              Presenta buen estado atendiendo a su antigüedad y uso Incidencias reseñables:
+              <br><br>
+              <strong>Electricidad </strong>
+              <br>
+              Desgaste del vehículo
+              Funciona todo como condición normal de uso, para antigüedad y uso. Incidencias reseñables:
+              <br><br>
+              <strong>Interiores</strong>
+              <br>
+              Desgaste del vehículo
+              El vehículo presenta buen estado del interior con desgaste normal para antigüedad y uso.
+              Incidencias
+              reseñables:
+              <br><br>
+              <strong>MECÁNICA: </strong>
+              <br>
+              Desgaste del vehículo
+              Hemos realizado un informe del vehículo el cual nos informa que está acto para la venta, y su
+              mecánica
+              atiende al uso normal con respecto a su antigüedad y kilometraje.
+              <br><br>
+              El propietario conoce el estado del vehículo, tras el reconocimiento por parte de la empresa
+              garante se
+              comprueba el funcionamiento de todos los elementos y mecanismos eléctricos del vehículo, así como
+              los
+              manuales, luces e interruptores, siendo por tanto conocedor de su estado.
+              <br><br>
+              Piezas que podrían requerir sustitución durante el año después de haberse realizado el presente
+              contrato
+              de garantía y que podrían llegar a su vida útil serían:
+              <br><br>
+              COBERTURA DE LA GARANTÍA MECÁNICA:
+              Motor.
+              Alimentación.
+              Sobrealimentación.
+              Compresor Volumétrico.
+              Cambio Manual.
+              Cambio Automático.
+              Cambio a Variación Continua.
+              Sistema de frenado.
+              Diferencial.
+              Sistema de refrigeración.
+              Dirección.
+              Transmisión.
+              EXCLUSIONES DE LA GARANTÍA.
+              Rodamientos, embrague, mecatrónica de las cajas automáticas, la cual hace parte de los sistemas de
+              ingeniería inteligentes electrónicos del vehículo y el cuerpo de válvula o caja de correderas de
+              la caja
+              de cambios automáticas, al igual que la bomba hidráulica de cambio manual robotizada.
+              Es de aclarar que las piezas o partes que requieran sustitución, mantenimiento, reparación o
+              reglajes de
+              piezas u órganos ocasionados por desgaste, deformación o deterioro paulatino, como consecuencia
+              del uso
+              o funcionamiento normal, erosión, corrosión no estarían cubiertas por la garantía mecánica básica.
+              <br><br>
+              <strong>SEGUNDA: PRESTACIÓN DE SERVICIO DE GARANTIA.</strong>
+              <br><br>
+              La presente garantía comercial tiene carácter adicional y voluntario y será de obligado
+              cumplimiento por
+              parte de HOSHO GARANTÍA, se garantiza el arreglo del vehículo de forma gratuita en caso de avería
+              mecánica, con el único límite que no supere la reparación el valor venal del vehículo, según el
+              Baremo
+              de Eurotax a la fecha de concurrencia de la avería. La presente garantía tiene por única finalidad
+              la de
+              permitir la entrega del vehículo objeto de la garantía, en el mismo estado de funcionamiento
+              mecánico
+              anterior a la avería garantizada.
+              <br><br>
+              La presente cobertura, tienen por objeto garantizar el importe de las reparaciones (piezas, mano
+              de
+              obra), tras una avería mecánica de carácter fortuito, con los límites y condiciones establecidos
+              en el
+              presente contrato. La presente garantía no cubre los daños y perjuicios debidos a una
+              responsabilidad,
+              sea cual sea (contractual, delictiva o extracontractual), ni los daños y perjuicios directos o
+              indirectos, aunque sean debidos a una avería cubierta por la garantía. Dicha garantía no exime de
+              las
+              responsabilidades legales del vendedor del vehículo descritas en la Ley de Defensa de los
+              Consumidores
+              vigente y en el Código Civil, la entidad garante podrá reclamar por dichos vicios o defectos al
+              fabricante
+              <br><br>
+              A efectos de determinar la garantía, se entiende por avería mecánica, a efectos del presente
+              contrato,
+              la incapacidad de una pieza de funcionar conforme a las especificaciones del fabricante, como
+              consecuencia de un fallo mecánico o eléctrico. Por lo tanto, no tienen la consideración de avería
+              mecánica, la reducción gradual del rendimiento de una pieza debido a su desgaste o deterioro por
+              antigüedad y kilometraje del vehículo.
+              <br><br>
+              <strong>TERCERA: DURACIÓN DEL CONTRATO DE GARANTIA.</strong>
+              <br><br>
+              El Prestador realizará los Servicios objeto del presente Contrato durante el periodo de 6 meses o
+              1 (un)
+              año según convengan las partes desde la suscripción del presente Contrato. Una vez finalizado
+              dicho
+              plazo el compromiso se prorrogará por iguales periodos salvo que alguna de las partes exprese su
+              deseo
+              de no renovar el contrato, que deberá realizarse con una anterioridad mínima de dos meses.
+              <br><br>
+              En cualquier caso, y como requisito previo a la resolución del Contrato por cualquiera de las
+              Partes, se
+              deberá notificar a la parte incumplidora el incumplimiento y conceder un plazo de 5 días desde la
+              notificación para que subsane dicho incumplimiento. Transcurrido dicho plazo se podrá resolver el
+              Contrato.
+              <br><br>
+              La duración de la garantía podrá ser anulada antes del plazo contratado por las siguientes
+              razones:
+              <br><br>
+              . En caso de no realizarse el pago de los servicios.
+              <br><br>
+              . En caso de una falsa declaración u omisión o inexactitud de los datos necesarios y solicitados
+              para la
+              concesión de la garantía mecánica.
+              <br><br>
+              . Cuando el vehículo garantizado sea vendido, cedido, destruido o robado.
+              <br><br>
+              . Cuando la utilización del vehículo o su mantenimiento no sean los recomendados por el
+              fabricante.
+              <br><br>
+              . Cuando hayan sido montadas piezas o realizadas modificaciones o transformaciones en el vehículo
+              sin la
+              autorización de la entidad garante.
+              <br><br>
+              . Cuando el propietario de mala fe, exagere el importe de los daños o intencionadamente utilice
+              como
+              justificantes, documentos falsos o medios fraudulentos, perderá todo derecho a indemnización o
+              arreglo.
+              <br><br>
+              La resolución unilateral por parte de HOSHO GARANTÍA será automática en los supuestos antes
+              descritos, y
+              tendrá efecto desde la fecha del suceso que la provoca, y el propietario del vehículo no tendrá
+              derecho
+              a ningún tipo de indemnización, por lo que el presente contrato se extinguirá inmediatamente y
+              todas las
+              sumas pagadas a HOSHO GARANTÍA se perderán, sin perjuicio de las acciones legales que la entidad
+              garante
+              pueda interesar en defensa de sus intereses.
+              <br><br>
+              <strong>CUARTA: PRECIO</strong>
+              <br><br>
+              El Precio será abonado de la forma siguiente: El Cliente procederá al abono de la cuota anual,
+              mediante
+              domiciliación bancaria, Transferencia, Stripe, Tarjeta de crédito.
+              <br><br>
+              <strong>QUINTA: REVISIONES MECÁNICAS OBLIGATORIAS</strong>
+              <br><br>
+              El titular del vehículo se compromete a realizar las revisiones del vehículo conforme a un
+              calendario de
+              servicio periódico de la siguiente forma, para vehículos cada 10.000 kilómetros o seis meses y
+              para
+              motocicletas 5000 kilómetros o seis meses. El titular deberá guardar los certificados
+              acreditativos de
+              pasar esas revisiones periódicas, la empresa garante podrá exigir su presentación. El
+              incumplimiento por
+              parte del propietario de la garantía, de las revisiones antes descritas, libera a HOSHO GARANTÍA
+              de las
+              obligaciones inherentes en el presente contrato, en caso de incumplimiento las cantidades
+              recibidas por
+              le empresa no serán devueltas al titular del contrato.
+              <br><br>
+              <strong>SEXTA: EN CASO DE AVERÍA</strong>
+              <br><br>
+              El propietario o conductor deberá detenerse en cuanto aparezcan los primeros síntomas de avería o
+              mal
+              funcionamiento mecánico, dado que cualquier agravación de la misma quedará a su cargo.
+              <br><br>
+              Se deberá comunicar a HOSHO GARANTÍA dicha avería en el plazo de siete días, indicando tipo de
+              avería,
+              el número de garantía y los kilómetros indicados en el marcador, a efectos de poder determinar el
+              taller
+              al que se debe llevar el vehículo. La empresa garante se reserva el derecho de elegir, si así lo
+              cree
+              preciso, un taller colaborador para realizar las necesarias reparaciones. Así mismo, puede decidir
+              utilizar componentes de sustitución equivalentes al desgaste del vehículo asegurado, si el titular
+              del
+              vehículo decidiera que la reparación se realice con piezas nuevas la diferencia del coste correrá
+              de su
+              cargo. El incumplimiento de del plazo o taller indicados eximirá a la entidad garante del
+              cumplimiento
+              de sus servicios.
+              <br><br>
+              Si la avería está cubierta por la garantía, HOSHO GARANTÍA, comunicará al taller reparador la
+              autorización sobre la cuantía de la avería, una vez reparado se extenderá factura a nombre de la
+              entidad
+              garante, por la cuantía aceptada y garantizada, quién efectuará el correspondiente abono de la
+              factura.
+              Toda reparación o intervención que no haya sido objeto de acuerdo previo entre el taller reparador
+              e
+              HOSHO GARANTÍA, no irá a cargo de la garantía.
+              <br><br>
+              No se indemnizará gastos de diagnosis y desmontaje de las piezas si la avería no está cubierta por
+              la
+              presente garantía.
+              <br><br>
+              HOSHO GARANTÍA en ningún caso asumirá reparaciones en la casa oficial la marca del vehículo.
+              <br><br>
+              Finalmente, <strong>HOSHO GARANTÍA</strong> se reserva el derecho de nombrar perito para todos los
+              casos
+              que considere oportunos.
+              <br><br>
+              <strong>SÉPTIMA: CESIÓN.</strong>
+              <br><br>
+              Las Partes no podrán ceder su posición en el presente Contrato, ni tampoco los derechos u
+              obligaciones
+              que del mismo se derivan.su favor o a su cargo, sin el consentimiento por escrito de la otra
+              Parte.
+              <br><br>
+              <strong>OCTAVA: LEY APLICABLE Y JURISDICCIÓN COMPETENTE</strong>
+              <br><br>
+              El presente Contrato se regirá e interpretará de acuerdo con las Leyes de España y se someterá a
+              la
+              jurisdicción de los Tribunales de Las Palmas de Gran Canaria.
+              <br><br>
+              <strong>NOVENA:</strong>
+              <br><br>
+              Toda garantía contratada tendrá una carencia de 25 días a partir del pago de la misma.
+              <br><br>
+              <strong>DÉCIMA:</strong>
+              <br><br>
+              El cliente acepta y entiende los términos y condiciones del contrato, teniendo claro que Ibérica
+              Garantías pasa a ser la empresa subsidiaria de dicha garantía, eximiendo de cualquier
+              responsabilidad al
+              vendedor.
+              <br><br>
+              <strong>NOTIFICACIONES</strong>
+              <br><br>
+              Todas las notificaciones, requerimientos, peticiones y otras comunicaciones que hayan de
+              efectuarse por
+              las partes en relación con el presente contrato, deberán realizarse por escrito y se entenderá que
+              han
+              sido debidamente realizadas cuando hayan sido entregadas en mano o bien remitidas por correo
+              certificado
+              al domicilio de la otra parte que conste en el encabezamiento del presente contrato, o bien a
+              cualquier
+              otro domicilio que a estos efectos cada parte pueda indicar a la otra.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="proteccion-datos" style="display: none;">
+        <div class="documentacion-checkbox">
+          <div class="documentacion-mantenimiento col-12">
+            <div class="documentacion-mantenimiento_i">
+            </div>
+            <div class="condiciones-p insercion-vehiculos-form_bloque">
+              <p>
+              <div class="proteccion-p_right">CONSENTIMIENTO EXPRESO DEL CLIENTE DEL TRATAMIENTO DE LOS DATOS
+                PERSONALES POR PARTE DE HOSHO GARANTÍA.</div>
+
+              <br><br><br>
+
+              Confidencialidad y Datos Personales­­­.
+              <br><br>
+              Las Partes se obligan a guardar absoluta confidencialidad sobre la información y documentación que
+              ambas
+              Partes se faciliten mutuamente o tengan acceso durante la prestación del Servicio. Ambas Partes se
+              obligan a no revelar, ni utilizar directa o indirectamente la información y conocimientos
+              adquiridos,
+              derivados de la relación contractual acordada entre las Partes en otros servicios que no sean el
+              objeto
+              del presente Contrato. Las Partes se comprometen a tomar las medidas necesarias, tanto respecto a
+              sus
+              empleados como a terceros que pudieran tener alguna relación con el presente Contrato, para
+              asegurar el
+              cumplimiento de lo acordado en esta cláusula. Una vez extinguido el presente Contrato, el
+              Prestatario
+              destruirá toda información que sobre la presente relación haya almacenado en cualquier soporte o
+              haya
+              reproducido por cualquier procedimiento.
+              <br><br>
+              Ambas Partes se comprometen a guardar el más absoluto secreto respecto de los datos de carácter
+              personal
+              a que tengan acceso en cumplimiento del presente contrato y a observar todas las previsiones
+              legales que
+              se contienen en la Ley Orgánica 15/1999, de Protección de los Datos de Carácter Personal. En
+              particular,
+              el Prestador se compromete a no aplicar o utilizar los datos de carácter personal tratados o
+              aquellos a
+              los que hayan tenido acceso durante la prestación del Servicio, con fin distinto al que figura en
+              el
+              presente Contrato, ni a cederlos, ni siquiera para su conservación, a otras personas. El Prestador
+              aplicará a los datos que trate por cuenta del Cliente, las medidas de seguridad establecidas en el
+              Real
+              Decreto 994/1999, Reglamento de Seguridad, en virtud del tipo de datos que trate. Una vez
+              finalizado el
+              Servicio, deberá devolver los datos al Cliente en el mismo soporte que se los remitió y no
+              guardará
+              ninguna copia de los mismos. Las Partes responderán una frente a la otra por los daños y
+              perjuicios que
+              puedan derivarse del incumplimiento de esta obligación.
+              <br><br>
+              Solo serán solicitados aquellos datos estrictamente necesarios para prestar adecuadamente los
+              servicios
+              solicitados, pudiendo ser necesario recoger datos de contacto de terceros, tales como
+              representantes
+              legales, tutores, o personas a cargo designadas por los mismos.
+              <br><br>
+              Todos los datos recogidos cuentan con el compromiso de confidencialidad, con las medidas de
+              seguridad
+              establecidas legalmente, y bajo ningún concepto son cedidos o tratados por terceras personas,
+              físicas o
+              jurídicas, sin el previo consentimiento del cliente, tutor o representante legal, salvo en
+              aquellos
+              casos en los que fuere imprescindible para la correcta prestación del servicio.
+              <br><br>
+              Una vez finalizada la relación entre la empresa y el cliente los datos serán archivados y
+              conservados,
+              durante un periodo tiempo mínimo de 2 (dos) años, tras lo cual seguirá archivado o en su defecto
+              serán
+              devueltos íntegramente al cliente o su autorizado legal.
+              <br><br>
+              Los datos que facilito serán incluidos en el tratamiento denominado Clientes de HOSHO GARANTÍA,
+              con la
+              finalidad de gestión del servicio contratado, emisión de facturas, contacto y todas las gestiones
+              relacionadas con los clientes y manifiesto mi consentimiento. También se me ha informado de la
+              posibilidad de ejercitar los derechos de acceso, rectificación, cancelación y oposición,
+              indicándolo por
+              escrito a HOSHO GARANTÍA con domicilio en la Calle Niza, número 2, escalera centro, primero b, Móstoles, Madrid. CP 28936
+              <br><br>
+              Los datos personales sean cedidos por HOSHO GARANTÍA a las entidades que prestan servicios a la
+              misma.
+              </p>
+            </div>
+            <!-- <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col insercion-vehiculos-date">
+                  <label for="fechaEntrega2" class="col col-form-label">Fecha de entrega</label>
+                  <input class="form-control" type="date" value="2021-03-25" id="fechaEntrega2" name="fechaEntrega2">
+                </div>
+              </div>
+            </div> -->
+            <div class="insercion-vehiculos-form">
+              <div class="form-row">
+                <div class="col insercion-vehiculos-date">
+                  <img src="img/logo-empresa.png" alt="">
+                  <p>
+                    CENTRO DE OPERACIONES Y SOPORTE
+                    <br>
+                    <br>
+                    E-mail: <a href="" style='color:#f44336;'>infocliente@hoshogarantia.com</a>
+                    <br>
+                    <br>
+                    <a href="www.hoshogarantia.com" style='color:#f44336;'> www.hoshogarantia.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-principal_botones">
+    <a href="{% url 'core:user' %}" class="menu-principal_botones-color" style='text-decoration:none;color:#be1e2d;'>Volver Al inicio</a>
+        <button type="button" id="anterior" class="menu-principal_botones-color"
+          style='text-decoration:none;color:#be1e2d;'>
+          ANTERIOR
+        </button>
+        <button type="submit" id="confirmar" class="menu-principal_botones-color"
+          style='text-decoration:none;color:#be1e2d;'>
+          GUARDAR
+        </button>
+        <button type="button" id="siguiente" class="menu-principal_botones-color"
+          style='text-decoration:none;color:#be1e2d;'>
+          SIGUIENTE
+        </button>
+        <!-- <button type="button" id="guardar" class="menu-principal_botones-color"><i class='bx bxs-save'></i></i></button> -->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
