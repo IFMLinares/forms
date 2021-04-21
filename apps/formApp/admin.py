@@ -150,6 +150,9 @@ class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         'modelo',
     )
 
+class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = UsuarioResource
+
 class DatosVehiculoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = DatosVehiculoResource
 
@@ -167,6 +170,7 @@ class MantenimientoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 class ExamenVisualAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ExamenVisualResource
+
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Insercion, InsercionAdmin)
