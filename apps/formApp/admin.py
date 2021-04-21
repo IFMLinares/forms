@@ -7,7 +7,7 @@ from .models import (
     User,
     Insercion,
     Contrato,
-    DatosVehiculo
+    DatosVehiculo.
     Suplemento,
     DatosComprador,
     Documentacion,
