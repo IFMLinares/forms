@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django.contrib.humanize',
     'crispy_forms',
+    'import_export',
 
     'apps.formApp'
 ]

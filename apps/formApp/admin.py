@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 from django.urls import reverse
 from .models import (
     User,
@@ -8,7 +10,21 @@ from .models import (
     )
 # Register your models here.
 
-class InsercionAdmin(admin.ModelAdmin):
+class InsercionResource(resources.ModelResource):
+    class Meta:
+        model = Insercion
+
+class ContratoResource(resources.ModelResource):
+    class Meta:
+        model = Contrato
+
+class UsuarioResource(resources.ModelResource):
+    class Meta:
+        model = User
+
+class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+
+    resource_class = InsercionResource
 
     readonly_fields = (
         'datos_del_Vehiculo',
@@ -54,7 +70,9 @@ class InsercionAdmin(admin.ModelAdmin):
     pdf_actions.short_description = 'IMPRIMIR'
     pdf_actions.allow_tags = True
 
-class ContratoAdmin(admin.ModelAdmin):
+class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = ContratoResource
+
     readonly_fields = (
         'usuario',
         'contratoLocales',
@@ -116,7 +134,9 @@ class ContratoAdmin(admin.ModelAdmin):
 #             request, object_id, form_url, extra_context=extra_context,
 #         )
 
+class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = UsuarioResource
 
-admin.site.register(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Insercion, InsercionAdmin)
 admin.site.register(Contrato, ContratoAdmin)
