@@ -28,6 +28,30 @@ class UsuarioResource(resources.ModelResource):
     class Meta:
         model = User
 
+class DatosVehiculoResource(resources.ModelResource):
+    class Meta:
+        model = DatosVehiculo
+
+class SuplementoResource(resources.ModelResource):
+    class Meta:
+        model = Suplemento
+
+class DatosCompradorResource(resources.ModelResource):
+    class Meta:
+        model = DatosComprador
+
+class DocumentacionResource(resources.ModelResource):
+    class Meta:
+        model = Documentacion
+
+class MantenimientoResource(resources.ModelResource):
+    class Meta:
+        model = Mantenimiento
+
+class ExamenVisualResource(resources.ModelResource):
+    class Meta:
+        model = ExamenVisual
+
 class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     resource_class = InsercionResource
@@ -126,29 +150,30 @@ class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         'modelo',
     )
 
-# class UsuarioAdmin(admin.ModelAdmin):
-#     change_form_template = 'index.html'
+class DatosVehiculoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = DatosVehiculoResource
 
-#     def get_osm_info(self):
-#         # ...
-#         pass
+class SuplementoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = SuplementoResource
 
-#     def change_view(self, request, object_id, form_url='index.html', extra_context=None):
-#         extra_context = extra_context or {}
-#         extra_context['osm_data'] = self.get_osm_info()
-#         return super().change_view(
-#             request, object_id, form_url, extra_context=extra_context,
-#         )
+class DatosCompradorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = DatosCompradorResource
 
-class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = UsuarioResource
+class DocumentacionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = DocumentacionResource
+
+class MantenimientoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = MantenimientoResource
+
+class ExamenVisualAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = ExamenVisualResource
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Insercion, InsercionAdmin)
 admin.site.register(Contrato, ContratoAdmin)
-admin.site.register(DatosVehiculo)
-admin.site.register(Suplemento)
-admin.site.register(DatosComprador)
-admin.site.register(Documentacion)
-admin.site.register(Mantenimiento)
-admin.site.register(ExamenVisual)
+admin.site.register(DatosVehiculo, DatosVehiculoAdmin)
+admin.site.register(Suplemento, SuplementoAdmin)
+admin.site.register(DatosComprador, DatosCompradorAdmin)
+admin.site.register(Documentacion, DocumentacionAdmin)
+admin.site.register(Mantenimiento, MantenimientoAdmin)
+admin.site.register(ExamenVisual, ExamenVisualAdmin)
