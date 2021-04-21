@@ -15,13 +15,13 @@ from .models import (
     )
 # Register your models here.
 
-# class InsercionResource(resources.ModelResource):
-#     class Meta:
-#         model = Insercion
+class InsercionResource(resources.ModelResource):
+    class Meta:
+        model = Insercion
 
-# class ContratoResource(resources.ModelResource):
-#     class Meta:
-#         model = Contrato
+class ContratoResource(resources.ModelResource):
+    class Meta:
+        model = Contrato
 
 # class UsuarioResource(resources.ModelResource):
 #     class Meta:
