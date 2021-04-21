@@ -1,60 +1,14 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from import_export import resources
-from import_export.admin import ImportExportModelAdmin
 from django.urls import reverse
 from .models import (
     User,
     Insercion,
-    Contrato,
-    DatosVehiculo,
-    Suplemento,
-    DatosComprador,
-    Documentacion,
-    Mantenimiento,
-    ExamenVisual
+    Contrato
     )
 # Register your models here.
 
-class InsercionResource(resources.ModelResource):
-    class Meta:
-        model = Insercion
-
-class ContratoResource(resources.ModelResource):
-    class Meta:
-        model = Contrato
-
-# class UsuarioResource(resources.ModelResource):
-#     class Meta:
-#         model = User
-
-# class DatosVehiculoResource(resources.ModelResource):
-#     class Meta:
-#         model = DatosVehiculo
-
-# class SuplementoResource(resources.ModelResource):
-#     class Meta:
-#         model = Suplemento
-
-# class DatosCompradorResource(resources.ModelResource):
-#     class Meta:
-#         model = DatosComprador
-
-# class DocumentacionResource(resources.ModelResource):
-#     class Meta:
-#         model = Documentacion
-
-# class MantenimientoResource(resources.ModelResource):
-#     class Meta:
-#         model = Mantenimiento
-
-# class ExamenVisualResource(resources.ModelResource):
-#     class Meta:
-#         model = ExamenVisual
-
-class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-
-    resource_class = InsercionResource
+class InsercionAdmin(admin.ModelAdmin):
 
     readonly_fields = (
         'datos_del_Vehiculo',
@@ -100,9 +54,7 @@ class InsercionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     pdf_actions.short_description = 'IMPRIMIR'
     pdf_actions.allow_tags = True
 
-class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = ContratoResource
-
+class ContratoAdmin(admin.ModelAdmin):
     readonly_fields = (
         'usuario',
         'contratoLocales',
@@ -148,6 +100,7 @@ class ContratoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         'contratoLocales',
         'marca',
         'modelo',
+    )
 
 admin.site.register(User)
 admin.site.register(Insercion, InsercionAdmin)
