@@ -33,23 +33,18 @@ Contratos
         <div class="col">
           <label for="insercion">Seleccione una inserción de vehículo</label>
           <select class="custom-select" id="insercion" name="insercion" >
-            {% for q in query %}
-              {% if q.contrato %}
-              {% else %}
-                <option value="{{ q.pk }}">Matrícula: {{ q.datos_del_Vehiculo.matricula }}. Marca:{{ q.datos_del_Vehiculo.marca }}  Modelo:{{ q.datos_del_Vehiculo.modelo }}. {{ q.concesionario }} </option>
-              {% endif %}
-            {% endfor %}
+                <option value="{{ contrato.contrato.pk }}">Matrícula: {{ contrato.datos_del_Vehiculo.matricula }}. Marca:{{ contrato.datos_del_Vehiculo.marca }}  Modelo:{{ contrato.datos_del_Vehiculo.modelo }}. {{ contrato.concesionario }} </option>
           </select>
         </div>
         <div class="col insercion-vehiculos-date">
           <label for="fecha">Fecha</label>
-          <input class="form-control" name="fecha" id="fecha" type="date" value="{{ contrato.fecha }}">
+          <input class="form-control" name="fecha" id="fecha" type="date" value="{{ contrato.contrato.contratofecha|date:'Y-m-d' }}">
         </div>
         <div class="form-row" style="padding-left: 15px;">
           <div class="form-group col-md-4">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input class="check-box-group" type="radio" value="Contrato en locales comerciales" name="contratoLocales" 
+                <input class="check-box-group" type="radio" value="Contrato en locales comerciales"  {% if contrato.contrato.contratoLocales == "Contrato en locales comerciales" %} checked {% endif %} name="contratoLocales" 
                   id="contratoLocalesComerciales">
                 <span class="checkmark"></span>
                 <span class="label">Contrato en Locales Comerciales</span>
@@ -60,7 +55,7 @@ Contratos
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                 <input class="check-box-group" type="radio" value="contratoFueraLocalesComerciales"
-                  name="contratoLocales" id="contratoFueraLocalesComerciales" >
+                  name="contratoLocales" id="contratoFueraLocalesComerciales" {% if contrato.contrato.contratoLocales == "contratoFueraLocalesComerciales" %} checked {% endif %}>
                 <span class="checkmark"></span>
                 <span class="label">Contrato Fuera locales Comerciales</span>
               </label>
@@ -71,15 +66,15 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="firmante">El/La firmante</label>
-              <input type="text" class="form-control" name="firmante" id="firmante" placeholder="Escribe aquí" value="{{ contrato.firmante }}">
+              <input type="text" class="form-control" name="firmante" id="firmante" placeholder="Escribe aquí" value="{{ contrato.contrato.firmante }}">
             </div>
             <div class="col">
               <label for="nacido">Nacido/a</label>
-              <input type="text" class="form-control" name="nacido" id="nacido" placeholder="Escribe aquí" value="{{ contrato.nacido }}">
+              <input type="text" class="form-control" name="nacido" id="nacido" placeholder="Escribe aquí" value="{{ contrato.contra.tonacido }}">
             </div>
             <div class="col insercion-vehiculos-date">
               <label for="fechaNacimiento">Fecha</label>
-              <input class="form-control" name="fechaNacimiento" id="fechaNacimiento" type="date" value="{{ contrato.fechaNacimiento }}">
+              <input class="form-control" name="fechaNacimiento" id="fechaNacimiento" type="date" value="{{ contrato.contrato.fechaNacimiento|date:'Y-m-d' }}">
             </div>
           </div>
         </div>
@@ -88,7 +83,7 @@ Contratos
             <div class="col">
               <label for="residenciaSede">Residente / con sede en</label>
               <input type="text" class="form-control" name="residenciaSede" id="residenciaSede"
-                placeholder="Escribe aquí" value="{{ contrato.residenciaSede }}">
+                placeholder="Escribe aquí" value="{{ contrato.contrato.residenciaSede }}">
             </div>
           </div>
         </div>
@@ -96,11 +91,11 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="telefono">Télefono</label>
-              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Escribe aquí" value="{{ contrato.telefono }}">
+              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Escribe aquí" value="{{ contrato.contrato.telefono }}">
             </div>
             <div class="col">
               <label for="profesion">Profesión</label>
-              <input type="text" class="form-control" name="profesion" id="profesion" placeholder="Escribe aquí" value="{{ contrato.profesion }}">
+              <input type="text" class="form-control" name="profesion" id="profesion" placeholder="Escribe aquí" value="{{ contrato.contrato.profesion }}">
             </div>
           </div>
         </div>
@@ -108,7 +103,7 @@ Contratos
           <div class="form-row">
             <div class="col-6">
               <label for="CifNif">C.I.F / N.I.F</label>
-              <input type="text" class="form-control" name="CifNif" id="CifNif" placeholder="Escribe aquí" value="{{ contrato.CifNif }}">
+              <input type="text" class="form-control" name="CifNif" id="CifNif" placeholder="Escribe aquí" value="{{ contrato.contrato.CifNif }}">
             </div>
           </div>
         </div>
@@ -127,7 +122,7 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="vendedor">Vendedor</label>
-              <input type="text" class="form-control" name="vendedor" id="vendedor" placeholder="Escribe aquí" value="{{ contrato.vendedor }}">
+              <input type="text" class="form-control" name="vendedor" id="vendedor" placeholder="Escribe aquí" value="{{ contrato.contrato.vendedor }}">
             </div>
           </div>
         </div>
@@ -135,11 +130,11 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="marca">Marca</label>
-              <input type="text" class="form-control" name="marca" id="marca" placeholder="Escribe aquí" value="{{ contrato.marca }}">
+              <input type="text" class="form-control" name="marca" id="marca" placeholder="Escribe aquí" value="{{ contrato.contrato.marca }}">
             </div>
             <div class="col">
               <label for="version">Versión</label>
-              <input type="text" class="form-control" name="version" id="version" placeholder="Escribe aquí" value="{{ contrato.version }}">
+              <input type="text" class="form-control" name="version" id="version" placeholder="Escribe aquí" value="{{ contrato.contrato.version }}">
             </div>
           </div>
         </div>
@@ -147,11 +142,11 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="modelo">Modelo</label>
-              <input type="text" class="form-control" name="modelo" id="modelo" placeholder="Escribe aquí" value="{{ contrato.modelo }}">
+              <input type="text" class="form-control" name="modelo" id="modelo" placeholder="Escribe aquí" value="{{ contrato.contrato.modelo }}">
             </div>
             <div class="col">
               <label for="bastidor">Bastidor</label>
-              <input type="text" class="form-control" name="bastidor" id="bastidor" placeholder="Escribe aquí" value="{{ contrato.bastidor }}">
+              <input type="text" class="form-control" name="bastidor" id="bastidor" placeholder="Escribe aquí" value="{{ contrato.contrato.bastidor }}">
             </div>
           </div>
         </div>
@@ -171,7 +166,7 @@ Contratos
               <div class="check-box-group">
                 <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                   <input class="check-box-group" type="radio" value="Propietario" name="estadoEncontrado"
-                    id="propietario" >
+                    id="propietario" {% if contrato.contrato.estadoEncontrado == 'Propietario' %} checked{% endif %}>
                   <span class="checkmark"></span>
                   <span class="label">Como Propietario del mismo</span>
                 </label>
@@ -181,7 +176,7 @@ Contratos
               <div class="check-box-group">
                 <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                   <input class="check-box-group" type="radio" value="arregloEspacial" name="estadoEncontrado"
-                    id="ordenEspacial">
+                    id="ordenEspacial" {% if contrato.contrato.estadoEncontrado == 'arregloEspacial' %} checked{% endif %}>
                   <span class="checkmark"></span>
                   <span class="label">Con arreglo a la orden espacial a tal efecto otorgado por el Sr.</span>
                 </label>
@@ -203,12 +198,12 @@ Contratos
           <div class="form-row">
             <div class="col">
               <label for="marceEmpresa">Marca</label>
-              <input name="marceEmpresa" id="marceEmpresa" type="text" class="form-control" placeholder="Escribe aquí" value="{{ contrato.marceEmpresa }}">
+              <input name="marceEmpresa" id="marceEmpresa" type="text" class="form-control" placeholder="Escribe aquí" value="{{ contrato.contrato.marceEmpresa }}">
             </div>
             <div class="col">
               <label for="versionEmpresa">Versión</label>
               <input name="versionEmpresa" id="versionEmpresa" type="text" class="form-control"
-                placeholder="Escribe aquí" value="{{ contrato.versionEmpresa }}">
+                placeholder="Escribe aquí" value="{{ contrato.contrato.versionEmpresa }}">
             </div>
           </div>
         </div>
@@ -217,12 +212,12 @@ Contratos
             <div class="col">
               <label for="modeloEmpresa">Modelo</label>
               <input name="modeloEmpresa" id="modeloEmpresa" type="text" class="form-control"
-                placeholder="Escribe aquí" value="{{ contrato.modeloEmpresa }}">
+                placeholder="Escribe aquí" value="{{ contrato.contrato.modeloEmpresa }}">
             </div>
             <div class="col">
               <label for="bastidorEmpresa">Bastidor</label>
               <input name="bastidorEmpresa" id="bastidorEmpresa" type="text" class="form-control"
-                placeholder="Escribe aquí" value="{{ contrato.bastidorEmpresa }}">
+                placeholder="Escribe aquí" value="{{ contrato.contrato.bastidorEmpresa }}">
             </div>
           </div>
         </div>
@@ -231,7 +226,7 @@ Contratos
             <div class="col-6 insercion-vehiculos-date">
               <label for="fechaPrimeraMatriculacion">Fecha 1º Matriculación</label>
               <input name="fechaPrimeraMatriculacion" id="fechaPrimeraMatriculacion" class="form-control" type="date"
-              value="{{ contrato.fechaPrimeraMatriculacion }}" id="example-date-input">
+              value="{{ contrato.contrato.fechaPrimeraMatriculacion|date:'Y-m-d' }}" id="example-date-input">
             </div>
           </div>
         </div>
@@ -244,7 +239,7 @@ Contratos
             <div class="form-group col-md-4">
               <div class="check-box-group">
                 <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                  <input value="1" name="equivalenteAcordado" id="equivalenteAcordado" type="checkbox" checked>
+                  <input value="1" name="equivalenteAcordado" id="equivalenteAcordado" type="checkbox" {% if contrato.contrato.equivalenteAcordado == '1' %} checked {% endif %}>
                   <span class="checkmark"></span>
                   <span class="label">Por el equivalente acordado igual a €</span>
                 </label>
@@ -252,7 +247,7 @@ Contratos
             </div>
             <div class="col">
               <input name="equivalenteAcordadoMonto" id="equivalenteAcordadoMonto" type="text" class="form-control"
-                placeholder="Escribe aquí" value="{{ contrato.equivalenteAcordadoMonto }}">
+                placeholder="Escribe aquí" value="{{ contrato.contrato.equivalenteAcordadoMonto }}">
             </div>
           </div>
           <div class="documentacion-mantenimiento_p_pequeno">
@@ -263,7 +258,7 @@ Contratos
           <div class="form-group col">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input value="1" name="abonadoComprador" id="abonadoComprador" type="checkbox" checked>
+                <input value="1" name="abonadoComprador" id="abonadoComprador" type="checkbox" {% if contrato.contrato.abonadoComprador == '1' %} checked {% endif %}>
                 <span class="checkmark"></span>
                 <span class="label">Abonando al comprador, en cuenta precio de la venta, el importe que será
                   realizado de la venta del mismo por cuenta del vendedor y en virtud a su mandato a vender gratis
@@ -272,7 +267,7 @@ Contratos
             </div>
             <div class="col">
               <input name="abonadoCompradorMonto" id="abonadoCompradorMonto" type="text" class="form-control"
-                placeholder="Escribe aquí" value="{{ contrato.abonadoCompradorMonto }}">
+                placeholder="Escribe aquí" value="{{ contrato.contrato.abonadoCompradorMonto }}">
             </div>
             <div class="documentacion-mantenimiento_p_pequeno">
               <p>
@@ -291,7 +286,7 @@ Contratos
               <div class="col-4">
                 <label for="PrecioAcordado">Precio acordado del vehículo</label>
                 <input name="PrecioAcordado" id="PrecioAcordado" type="number" class="form-control"
-                  placeholder="€ Monto " onclick="total()" value="{{ contrato.PrecioAcordado }}">
+                  placeholder="€ Monto " onclick="total()" value="{{ contrato.contrato.PrecioAcordado }}">
               </div>
             </div>
           </div>
@@ -302,7 +297,7 @@ Contratos
               <div class="col-4">
                 <label for="valorVehiculoRetirado">Valor vehículo retirado</label>
                 <input name="valorVehiculoRetirado" id="valorVehiculoRetirado" type="number" class="form-control"
-                  placeholder="€ Monto " onclick="total()" value="{{ contrato.valorVehiculoRetirado }}">
+                  placeholder="€ Monto " onclick="total()" value="{{ contrato.contrato.valorVehiculoRetirado }}">
               </div>
             </div>
           </div>
@@ -313,7 +308,7 @@ Contratos
               <div class="col-4">
                 <label for="depostoGarantiaPagado">Depósito de garantía pagado</label>
                 <input name="depostoGarantiaPagado" id="depostoGarantiaPagado" type="number" class="form-control"
-                  placeholder="€ Monto " value="{{ contrato.depostoGarantiaPagado }}">
+                  placeholder="€ Monto " value="{{ contrato.contrato.depostoGarantiaPagado }}">
               </div>
             </div>
           </div>
@@ -339,12 +334,12 @@ Contratos
                 <div class="col">
                   <label for="sociedadFinanciera">Sociedad financiera</label>
                   <input name="sociedadFinanciera" id="sociedadFinanciera" type="text" class="form-control"
-                    placeholder="Escribe aquí" value="{{ contrato.sociedadFinanciera }}">
+                    placeholder="Escribe aquí" value="{{ contrato.contrato.sociedadFinanciera }}">
                 </div>
                 <div class="col">
                   <label for="nroProtocolo">Nº Protocolo</label>
                   <input name="nroProtocolo" id="nroProtocolo" type="text" class="form-control"
-                    placeholder="Escribe aquí" value="{{ contrato.nroProtocolo }}">
+                    placeholder="Escribe aquí" value="{{ contrato.contrato.nroProtocolo }}">
                 </div>
               </div>
             </div>
@@ -353,12 +348,12 @@ Contratos
                 <div class="col">
                   <label for="importaFinanciado">Importe Financiado €</label>
                   <input name="importaFinanciado" id="importaFinanciado" type="text" class="form-control"
-                    placeholder="Escribe aquí" value="{{ contrato.importaFinanciado }}">
+                    placeholder="Escribe aquí" value="{{ contrato.contrato.importaFinanciado }}">
                 </div>
                 <div class="col">
                   <label for="gastosInstruccionSello">Gastos Instrucción/Sello €</label>
                   <input name="gastosInstruccionSello" id="gastosInstruccionSello" type="text" class="form-control"
-                    placeholder="Escribe aquí" value="{{ contrato.gastosInstruccionSello }}">
+                    placeholder="Escribe aquí" value="{{ contrato.contrato.gastosInstruccionSello }}">
                 </div>
               </div>
             </div>
@@ -371,7 +366,7 @@ Contratos
                 <div class="col">
                   <label for="importePlazos">Importe Plazos €</label>
                   <input name="importePlazos" id="importePlazos" type="text" class="form-control"
-                    placeholder="Escribe aquí" value="{{ contrato.nroPlazos }}">
+                    placeholder="Escribe aquí" value="{{ contrato.contrato.nroPlazos }}">
                 </div>
               </div>
             </div>
@@ -379,11 +374,11 @@ Contratos
               <div class="form-row">
                 <div class="col">
                   <label for="lugar">Lugar</label>
-                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí" value="{{ contrato.lugar }}">
+                  <input name="lugar" id="lugar" type="text" class="form-control" placeholder="Escribe aquí" value="{{ contrato.contrato.lugar }}">
                 </div>
                 <div class="col-6 insercion-vehiculos-date">
                   <label for="fecha2">Fecha</label>
-                  <input name="fecha2" id="fecha2" class="form-control" type="date" value="{{ contrato.fecha2 }}"
+                  <input name="fecha2" id="fecha2" class="form-control" type="date" value="{{ contrato.contrato.fecha2|date:'Y-m-d' }}"
                     id="example-date-input" >
                 </div>
               </div>

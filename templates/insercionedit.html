@@ -11,7 +11,8 @@ Inserción de vehiculos
       {% csrf_token %}
       <div id="politica-privacidad">
         <div class="form-check politica-privacidad_checkbox">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+          <input type="hidden" name="id" value="{{ insercion.pk }}">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Acepto la política de privacidad</label>
         </div>
         <br><br>
@@ -90,7 +91,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="primeraMatricula" class="col col-form-label">Prime matr.</label>
-                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" value="{{ insercion.datos_del_Vehiculo.prime_matr }}">
+                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" value="{{ insercion.datos_del_Vehiculo.prime_matr|date:'Y-m-d' }}">
                 </div>
               </div>
             </div>
@@ -133,7 +134,6 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="transmision">Transmisión</label>
                 <select class="custom-select" id="transmision" name="transmision"  id="transmision" value="{{ insercion.datos_del_Vehiculo.transmision }}">
-                  <option value="" disabled selected>Transmisión</option>
                   <option value="Manual">Manual</option>
                   <option value="automatico">Automatico</option>
                   <option value="dual">Transmisión dual</option>
@@ -145,16 +145,16 @@ Inserción de vehiculos
           <div class="insercion-vehiculos-form insercion-vehiculos-form_bloque">
             <div class="form-row">
               <div class="col insercion-vehiculos-date">
-                <label for="fechaEntrega" class="col col-form-label">Fecha de entrega</label>
-                <input class="form-control" type="date"  id="fechaEntrega" name="fechaEntrega" value="{{ insercion.datos_del_Vehiculo.fecha_entrega }}">
+                <label for="fechaEntrega" class="col col-form-label">Fecha de entrega </label>
+                <input class="form-control" type="date"  id="fechaEntrega" name="fechaEntrega" value="{{ insercion.datos_del_Vehiculo.fecha_entrega|date:'Y-m-d' }}">
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="fechaInicio" class="col col-form-label">Fecha de inicio</label>
-                <input class="form-control" type="date"  id="fechaInicio" name="fechaInicio" value="{{ insercion.datos_del_Vehiculo.fecha_inicio }}">
+                <input class="form-control" type="date"  id="fechaInicio" name="fechaInicio" value="{{ insercion.datos_del_Vehiculo.fecha_inicio|date:'Y-m-d' }}">
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="fechaActivacion" class="col col-form-label">Fecha de activación</label>
-                <input class="form-control" type="date"  id="fechaActivacion" name="fechaActivacion" value="{{ insercion.datos_del_Vehiculo.fecha_activacion }}">
+                <input class="form-control" type="date"  id="fechaActivacion" name="fechaActivacion" value="{{ insercion.datos_del_Vehiculo.fecha_activacion|date:'Y-m-d' }}">
               </div>
             </div>
           </div>
@@ -287,7 +287,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="ruedaRepuesto1" id="ruedaRepuesto1" value="{{ insercion.duracion_del_contrato.rueda_repuesto1 }}">
+                <input type="checkbox" {% if insercion.documentacion.rueda_repuesto1 %} checked {% endif %} name="ruedaRepuesto1" id="ruedaRepuesto1" value="{{ insercion.documentacion.rueda_repuesto1 }}">
                 <span class="checkmark"></span>
                 <span class="label">Rueda de repuesto</span>
               </label>
@@ -296,7 +296,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="kitInflado" id="kitInflado" value="{{ insercion.duracion_del_contrato.kit_inflado }}" >
+                <input type="checkbox" {% if insercion.documentacion.kit_inflado %} checked {% endif %} name="kitInflado" id="kitInflado" value="{{ insercion.documentacion.kit_inflado }}" >
                 <span class="checkmark"></span>
                 <span class="label">Kit de inflado</span>
               </label>
@@ -305,7 +305,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="trianguloEmergencia" id="trianguloEmergencia" value="{{ insercion.duracion_del_contrato.triangulo_emergencia }}" >
+                <input type="checkbox" {% if insercion.documentacion.triangulo_emergencia %} checked {% endif %} name="trianguloEmergencia" id="trianguloEmergencia" value="{{ insercion.documentacion.triangulo_emergencia }}" >
                 <span class="checkmark"></span>
                 <span class="label">Triángulo de emergencia</span>
               </label>
@@ -314,7 +314,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="gato" id="gato" value="{{ insercion.duracion_del_contrato.gato }}" >
+                <input type="checkbox" {% if insercion.documentacion.gato %} checked {% endif %} name="gato" id="gato" value="{{ insercion.documentacion.gato }}" >
                 <span class="checkmark"></span>
                 <span class="label">Gato</span>
               </label>
@@ -323,7 +323,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="chalecoAltaVelocidad" id="chalecoAltaVelocidad" value="{{ insercion.duracion_del_contrato.chaleco_alta_visibilidad }}" >
+                <input type="checkbox" {% if insercion.documentacion.chaleco_alta_visibilidad %} checked {% endif %} name="chalecoAltaVelocidad" id="chalecoAltaVelocidad" value="{{ insercion.documentacion.chaleco_alta_visibilidad }}" >
                 <span class="checkmark"></span>
                 <span class="label">Chaleco alta visibilidad</span>
               </label>
@@ -332,7 +332,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="kitBombillas" id="kitBombillas" value="{{ insercion.duracion_del_contrato.kit_bombillas }}" >
+                <input type="checkbox" {% if insercion.documentacion.kit_bombillas %} checked {% endif %} name="kitBombillas" id="kitBombillas" value="{{ insercion.documentacion.kit_bombillas }}" >
                 <span class="checkmark"></span>
                 <span class="label">Kit bombillas</span>
               </label>
@@ -341,7 +341,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="kitBombillasFusibles" id="kitBombillasFusibles" value="{{ insercion.duracion_del_contrato.kit_bombillas_fusibles }}" >
+                <input type="checkbox" {% if insercion.documentacion.kit_bombillas_fusibles %} checked {% endif %} name="kitBombillasFusibles" id="kitBombillasFusibles" value="{{ insercion.documentacion.kit_bombillas_fusibles }}" >
                 <span class="checkmark"></span>
                 <span class="label">Kit bombillas - fusibles</span>
               </label>
@@ -350,7 +350,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="duplicadoLlaves" id="duplicadoLlaves" value="{{ insercion.duracion_del_contrato.duplicado_llaves }}" >
+                <input type="checkbox" {% if insercion.documentacion.duplicado_llaves %} checked {% endif %} name="duplicadoLlaves" id="duplicadoLlaves" value="{{ insercion.documentacion.duplicado_llaves }}" >
                 <span class="checkmark"></span>
                 <span class="label">duplicado de llaves</span>
               </label>
@@ -359,7 +359,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="codCard" id="codCard" value="{{ insercion.duracion_del_contrato.cod_card }}" >
+                <input type="checkbox" {% if insercion.documentacion.cod_card %} checked {% endif %} name="codCard" id="codCard" value="{{ insercion.documentacion.cod_card }}" >
                 <span class="checkmark"></span>
                 <span class="label">Cod. Card </span>
               </label>
@@ -368,7 +368,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="libreUsoMantenimiento" id="libreUsoMantenimiento" value="{{ insercion.duracion_del_contrato.libre_uso_mantenimiento }}" >
+                <input type="checkbox" {% if insercion.documentacion.libre_uso_mantenimiento %} checked {% endif %} name="libreUsoMantenimiento" id="libreUsoMantenimiento" value="{{ insercion.documentacion.libre_uso_mantenimiento }}" >
                 <span class="checkmark"></span>
                 <span class="label">Libre uso y mantenimiento</span>
               </label>
@@ -377,7 +377,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="fichaTecnica" id="fichaTecnica" value="{{ insercion.duracion_del_contrato.ficha_tecnica }}" >
+                <input type="checkbox" {% if insercion.documentacion.ficha_tecnica %} checked {% endif %} name="fichaTecnica" id="fichaTecnica" value="{{ insercion.documentacion.ficha_tecnica }}" >
                 <span class="checkmark"></span>
                 <span class="label">Ficha Tecnica</span>
               </label>
@@ -386,7 +386,7 @@ Inserción de vehiculos
           <div class="form-group col-md-3">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input type="checkbox" checked name="permisoCirculacion" id="permisoCirculacion" value="{{ insercion.duracion_del_contrato.permiso_circulacion }}" >
+                <input type="checkbox" {% if insercion.documentacion.permiso_circulacion %} checked {% endif %} name="permisoCirculacion" id="permisoCirculacion" value="{{ insercion.documentacion.permiso_circulacion }}" >
                 <span class="checkmark"></span>
                 <span class="label">Permiso de circulación</span>
               </label>
@@ -402,14 +402,14 @@ Inserción de vehiculos
               <div class="form-row">
                 <div class="col ">
                   <label for="itv">ITV</label>
-                  <select class="custom-select" id="itv" name="itv" value="{{ insercion.duracion_del_contrato.itv }}">
+                  <select class="custom-select" id="itv" name="itv" value="{{ insercion.documentacion.itv }}">
                     <option value="vencido">Vencido</option>
                     <option value="valido">Válido</option>
                   </select>
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="fechaITV">Fecha</label>
-                  <input class="form-control" type="date"  id="fechaITV" name="fechaITV" value="{{ insercion.duracion_del_contrato.fecha }}">
+                  <input class="form-control" type="date"  id="fechaITV" name="fechaITV" value="{{ insercion.documentacion.fecha|date:'Y-m-d' }}">
                 </div>
               </div>
             </div>
@@ -508,7 +508,7 @@ Inserción de vehiculos
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="ultimaITV">Última ITV</label>
-                <input class="form-control" type="date" value="{{ insercion.mantenimiento.ultima_ITV }}" id="ultimaITV" name="ultimaITV" >
+                <input class="form-control" type="date" value="{{ insercion.mantenimiento.ultima_ITV|date:'Y-m-d' }}" id="ultimaITV" name="ultimaITV" >
               </div>
             </div>
           </div>

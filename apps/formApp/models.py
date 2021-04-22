@@ -51,12 +51,12 @@ class DatosVehiculo(models.Model):
         verbose_name_plural = "Datos de los vehiculos"
 
 class Suplemento(models.Model):
-    cuatro_por_cuatro = models.BooleanField()
-    super_Car = models.BooleanField()
-    cambio_autom = models.BooleanField()
-    suv = models.BooleanField()
-    vehiculo_comercial = models.BooleanField()
-    cobertura = models.BooleanField()
+    cuatro_por_cuatro = models.BooleanField(blank=True, null=True)
+    super_Car = models.BooleanField(blank=True, null=True)
+    cambio_autom = models.BooleanField(blank=True, null=True)
+    suv = models.BooleanField(blank=True, null=True)
+    vehiculo_comercial = models.BooleanField(blank=True, null=True)
+    cobertura = models.BooleanField(blank=True, null=True)
 
     def __str__(self):
         retornar = '4x4: ' + boleanoString(self.cuatro_por_cuatro) + '\n Super car: ' + boleanoString(self.super_Car) + '\n Cambio automatico: ' + boleanoString(self.cambio_autom) + '\n Suv: ' + boleanoString(self.suv) + '\n Vehículo comercial: ' + boleanoString(self.vehiculo_comercial) + '\n +Cobertura: ' + boleanoString(self.cobertura)
@@ -77,18 +77,18 @@ class DatosComprador(models.Model):
         return retornar
 
 class Documentacion(models.Model):
-    rueda_repuesto1 = models.BooleanField()
-    duplicado_llaves = models.BooleanField()
-    kit_inflado = models.BooleanField()
-    triangulo_emergencia = models.BooleanField()
-    gato = models.BooleanField()
-    chaleco_alta_visibilidad = models.BooleanField()
-    kit_bombillas = models.BooleanField()
-    kit_bombillas_fusibles = models.BooleanField()
-    cod_card = models.BooleanField()
-    libre_uso_mantenimiento = models.BooleanField()
-    ficha_tecnica = models.BooleanField()
-    permiso_circulacion = models.BooleanField()
+    rueda_repuesto1 = models.BooleanField(blank=True, null=True)
+    duplicado_llaves = models.BooleanField(blank=True, null=True)
+    kit_inflado = models.BooleanField(blank=True, null=True)
+    triangulo_emergencia = models.BooleanField(blank=True, null=True)
+    gato = models.BooleanField(blank=True, null=True)
+    chaleco_alta_visibilidad = models.BooleanField(blank=True, null=True)
+    kit_bombillas = models.BooleanField(blank=True, null=True)
+    kit_bombillas_fusibles = models.BooleanField(blank=True, null=True)
+    cod_card = models.BooleanField(blank=True, null=True)
+    libre_uso_mantenimiento = models.BooleanField(blank=True, null=True)
+    ficha_tecnica = models.BooleanField(blank=True, null=True)
+    permiso_circulacion = models.BooleanField(blank=True, null=True)
 
     itv = models.CharField(max_length=240)
     fecha = models.DateField()
