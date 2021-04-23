@@ -49,8 +49,8 @@ Contratos
           <div class="form-group col-md-4">
             <div class="check-box-group">
               <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
-                <input class="check-box-group" type="radio" value="Contrato en locales comerciales" name="contratoLocales" 
-                  id="contratoLocalesComerciales">
+                <input class="check-box-group" type="radio" value="Contrato en locales comerciales" name="contratoLocales"
+                  id="contratoLocalesComerciales" checked>
                 <span class="checkmark"></span>
                 <span class="label">Contrato en Locales Comerciales</span>
               </label>
@@ -171,7 +171,7 @@ Contratos
               <div class="check-box-group">
                 <label class="custom-checkbox" tab-index="0" aria-label="Checkbox Label">
                   <input class="check-box-group" type="radio" value="Propietario" name="estadoEncontrado"
-                    id="propietario">
+                    id="propietario" checked>
                   <span class="checkmark"></span>
                   <span class="label">Como Propietario del mismo</span>
                 </label>
@@ -283,46 +283,44 @@ Contratos
             </div>
           </div>
         </div>
-        <div class="documentacion-mantenimiento col-12">
-          <div class="documentacion-mantenimiento_i">
-          </div>
+        <div class="documentacion-mantenimiento col-12" style="padding-left: 10%;">
           <div class="col insercion-vehiculos-form">
             <div class="form-row">
               <div class="col-4">
-                <label for="PrecioAcordado">Precio acordado del vehículo</label>
+                <label for="PrecioAcordado">Precio acordado del vehículo €</label>
                 <input name="PrecioAcordado" id="PrecioAcordado" type="number" class="form-control"
-                  placeholder="€ Monto " onclick="total()">
+                  placeholder="€ Monto " onchange="sumar(this.value, 'PrecioAcordado');">
               </div>
             </div>
           </div>
         </div>
-        <div class="documentacion-mantenimiento col-12">
+        <div class="documentacion-mantenimiento col-12" style="padding-left: 10%;">
           <div class="col insercion-vehiculos-form_monto">
             <div class="form-row">
               <div class="col-4">
-                <label for="valorVehiculoRetirado">Valor vehículo retirado</label>
+                <label for="valorVehiculoRetirado">Valor vehículo retirado €</label>
                 <input name="valorVehiculoRetirado" id="valorVehiculoRetirado" type="number" class="form-control"
-                  placeholder="€ Monto " onclick="total()">
+                  placeholder="€ Monto " onchange="sumar(this.value, 'valorVehiculoRetirado');">
               </div>
             </div>
           </div>
         </div>
-        <div class="documentacion-mantenimiento col-12">
+        <div class="documentacion-mantenimiento col-12" style="padding-left: 10%;">
           <div class="col insercion-vehiculos-form">
             <div class="form-row">
               <div class="col-4">
-                <label for="depostoGarantiaPagado">Depósito de garantía pagado</label>
+                <label for="depostoGarantiaPagado">Depósito de garantía pagado €</label>
                 <input name="depostoGarantiaPagado" id="depostoGarantiaPagado" type="number" class="form-control"
-                  placeholder="€ Monto ">
+                  placeholder="€ Monto " onchange="sumar(this.value, 'depostoGarantiaPagado');">
               </div>
             </div>
           </div>
         </div>
-        <div class="documentacion-mantenimiento col-12">
+        <div class="documentacion-mantenimiento col-12" style="padding-left: 40%;">
           <div class="col insercion-vehiculos-form">
             <div class="form-row">
               <div class="col-4">
-                <p>Total: </span><input type="number" id="totalInput" disabled></p>
+                <h3 style="display: inline; text-align: center; padding-left: 33%;">Total €: </h3><input type="number" id="totalInput" disabled class="btn btn-dark" value="0">
               </div>
             </div>
           </div>
@@ -408,23 +406,19 @@ Contratos
 
 {% block extrajs %}
   <script>
-    $('#PrecioAcordado').keyup(function() {
-      total();
-    });
-    $('#valorVehiculoRetirado').change(function() {
-      total();
-    })
-    $('#depostoGarantiaPagado').change(function() {
-      total();
-    })
-    function total(){
-      if ($('#PrecioAcordado').val()){
-        total = $('#PrecioAcordado').val();
-        $('#totalInput').val(total);
-      }else if ($('#PrecioAcordado').val() && $('#valorVehiculoRetirado').val()){
-        total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val();
-        $('#totalInput').val(total);
-      }
+   function sumar (valor,idinput) {
+    var total = 0;
+    valor = parseInt(valor); // Convertir el valor a un entero (número).
+    if (idinput == 'PrecioAcordado'){
+      total = $('#PrecioAcordado').val();
+      $('#totalInput').val(total)
+    }else if (idinput == 'valorVehiculoRetirado'){
+      total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val()
+      $('#totalInput').val(total)
+    }else{
+      total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val() - $('#depostoGarantiaPagado').val()
+      $('#totalInput').val(total)
     }
+}
   </script>
 {% endblock %}
