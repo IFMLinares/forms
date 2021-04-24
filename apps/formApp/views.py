@@ -393,7 +393,7 @@ class FormContratoView(LoginRequiredMixin, ListView):
     template_name = 'contrato.html'
     context_object_name = 'query'
     def get_queryset(self):
-        queryset = self.model.objects.filter(usuario=self.request.user, contrato.usuario='').order_by('-id')
+        queryset = self.model.objects.filter(usuario=self.request.user, contrato__usuario='').order_by('-id')
         return queryset
 
     def post(self, *args, **kwargs):
