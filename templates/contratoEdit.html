@@ -406,13 +406,27 @@ Contratos
     valor = parseInt(valor); // Convertir el valor a un entero (número).
     if (idinput == 'PrecioAcordado'){
       total = $('#PrecioAcordado').val();
+      verificar();
       $('#totalInput').val(total)
     }else if (idinput == 'valorVehiculoRetirado'){
       total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val()
+      verificar();
       $('#totalInput').val(total)
     }else{
       total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val() - $('#depostoGarantiaPagado').val()
+      verificar();
       $('#totalInput').val(total)
+    }
+    function verificar(){
+      if ($('#PrecioAcordado').val() && $('#valorVehiculoRetirado').val() && $('#depostoGarantiaPagado').val()){
+        total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val() - $('#depostoGarantiaPagado').val()
+      }else if ($('#PrecioAcordado').val() && $('#valorVehiculoRetirado').val()){
+        total = $('#PrecioAcordado').val() - $('#valorVehiculoRetirado').val()
+      }else if ($('#PrecioAcordado').val() && $('#depostoGarantiaPagado').val()){
+        total = $('#PrecioAcordado').val() - $('#depostoGarantiaPagado').val()
+      }else{
+        total = $('#PrecioAcordado').val();
+      }
     }
 }
   </script>
