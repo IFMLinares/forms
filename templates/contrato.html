@@ -32,14 +32,13 @@ Contratos
         {% csrf_token %}
         <div class="col">
           <label for="insercion">Seleccione una inserción de vehículo</label>
-          <select class="custom-select" id="insercion" name="insercion" required>
-              {% if query.contrato == '' %}
-                <option selected disabled>No tienes inserciones de vehículos</option>
-                {% else %}
-                  {% for q in query %}
+          <select class="custom-select" id="insercion" name="insercion" >
+            {% for q in query %}
+              {% if q.contrato %}
+              {% else %}
                 <option value="{{ q.pk }}">Matrícula: {{ q.datos_del_Vehiculo.matricula }}. Marca:{{ q.datos_del_Vehiculo.marca }}  Modelo:{{ q.datos_del_Vehiculo.modelo }}. {{ q.concesionario }} </option>
-                  {% endfor %}
               {% endif %}
+            {% endfor %}
           </select>
         </div>
         <div class="col insercion-vehiculos-date">
