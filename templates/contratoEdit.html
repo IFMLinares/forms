@@ -315,7 +315,7 @@ Contratos
           <div class="col insercion-vehiculos-form">
             <div class="form-row">
               <div class="col-4">
-                <h3 style="display: inline; text-align: center; padding-left: 33%;">Total €: </h3><input type="number" id="totalInput" disabled class="btn btn-dark" value="{{ contrato.contrato.total }}">{{ contrato.contrato.total }}
+                <h3 style="display: inline; text-align: center; padding-left: 33%;">Total €: </h3><input type="number" id="totalInput" disabled class="btn btn-dark" value="{{ contrato.contrato.total|floatformat:0  }}">{{ contrato.contrato.total }}
               </div>
             </div>
           </div>
