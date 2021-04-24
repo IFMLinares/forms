@@ -79,13 +79,13 @@
                             </span>
                         </a>
                         &nbsp;&nbsp;
-                        <a href="{% url 'core:editar-insercion' pk=insercion.pk %}" class="fa fa-pencil"></a>
+                        <a href="{% url 'core:editar-insercion' pk=insercion.pk %}" class="fa fa-pencil" aria-label="editar"></a>
                         {% if insercion.contrato %}
                             <a href="{% url 'core:pdf-contrato' pk=insercion.pk %}" target="_blank">
                                 <span>Contrato COMPRAVENTA</span>
                             </a>
                             &nbsp;&nbsp;
-                            <a href="{% url 'core:editar-contrato' pk=insercion.pk %}" class="fa fa-pencil"></a>
+                            <a href="{% url 'core:editar-contrato' pk=insercion.pk %}" class="fa fa-pencil" aria-label="editar"></a>
                         {% else %}
                             <a href="{% url 'core:contrato' %}" target="_blank">
                                 <span>AÑADIR: Contrato COMPRAVENTA</span>
