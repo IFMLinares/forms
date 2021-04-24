@@ -33,7 +33,7 @@ Contratos
         <div class="col">
           <label for="insercion">Seleccione una inserción de vehículo</label>
           <select class="custom-select" id="insercion" name="insercion" >
-                <option value="{{ contrato.contrato.pk }}">Matrícula: {{ contrato.datos_del_Vehiculo.matricula }}. Marca:{{ contrato.datos_del_Vehiculo.marca }}  Modelo:{{ contrato.datos_del_Vehiculo.modelo }}. {{ contrato.concesionario }} </option>
+                <option value="{{ contrato.contrato.pk }}" selected>Matrícula: {{ contrato.datos_del_Vehiculo.matricula }}. Marca:{{ contrato.datos_del_Vehiculo.marca }}  Modelo:{{ contrato.datos_del_Vehiculo.modelo }}. {{ contrato.concesionario }} </option>
           </select>
         </div>
         <div class="col insercion-vehiculos-date">
@@ -315,7 +315,7 @@ Contratos
           <div class="col insercion-vehiculos-form">
             <div class="form-row">
               <div class="col-4">
-                <h3 style="display: inline; text-align: center; padding-left: 33%;">Total €: </h3><input type="number" id="totalInput" disabled class="btn btn-dark" value="{{ contrato.contrato.total }}">
+                <h3 style="display: inline; text-align: center; padding-left: 33%;">Total €: </h3><input type="number" id="totalInput" disabled class="btn btn-dark" value="{{ contrato.contrato.total }}">{{ contrato.contrato.total }}
               </div>
             </div>
           </div>
