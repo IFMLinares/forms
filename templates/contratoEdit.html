@@ -279,12 +279,23 @@ Contratos
           </div>
         </div>
         <div class="documentacion-mantenimiento col-12" style="padding-left: 10%;">
+          <div class="col insercion-vehiculos-form">
+            <div class="form-row">
+              <div class="col-4">
+                <label for="PrecioAcordado">Precio acordado del vehículo €</label>
+                <input name="PrecioAcordado" id="PrecioAcordado" type="number" class="form-control"
+                  placeholder="€ Monto " onchange="sumar(this.value, 'PrecioAcordado');" value="{{ contrato.contrato.PrecioAcordado }}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="documentacion-mantenimiento col-12" style="padding-left: 10%;">
           <div class="col insercion-vehiculos-form_monto">
             <div class="form-row">
               <div class="col-4">
                 <label for="valorVehiculoRetirado">Valor vehículo retirado €</label>
                 <input name="valorVehiculoRetirado" id="valorVehiculoRetirado" type="number" class="form-control"
-                  placeholder="€ Monto " onchange="sumar(this.value, 'valorVehiculoRetirado');">
+                  placeholder="€ Monto " onchange="sumar(this.value, 'valorVehiculoRetirado');" value="{{ contrato.contrato.valorVehiculoRetirado }}">
               </div>
             </div>
           </div>
@@ -295,7 +306,7 @@ Contratos
               <div class="col-4">
                 <label for="depostoGarantiaPagado">Depósito de garantía pagado €</label>
                 <input name="depostoGarantiaPagado" id="depostoGarantiaPagado" type="number" class="form-control"
-                  placeholder="€ Monto " onchange="sumar(this.value, 'depostoGarantiaPagado');">
+                  placeholder="€ Monto " onchange="sumar(this.value, 'depostoGarantiaPagado');" value="{{ contrato.contrato.depostoGarantiaPagado }}">
               </div>
             </div>
           </div>
