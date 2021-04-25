@@ -38,6 +38,8 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#top">Inicio</a></li>
                     <li>
+                        <li><a href="#top">Perfil de usuario</a></li>
+                    <li>
                         <div class="input-group navbbar">
                             <form action="{% url 'core:search' %}" method="POST">
                                 {% csrf_token %}
@@ -91,6 +93,13 @@
                         <span class="rect"></span>
                         <span class="circle"></span>
                         Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'core:user' %}">
+                        <span class="rect"></span>
+                        <span class="circle"></span>
+                        Perfil de usuario
                     </a>
                 </li>
                 <li>
