@@ -423,9 +423,18 @@ class FormContratoView(LoginRequiredMixin, ListView):
         equivalenteAcordadoMonto = self.request.POST['equivalenteAcordadoMonto']
         abonadoComprador = self.request.POST['abonadoComprador']
         abonadoCompradorMonto = self.request.POST['abonadoCompradorMonto']
-        PrecioAcordado = self.request.POST['PrecioAcordado']
-        valorVehiculoRetirado = self.request.POST['valorVehiculoRetirado']
-        depostoGarantiaPagado = self.request.POST['depostoGarantiaPagado']
+        if self.request.POST['PrecioAcordado'] and int(self.request.POST['PrecioAcordado']) > 0:
+            PrecioAcordado = self.request.POST['PrecioAcordado']
+        else:
+            PrecioAcordado = 0
+        if self.request.POST['valorVehiculoRetirado'] and int(self.request.POST['valorVehiculoRetirado']) > 0:
+            valorVehiculoRetirado = self.request.POST['valorVehiculoRetirado']
+        else:
+            valorVehiculoRetirado = 0
+        if self.request.POST['depostoGarantiaPagado'] and int(self.request.POST['depostoGarantiaPagado']) > 0:
+            depostoGarantiaPagado = self.request.POST['depostoGarantiaPagado']
+        else:
+            depostoGarantiaPagado = 0
         sociedadFinanciera = self.request.POST['sociedadFinanciera']
         nroProtocolo = self.request.POST['nroProtocolo']
         importaFinanciado = self.request.POST['importaFinanciado']
@@ -820,7 +829,7 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         insercion.examen_visual.explicacion_detallada_techo_solar = expliacionTechoSolar
 
         insercion.save()
-        messages.success(self.request, 'Inserción Añadida Exitosamente')
+        messages.success(self.request, 'Inserción Editada Exitosamente')
         return redirect('core:contrato')
 
 class ContratoEditView(LoginRequiredMixin, DetailView):
@@ -830,6 +839,7 @@ class ContratoEditView(LoginRequiredMixin, DetailView):
 
     def post(self, *args, **kwargs):
         insercion_pk = self.request.POST['insercion']
+        contrato_pk =self.request.POST['contrato']
         contratoLocales = self.request.POST['contratoLocales']
         fecha = self.request.POST['fecha']
         firmante = self.request.POST['firmante']
@@ -855,9 +865,18 @@ class ContratoEditView(LoginRequiredMixin, DetailView):
         equivalenteAcordadoMonto = self.request.POST['equivalenteAcordadoMonto']
         abonadoComprador = self.request.POST['abonadoComprador']
         abonadoCompradorMonto = self.request.POST['abonadoCompradorMonto']
-        PrecioAcordado = self.request.POST['PrecioAcordado']
-        valorVehiculoRetirado = self.request.POST['valorVehiculoRetirado']
-        depostoGarantiaPagado = self.request.POST['depostoGarantiaPagado']
+        if self.request.POST['PrecioAcordado'] and int(self.request.POST['PrecioAcordado']) > 0:
+            PrecioAcordado = self.request.POST['PrecioAcordado']
+        else:
+            PrecioAcordado = 0
+        if self.request.POST['valorVehiculoRetirado'] and int(self.request.POST['valorVehiculoRetirado']) > 0:
+            valorVehiculoRetirado = self.request.POST['valorVehiculoRetirado']
+        else:
+            valorVehiculoRetirado = 0
+        if self.request.POST['depostoGarantiaPagado'] and int(self.request.POST['depostoGarantiaPagado']) > 0:
+            depostoGarantiaPagado = self.request.POST['depostoGarantiaPagado']
+        else:
+            depostoGarantiaPagado = 0
         sociedadFinanciera = self.request.POST['sociedadFinanciera']
         nroProtocolo = self.request.POST['nroProtocolo']
         importaFinanciado = self.request.POST['importaFinanciado']
@@ -869,6 +888,54 @@ class ContratoEditView(LoginRequiredMixin, DetailView):
 
         total = int(PrecioAcordado) - (int(valorVehiculoRetirado) + int(depostoGarantiaPagado))
 
+        contrato = Contrato.objects.get(pk=contrato_pk)
+        contrato.usuario = self.request.user
+        contrato.contratoLocales = contratoLocales
+        contrato.fecha = fecha
+        contrato.firmante = firmante
+        contrato.nacido = nacido
+        contrato.fechaNacimiento = fechaNacimiento
+        contrato.residenciaSede = residenciaSede
+        contrato.telefono = telefono
+        contrato.profesion = profesion
+        contrato.CifNif = CifNif
+        contrato.vendedor = vendedor
+        contrato.marca = marca
+        contrato.version = version
+        contrato.modelo = modelo
+        contrato.bastidor = bastidor
+        contrato.estadoEncontrado = estadoEncontrado
+        contrato.estadoEncontradoDescripcion = estadoEncontradoDescripcion
+        contrato.marceEmpresa = marceEmpresa
+        contrato.versionEmpresa = versionEmpresa
+        contrato.modeloEmpresa = modeloEmpresa
+        contrato.bastidorEmpresa = bastidorEmpresa
+        contrato.fechaPrimeraMatriculacion = fechaPrimeraMatriculacion
+        contrato.equivalenteAcordado = equivalenteAcordado
+        contrato.equivalenteAcordadoMonto = equivalenteAcordadoMonto
+        contrato.abonadoComprador = abonadoComprador
+        contrato.abonadoCompradorMonto = abonadoCompradorMonto
+        contrato.PrecioAcordado = PrecioAcordado
+        contrato.valorVehiculoRetirado = valorVehiculoRetirado
+        contrato.depostoGarantiaPagado = depostoGarantiaPagado
+        contrato.sociedadFinanciera = sociedadFinanciera
+        contrato.nroProtocolo = nroProtocolo
+        contrato.importaFinanciado = importaFinanciado
+        contrato.gastosInstruccionSello = gastosInstruccionSello
+        contrato.nroPlazos = nroPlazos
+        contrato.importePlazos = importePlazos
+        contrato.lugar = lugar
+        contrato.fecha2 = fecha2
+        contrato.total = total
+        contrato.save()
+
+        insercion = Insercion.objects.get(pk=insercion_pk)
+        insercion.contrato = contrato
+        insercion.save()
+
+        messages.success(self.request, 'Contrato Editado Exitosamente')
+        return redirect('core:editar-contrato', pk=insercion_pk)
+
 class UserView(LoginRequiredMixin, ListView):
     model = Insercion
     template_name = 'usuario.html'
@@ -879,7 +946,6 @@ class UserView(LoginRequiredMixin, ListView):
                     'contrato': Contrato.objects.filter(usuario=self.request.user).order_by('-id'),
                     }
         return queryset
-
 
 def pdfInsercion(request, pk):
 
@@ -912,7 +978,8 @@ def pdfInsercion(request, pk):
         if insercion.exists():
             context = {
                 'insercion': insercion,
-                'icon': '{}{}'.format(settings.STATIC_URL, 'img/autos.png')
+                'icon': '{}{}'.format(settings.STATIC_URL, 'img/autos.png'),
+                'icon1': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png')
             }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')

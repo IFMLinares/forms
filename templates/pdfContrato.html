@@ -9,6 +9,13 @@
       font-size: 11px;
       font-weight: bold;
     }
+    .contrato-texto{
+      font-size: 11px;
+      font-weight: 200;
+    }
+    .contrato-art{
+      font-size: 12px;
+    }
   </style>
 </head>
 
@@ -16,7 +23,6 @@
   {% for contrato in contrato %}
   <div>
     <h1 style="text-align: center;">CONTRATO DE COMPRAVENTA</h1>
-    <div></div>
     <p class="contrato">
       El/Suscrito/ a {{ contrato.datos_del_comprador.nombre_Completo|upper }}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -171,8 +177,128 @@
       enim consequatur officiis, nulla natus rem animi quam aliquid dolor recusandae, tenetur incidunt reiciendis quo
       repellendus.
     </p>
+    <br>
     <p class="contrato">
-      Firma del comprador ____________________________________
+      Firma del comprador _________________________________________
+    </p>
+    <br>
+  </div>
+  <div>
+  <h1 style="text-align: center;">EXPONEN</h1>
+    <p class="contrato-texto" style="font-size: 11px;">
+      <span class="contrato contrato-art">
+        Art. 1. Definiciones
+        <br>
+      </span>
+      En la “Ficha de Conformidad del Vehículo Usado - Condiciones de Compra” nos referimos a: Reacondicionado: sustituido/revisado;
+      Buenas Condiciones: recientemente sustituido/revisado o que por un particular cuidado y/o mantenimiento está en mejores condiciones
+      de utilización que en situación normal de uso; Normales condiciones de uso: el estado de desgaste se ajusta a la antigüedad y al
+      kilometraje del vehículo; Intervención recomendada: ser restaurado después de un desgaste mecánico normal, o debido a condiciones
+      de desgaste más allá de lo normal; Reparación necesaria: se debe sustituir/reparar o está próximo a la rotura.
+      <br>
+      <span class="contrato contrato-art">
+        Art. 2. Aceptación del contrato<br>
+      </span>
+      El pedido del Comprador debe considerarse vinculante para el Vendedor solo en presencia de una aceptación por escrito. La no
+      aceptación del pedido solo implica la devolución al Comprador del depósito mencionado en el siguiente artículo, con exclusión de
+      cualquier otra reclamación. <br>
+      <span class="contrato contrato-art">
+      Art. 3. Depósito<br>
+      </span>
+El pedido del Comprador deberá ser acompañado mediante el pago de una suma, indicada por el Vendedor, como un depósito de
+garantía. La suma depositada será retenida por el Vendedor, dentro de los límites establecidos por el siguiente artículo, en caso de que
+el Comprador revoque el pedido. <br>
+      <span class="contrato contrato-art">
+        Art. 4. Retirada del vehículo<br>
+      </span>
+      El vehículo debe ser recogido dentro de los 10 días desde la fecha de aceptación del pedido si está disponible de inmediato, o dentro
+      de 5 días desde la fecha de comunicación de su disponibilidad. Si el vehículo no es recogido dentro de dicho plazo, el Vendedor tiene
+      el derecho de rescindir el contrato por incumplimiento del Comprador y de retener el depósito de garantía pagado por ellos en la cantidad
+      de gastos incurridos para la preparación del vehículo, según lo acordado en las negociaciones y la definición del pedido, ello sin perjuicio
+      de ningún otro derecho, y en particular la compensación por cualquier daño mayor. <br>
+      <span class="contrato contrato-art">
+        Art. 5. Precio<br>
+      </span>
+      El precio pactado de la compraventa, teniendo en cuenta las características del vehículo, su antigüedad y kilometraje, en cuyo importe
+      queda incluido: a) El precio del vehículo propiamente dicho, en el estado y circunstancias que se contemplan en la anexa “Ficha de
+      Conformidad del Vehículo Usado - Condiciones de Compra”. b) El IVA. c) Los gastos de transporte y entrega del vehículo. d) Los gastos
+      de transferencia, pero no las tasas e impuestos que gravan al comprador.El lugar de pago del precio es el establecimiento mercantil
+      donde se efectúa la compraventa, aunque se libren documentos mercantiles para facilitar el pago al comprador. <br>
+      <span class="contrato contrato-art">
+        Art. 6. Garantía Legal de Conformidad<br>
+      </span>
+      El plazo de garantía legal acordado con el comprador en este contrato, es de 12 meses, a partir de la fecha de la entrega del vehículo.
+      Las partes acuerdan que, en el caso de la venta a una persona no considerada particular en el tráfico comercial (empresas, autónomos,
+      etc.), no se puede aplicar la legislación a que se refiere el Real Decreto Legislativo 1/2.007, ya que no hay calidad de consumidor, siendo
+      de aplicación en ese supuesto el Código civil. <br>
+      El vendedor responderá ante el consumidor destinatario final, de cualquier falta de conformidad que exista en el momento de la entrega
+      del vehículo. En los términos del Texto refundido de la Ley general para la defensa de los consumidores y usuarios y otras leyes
+      complementarias, se reconoce al consumidor el derecho a la reparación del vehículo, la rebaja del precio o la resolución del contrato.
+      Se entiende que el vehículo es conforme al contrato, salvo prueba en contrario, cuando se ajuste a la descripción realizada por el
+      vendedor en la ficha de conformidad anexa al presente contrato; sea apto para el uso a que ordinariamente se destinen vehículos del
+      mismo tipo; presente la calidad y prestaciones habituales de un vehículo del mismo tipo que el consumidor pueda fundadamente esperar,
+      habida cuenta de su naturaleza. <br>
+      No habrá lugar a responsabilidad por las faltas de conformidad que el consumidor conociera o no hubiera podido fundadamente ignorar
+      en el momento de la celebración del contrato. <br>
+      <span class="contrato contrato-art">
+        Art. 7. Privacidad<br>
+      </span>
+      Conforme al Reglamento (UE) 2016/679 de Protección de Datos, le comunicamos que tratamos la información que nos facilita con el fin
+      de prestarles el servicio solicitado. Los datos proporcionados se conservarán hasta que el interesado nos solicite su supresión. Los
+      datos no se cederán a terceros salvo una obligación legal. Usted tiene derecho a acceder a sus datos personales, rectificar los datos
+      inexactos, o solicitar su supresión cuando los datos ya no sean necesarios, en DIRECCIÓN. <br>
+      Este mensaje va dirigido, de manera exclusiva, a su destinatario y contiene información confidencial y sujeta al secreto profesional, cuya
+      divulgación no está permitida por la ley. En caso de haber recibido este mensaje por error, le rogamos que, de forma inmediata, nos lo
+      comunique mediante correo electrónico remitido a nuestra atención, a la dirección, o a través del teléfono escrito en primera página y
+      proceda a su eliminación, así como a la de cualquier documento adjunto al mismo. Asimismo, le comunicamos que la distribución, copia
+      outilización de este mensaje, o de cualquier documento adjunto al mismo, cualquiera que fuera su finalidad, están prohibidas por la
+      ley.Le informamos, como destinatario de este mensaje, que el correo electrónico y las comunicaciones por medio de Internet no
+      permitenasegurar ni garantizar la confidencialidad de los mensajes transmitidos, así como tampoco su integridad o su correcta recepción,
+      por loque el emisor no asume responsabilidad alguna por tales circunstancias. Si no consintiese en la utilización del correo electrónico
+      o delas comunicaciones vía Internet le rogamos nos lo comunique y ponga en nuestro conocimiento de manera inmediata.
+      <span class="contrato contrato-art">
+        Art. 8. Fuero<br>
+      </span>
+      Para cualquier gestión que se suscite, respecto de la interpretación y aplicación del presente contrato, las partes se someterán a las
+      normas de competencia territorial que establece la Ley de enjuiciamiento civil. <br>
+      En prueba de conformidad, una vez leído el contrato y su anexo, que forma parte integrante e inseparable del mismo, ambas partes
+      firman el presente documento, por duplicado y aun solo efecto, en el lugar y fecha indicados en el encabezamiento.
+    </p>
+    Lugar y Fecha: _________________________________________
+    <br><br><br>
+    Firma Comprador:_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Vendedor:_______________________________________
+  </div>
+  <div>
+  <h1 style="text-align: center;">DECLARACIÓN DE EXENCIÓN DE RESPONSABILIDAD</h1>
+  <br>
+    <p class="contrato-texto" style="font-size: 11px;">
+      El/ Suscrito/ a <strong>{{ contrato.datos_del_comprador.nombre_Completo|upper }}</strong> <br>
+      Nacido en <strong>{{ contrato.contrato.nacido|upper }}.</strong> <br>
+      Residente / con sede en <strong>{{ contrato.contrato.residenciaSede|upper }}-{{ contrato.datos_del_comprador.codigo_postal }}-{{ contrato.datos_del_comprador.localidad_Provincia_Pais|upper }}</strong>
+    </p>
+    <h1 style="text-align: center;">DECLARACIÓN DE EXENCIÓN DE RESPONSABILIDAD</h1>
+    <p class="contrato-text" style="font-size: 11px;">
+      que ha recogido el vehículo como se indica a continuación y que ha descrito: <br>
+      Marca: <strong>{{ contrato.datos_del_Vehiculo.marca }}</strong>
+      Modelo: <strong>{{ contrato.datos_del_Vehiculo.modelo }}</strong>
+      Versión: <strong>{{ contrato.datos_del_Vehiculo.version }}</strong>
+      <br><br>
+      a las horas ____________________________ del día ____________________________
+      <br><br><br>
+      El firmante, a partir de hoy ____________________________ fecha de entrada en posesión del vehículo y de entrega del mismo) , declara
+      asimismo que asume toda la responsabilidad penal y civil (daños materiales y a terceros, incluidas las personas transportadas, infracciones de
+      las normas de tráfico vigentes y de la ley en general) que se deriven de la utilización del vehículo en cuestión, eximiendo expresamente a la
+      empresa vendedora y a cada uno de los anteriores propietarios de cualquier responsabilidad que les fuera atribuida y/o impugnada
+      <br><br><br>
+      A partir de la firma de la presente con toma simultánea de posesión del coche indicado, el/la Sr./ra
+      <br>{{ contrato.datos_del_comprador.nombre_Completo|upper }}<br>
+      <strong></strong> se compromete, además, a pagar y/o conciliar cualquier multa y/o sanción elevada contra el vehículo antes
+      mencionado y descrito, comprometiéndose, en cualquier caso, a mantener exenta a la empresa vendedora de cualquier cuantía posterior a la
+      entrega, que se le solicitara por cualquier motivo, título y/o causa.
+      <br><br><br>
+      Lugar ____________________________ Fecha ____________________________
+      <br><br><br>
+      Firma Comprador:_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Vendedor:_______________________________________
     </p>
   </div>
   {% endfor %}

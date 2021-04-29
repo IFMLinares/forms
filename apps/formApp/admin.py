@@ -22,10 +22,12 @@ class InsercionAdmin(admin.ModelAdmin):
         'datos_del_Vehiculo__matricula',
     ]
     list_display = (
-        'concesionario',
         'get_matricula',
         'get_marca',
         'get_modelo',
+        'concesionario',
+        'get_fecha_insercion',
+        'visualizar',
         'pdf_actions',
     )
 
@@ -33,6 +35,11 @@ class InsercionAdmin(admin.ModelAdmin):
         return obj.datos_del_Vehiculo.matricula
     get_matricula.short_description = 'Matricula'
     get_matricula.admin_order_field = 'datos_del_Vehiculo__matricula'
+
+    def get_fecha_insercion(self, obj):
+        return obj.datos_del_Vehiculo.fecha_entrega
+    get_fecha_insercion.short_description = 'Fecha de Insercion'
+    get_fecha_insercion.admin_order_field = 'datos_del_Vehiculo__fecha_entrega'
 
     def get_marca(self, obj):
         return obj.datos_del_Vehiculo.marca
@@ -46,13 +53,21 @@ class InsercionAdmin(admin.ModelAdmin):
 
     def pdf_actions(self, obj):
         return format_html(
-            '<a class="button" href="{}" target="_blank">Inserción</a>&nbsp;'
-            '<a class="button" href="{}" target="_blank">COMPRAVENTA</a>',
+            '<a class="button" href="{}" target="_blank">Inserción</a>&nbsp;',
+            # '<a class="button" href="{}" target="_blank">Compraventa</a>',
             reverse('core:pdf-incersion', args=[obj.pk]),
-            reverse('core:pdf-contrato', args=[obj.pk]),
+            # reverse('core:pdf-contrato', args=[obj.pk]),
         )
     pdf_actions.short_description = 'IMPRIMIR'
     pdf_actions.allow_tags = True
+
+    def visualizar(self, obj):
+        return format_html(
+            '<span style="padding-left: 18%;"></span><a class="button" href="{}" style="padding: 0; padding-left 1px;">&nbsp;&nbsp;&nbsp;<span class="sidebar-link-icon changelink"></span></a>',
+            reverse('admin:formApp_insercion_change', args=[obj.pk])
+        )
+    visualizar.short_description = 'VISUALIZAR'
+    visualizar.allow_tags = True
 
 class ContratoAdmin(admin.ModelAdmin):
     readonly_fields = (
