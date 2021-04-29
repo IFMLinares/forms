@@ -1,0 +1,118 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+{% block content %}
+<div class="slider">
+    <div class="Modern-Slider content-section" id="top">
+        <!-- Item -->
+        <div class="item item-1">
+            <div class="img-fill">
+                <div class="image"></div>
+                <div class="info">
+                    <div>
+                        <h1>Bienvenido/@{{user.username|title}}</h1>
+                        <div class="white-button button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item item-2">
+            <div class="img-fill">
+                <div class="image"></div>
+                <div class="info">
+                    <div>
+                        <h1>Bienvenido/@{{user.username|title}}</h1>
+                        <div class="white-button button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item item-3">
+            <div class="img-fill">
+                <div class="image"></div>
+                <div class="info">
+                    <div>
+                        <h1>Bienvenido/@{{user.username|title}}</h1>
+                        <div class="white-button button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Item -->
+    </div>
+</div>
+
+
+<div class="page-content">
+    <section id="featured" class="content-section">
+        <div class="section-heading">
+            {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+      {% endif %}
+        </div>
+        <div class="section-content">
+            <h1 style="text-align: left;">Contratos:</h1>
+            <div class="owl-carousel owl-theme">
+                {% if query.insercion %}
+                {% for insercion in query.insercion %}
+                <div class="item">
+                    <div class="text-content">
+                        <h4>{{ insercion.concesionario }}</h4>
+                        <a href="{% url 'core:pdf-incersion' pk=insercion.pk %}" target="_blank">
+                            <span>
+                                Inserción de Vehículo
+                            </span>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a href="{% url 'core:editar-insercion' pk=insercion.pk %}" class="fa fa-pencil" aria-label="editar"></a>
+                        {% if insercion.contrato %}
+                            <a href="{% url 'core:pdf-contrato' pk=insercion.pk %}" target="_blank">
+                                <span>Contrato COMPRAVENTA</span>
+                            </a>
+                            &nbsp;&nbsp;
+                            <a href="{% url 'core:editar-contrato' pk=insercion.pk %}" class="fa fa-pencil" aria-label="editar"></a>
+                        {% else %}
+                            <a href="{% url 'core:contrato' %}" target="_blank">
+                                <span>AÑADIR: Contrato COMPRAVENTA</span>
+                            </a>
+                        {% endif %}
+                        <br>
+                    </div>
+                </div>
+                {% endfor %}
+                {% elif insercion %}
+                {% for insercion in insercion %}
+                <div class="item">
+                    <div class="text-content">
+                        <h4>{{ insercion.concesionario }}</h4>
+                        <a href="{% url 'core:pdf-incersion' pk=insercion.pk %}" target="_blank"><span>Inserción de Vehículo</span></a>
+                        <a href="{% url 'core:pdf-contrato' pk=insercion.pk %}" target="_blank"><span>Contrato COMPRAVENTA</span></a>
+                        <br>
+                    </div>
+                </div>
+                <a href="{% url 'core:user' %}" class="btn btn-primary">Mostrar Todos los registros</a>
+                {% endfor %}
+                {% else %}
+                <h2>No Tienes ningún registro.</h2>
+                <p>Ingresa una nuevo vehículo: &nbsp;&nbsp;<a href="{% url 'core:insercion' %}" class="btn btn-primary">Inserción</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
