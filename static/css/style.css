@@ -195,6 +195,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: right;
 }
 /*---------RESPONSIVE--------------------*/
+
 @media only screen and (max-width: 425px) {  
       .menu ul {
         flex-direction: column;
