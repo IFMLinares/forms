@@ -198,28 +198,36 @@ Copiar esto
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
+                    {% if user.imagen %}
+                    <img src="{{user.imagen.url}}" alt="img-avatar">
+                    {% else %}
                     <img src="{% static 'img/usuario.png' %}" alt="img-avatar">
+                    {% endif %}
                     </button>
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Nombre de cliente</h3>
-                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h3 class="titulo">@{{user.username|title}}</h3>
+                <p style="text-align: center;">Nombre y apellido: {{ user.first_name }} {{ user.last_name }}</p>
+                <form method="POST"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="image" id="image">
+                    <button type="submit">enviar</button>
+                </form>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-signs"></i> E-mail:</li>
-                    <li><i class="icono fas fa-phone-alt"></i> Teléfono:</li>
-                    <li><i class="icono fas fa-briefcase"></i> Nombre Razón Social:</li>
-                    <li><i class="icono fas fa-building"></i> Nro Identificacion Fiscal, NIF:</li>
+                    <li><i class="icono fas fa-map-signs"></i> E-mail: {{ user.email }}</li>
+                    <li><i class="icono fas fa-phone-alt"></i> Teléfono: {{ user.phone }}</li>
+                    <li><i class="icono fas fa-briefcase"></i> Nombre Razón Social: {{ user.nombre_Razon_Social }}</li>
+                    <li><i class="icono fas fa-building"></i> Nro Identificacion Fiscal, NIF: {{ user.nro_IDentificación_Fiscal_NIF }}</li>
                 </ul>
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-marker-alt"></i> Dirección:</li>
-                    <li><i class="icono fas fa-calendar-alt"></i> Código postal:</li>
-                    <li><i class="icono fas fa-user-check"></i> Cuando se registro:</li>
+                    <li><i class="icono fas fa-map-marker-alt"></i> Dirección: {{ user.direccion }}</li>
+                    <li><i class="icono fas fa-calendar-alt"></i> Código postal: {{ user.codigo_postal }}</li>
+                    <li><i class="icono fas fa-user-check"></i> Se registró el {{ user.date_joined }}</li>
                 </ul>
             </div>
         </div>

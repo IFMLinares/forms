@@ -17,6 +17,7 @@ class User(AbstractUser):
     nro_IDentificación_Fiscal_NIF = models.CharField(max_length=60)
     direccion = models.CharField(max_length=60)
     codigo_postal = models.CharField(max_length=60)
+    imagen = models.ImageField(upload_to = 'users', blank=True, null=True)
 
     class Meta:
         db_table = 'auth_user'
@@ -43,7 +44,7 @@ class DatosVehiculo(models.Model):
     fecha_activacion = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        retornar = 'Matricula ' + self.matricula + '\n Marca: ' + self.marca + '\n Modelo: ' + self.modelo + '\n Alimentacion: ' + self.alimentacion + '\n clase de cont: ' + self.clase_de_cont + '\n Primer matricula: ' + self.prime_matr + '\n potencia_KW: ' + self.potencia_KW + '\n nro propietarios Privados: ' + self.nro_propietarios_Privados + '\n nro propietarios profesionales: ' + self.nro_propietarios_profesionales + '\n cilindrada: ' + self.cilindrada + '\n color: ' + self.color + '\n fecha_entrega: ' + self.fecha_entrega.strftime('%d/%m/%Y') + '\n fecha_inicio: ' + self.fecha_inicio.strftime('%d/%m/%Y') + '\n fecha_activacion: ' + self.fecha_activacion.strftime('%d/%m/%Y')
+        retornar = 'Matricula ' + self.matricula + '\n Transmisión: '+ self.transmision  + '\n Marca: ' + self.marca + '\n Modelo: ' + self.modelo + '\n Alimentacion: ' + self.alimentacion + '\n clase de cont: ' + self.clase_de_cont + '\n Primer matricula: ' + self.prime_matr + '\n potencia_KW: ' + self.potencia_KW + '\n nro propietarios Privados: ' + self.nro_propietarios_Privados + '\n nro propietarios profesionales: ' + self.nro_propietarios_profesionales + '\n cilindrada: ' + self.cilindrada + '\n color: ' + self.color + '\n fecha_entrega: ' + self.fecha_entrega.strftime('%d/%m/%Y') + '\n fecha_inicio: ' + self.fecha_inicio.strftime('%d/%m/%Y') + '\n fecha_activacion: ' + self.fecha_activacion.strftime('%d/%m/%Y')
         return retornar
 
     class Meta:
@@ -94,7 +95,7 @@ class Documentacion(models.Model):
     fecha = models.DateField()
 
     def __str__(self):
-        retornar = 'Rueda de Repuesto 1: ' + boleanoString(self.rueda_repuesto1) + '\n Kit de Inflado: ' + boleanoString(self.kit_inflado) + '\n Triángulo de emergencia: ' + boleanoString(self.triangulo_emergencia)  + '\n Gato: ' + boleanoString(self.gato)  + '\n Chaleco de alta visibilidad: ' + boleanoString(self.chaleco_alta_visibilidad)  + '\n Kit de bombillas' + boleanoString(self.kit_bombillas)  + '\n Kit de bombillas Fusibles' + boleanoString(self.kit_bombillas_fusibles)  + '\n Cod card: ' + boleanoString(self.cod_card)  + '\n Libre uso y mantenimiento' + boleanoString(self.libre_uso_mantenimiento)  + '\n Ficha técnia: ' + boleanoString(self.ficha_tecnica)  + '\n Permiso de circulación: ' + boleanoString(self.permiso_circulacion) 
+        retornar = 'Rueda de Repuesto 1: ' + boleanoString(self.rueda_repuesto1) + '\n Kit de Inflado: ' + boleanoString(self.kit_inflado) + '\n Triángulo de emergencia: ' + boleanoString(self.triangulo_emergencia)  + '\n Gato: ' + boleanoString(self.gato)  + '\n Chaleco de alta visibilidad: ' + boleanoString(self.chaleco_alta_visibilidad)  + '\n Kit de bombillas' + boleanoString(self.kit_bombillas)  + '\n Kit de bombillas Fusibles' + boleanoString(self.kit_bombillas_fusibles)  + '\n Cod card: ' + boleanoString(self.cod_card)  + '\n Libre uso y mantenimiento' + boleanoString(self.libre_uso_mantenimiento)  + '\n Ficha técnia: ' + boleanoString(self.ficha_tecnica)  + '\n Permiso de circulación: ' + boleanoString(self.permiso_circulacion) + '\n ITV: ' + self.itv + '\n Fecha ITV: ' + self.fecha.strftime('%d/%m/%Y')
         return retornar
 
 class Mantenimiento(models.Model):
@@ -108,7 +109,7 @@ class Mantenimiento(models.Model):
     ultima_ITV = models.DateField()
 
     def __str__(self):
-        retornar = 'Estado de revisiones: ' + boleanoString(self.estado_revisiones) + '\n Mantenimiento: ' + boleanoString(self.mantenimiento_previo_entrega) + '\n Correa de servicio: ' + boleanoString(self.correa_servicio) + '\n Estado de la batería' + boleanoString(self.estado_bateria) + '\n Correa de distribución' + boleanoString(self.correa_distribucion) + '\n último Mantenimiento' + boleanoString(self.ultimo_mantenimiento) + '\n Próximo Mantenimiento' + boleanoString(self.proximo_mantenimiento) + '\n Última ITV' + boleanoString(self.ultima_ITV)
+        retornar = 'Estado de revisiones: ' + self.estado_revisiones + '\n Mantenimiento previo Entrega: ' + self.mantenimiento_previo_entrega + '\n Correa de servicio: ' + self.correa_servicio + '\n Estado de la batería: ' + self.estado_bateria + '\n Correa de distribución: ' + self.correa_distribucion + '\n último Mantenimiento: ' + self.ultimo_mantenimiento + '\n Próximo Mantenimiento: ' + self.proximo_mantenimiento + '\n Última ITV: ' + self.ultima_ITV.strftime('%d/%m/%Y')
         return retornar
 
 class ExamenVisual(models.Model):

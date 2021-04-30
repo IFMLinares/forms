@@ -1,5 +1,7 @@
 from django import forms
+from PIL import Image
 from django.contrib.auth import get_user_model
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 class SignupForm(forms.ModelForm):
     class Meta:
@@ -19,7 +21,7 @@ class SignupForm(forms.ModelForm):
             'nro_IDentificación_Fiscal_NIF': forms.TextInput(attrs={'placeholder':'', 'class': 'form-control'}),
             'direccion': forms.TextInput(attrs={'placeholder':'', 'class': 'form-control'}),
             'codigo_postal': forms.TextInput(attrs={'placeholder':'', 'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'placeholder':'', 'class': 'form-control'})
+            'phone': forms.TextInput(attrs={'placeholder':'', 'class': 'form-control'}),
         }
 
     def signup(self, request, user):

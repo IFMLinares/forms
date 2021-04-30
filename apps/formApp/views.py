@@ -21,7 +21,8 @@ from .models import (
     Documentacion,
     Mantenimiento,
     ExamenVisual,
-    Contrato
+    Contrato,
+    User
 )
 
 # Create your views here.
@@ -376,7 +377,7 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
             duracion_del_contrato=duracionContrato
         )
 
-        insercion.datos_del_Vehiculo = datosVehiculo
+        datosVehiculo = datosVehiculo
         insercion.suplementos = suplementos
         insercion.datos_del_comprador = datosDelComprador
         insercion.documentacion = documentacion
@@ -691,146 +692,159 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         insercion = Insercion.objects.get(pk=idPost)
         insercion.concesionario = concesionario
         insercion.insercion_de_Vehiculo = nombreComercial
+
         # DATOS DEL VEHICULO SAVE
-        insercion.datos_del_Vehiculo.matricula = matricula
-        insercion.datos_del_Vehiculo.transmision = transmision
-        insercion.datos_del_Vehiculo.marca = marca
-        insercion.datos_del_Vehiculo.modelo = modelo
-        insercion.datos_del_Vehiculo.alimentacion = alimentacion
-        insercion.datos_del_Vehiculo.clase_de_cont = claseControl
-        insercion.datos_del_Vehiculo.prime_matr = primeraMatricula
-        insercion.datos_del_Vehiculo.version = version
-        insercion.datos_del_Vehiculo.potencia_KW = potenciaKW
-        insercion.datos_del_Vehiculo.nro_propietarios_Privados = nroPropietariosPrivados
-        insercion.datos_del_Vehiculo.nro_propietarios_profesionales = nroPropietariosProfesionales
-        insercion.datos_del_Vehiculo.cilindrada = cilindrada
-        insercion.datos_del_Vehiculo.bastidor = bastidor
-        insercion.datos_del_Vehiculo.color = color
-        insercion.datos_del_Vehiculo.fecha_entrega = fechaEntrega
-        insercion.datos_del_Vehiculo.fecha_inicio = fechaInicio
-        insercion.datos_del_Vehiculo.fecha_activacion = fechaActivacion
+        datosVehiculo = DatosVehiculo.objects.get(pk=insercion.datos_del_Vehiculo.pk)
+        datosVehiculo.matricula = matricula
+        datosVehiculo.transmision = transmision
+        datosVehiculo.marca = marca
+        datosVehiculo.modelo = modelo
+        datosVehiculo.alimentacion = alimentacion
+        datosVehiculo.clase_de_cont = claseControl
+        datosVehiculo.prime_matr = primeraMatricula
+        datosVehiculo.version = version
+        datosVehiculo.potencia_KW = potenciaKW
+        datosVehiculo.nro_propietarios_Privados = nroPropietariosPrivados
+        datosVehiculo.nro_propietarios_profesionales = nroPropietariosProfesionales
+        datosVehiculo.cilindrada = cilindrada
+        datosVehiculo.bastidor = bastidor
+        datosVehiculo.color = color
+        datosVehiculo.fecha_entrega = fechaEntrega
+        datosVehiculo.fecha_inicio = fechaInicio
+        datosVehiculo.fecha_activacion = fechaActivacion
+        datosVehiculo.save()
 
         # SUPLEMENTOS SAVE
-        insercion.suplementos.cuatro_por_cuatro = cuatroxcuatro
-        insercion.suplementos.super_Car = cambioautomatico
-        insercion.suplementos.cambio_autom = vehiculoComercial
-        insercion.suplementos.suv = superCar
-        insercion.suplementos.vehiculo_comercial = suv
-        insercion.suplementos.cobertura = cobertura
+        suplementos = Suplemento.objects.get(pk=insercion.suplementos.pk)
+        suplementos.cuatro_por_cuatro = cuatroxcuatro
+        suplementos.super_Car = superCar
+        suplementos.cambio_autom = cambioautomatico
+        suplementos.suv = suv
+        suplementos.vehiculo_comercial = vehiculoComercial
+        suplementos.cobertura = cobertura
+        suplementos.save()
 
         # DATOS DEL COMPRADOR SAVE
-        insercion.datos_del_comprador.nombre_Completo = nombreCompleto
-        insercion.datos_del_comprador.codigo_postal = codigoPostal
-        insercion.datos_del_comprador.localidad_Provincia_Pais = localidad
-        insercion.datos_del_comprador.email = email
-        insercion.datos_del_comprador.direccion = direccion
-        insercion.datos_del_comprador.numero_de_telefono = numeroTelefono
-        insercion.datos_del_comprador.numero_de_movil = numeroMovil
-        insercion.datos_del_comprador.documento_identidad = documentoIdentidad
+        datos_comprador = DatosComprador.objects.get(pk=insercion.datos_del_comprador.pk)
+        datos_comprador.nombre_Completo = nombreCompleto
+        datos_comprador.codigo_postal = codigoPostal
+        datos_comprador.localidad_Provincia_Pais = localidad
+        datos_comprador.email = email
+        datos_comprador.direccion = direccion
+        datos_comprador.numero_de_telefono = numeroTelefono
+        datos_comprador.numero_de_movil = numeroMovil
+        datos_comprador.documento_identidad = documentoIdentidad
+        datos_comprador.save()
 
         # DOCUMENTACION SAVE
-        insercion.documentacion.rueda_repuesto1 = ruedaRepuesto1
-        insercion.documentacion.duplicado_llaves = duplicadoLlaves
-        insercion.documentacion.kit_inflado = kitInflado
-        insercion.documentacion.triangulo_emergencia = trianguloEmergencia
-        insercion.documentacion.gato = gato
-        insercion.documentacion.chaleco_alta_visibilidad = chalecoAltaVelocidad
-        insercion.documentacion.kit_bombillas = kitBombillas
-        insercion.documentacion.kit_bombillas_fusibles = kitBombillasFusibles
-        insercion.documentacion.cod_card = codCard
-        insercion.documentacion.libre_uso_mantenimiento = libreUsoMantenimiento
-        insercion.documentacion.ficha_tecnica = fichaTecnica
-        insercion.documentacion.permiso_circulacion = permisoCirculacion
-        insercion.documentacion.fecha = fechaITV
-        insercion.documentacion.itv = itv
+        documentacion = Documentacion.objects.get(pk=insercion.documentacion.pk)
+        documentacion.rueda_repuesto1 = ruedaRepuesto1
+        documentacion.duplicado_llaves = duplicadoLlaves
+        documentacion.kit_inflado = kitInflado
+        documentacion.triangulo_emergencia = trianguloEmergencia
+        documentacion.gato = gato
+        documentacion.chaleco_alta_visibilidad = chalecoAltaVelocidad
+        documentacion.kit_bombillas = kitBombillas
+        documentacion.kit_bombillas_fusibles = kitBombillasFusibles
+        documentacion.cod_card = codCard
+        documentacion.libre_uso_mantenimiento = libreUsoMantenimiento
+        documentacion.ficha_tecnica = fichaTecnica
+        documentacion.permiso_circulacion = permisoCirculacion
+        documentacion.fecha = fechaITV
+        documentacion.itv = itv
+        documentacion.save()
 
         # MANTENIMIENTO SAVE
-        insercion.mantenimiento.estado_revisiones = estadoRevisiones
-        insercion.mantenimiento.mantenimiento_previo_entrega = mantenimientoPrevioEntrega
-        insercion.mantenimiento.correa_servicio = correaServicio
-        insercion.mantenimiento.estado_bateria = estadoBateria
-        insercion.mantenimiento.correa_distribucion = correaDistribucion
-        insercion.mantenimiento.ultimo_mantenimiento = ultimoMantenimiento
-        insercion.mantenimiento.proximo_mantenimiento = proximoMantenimiento
-        insercion.mantenimiento.ultima_ITV = ultimaITV
+        mantenimiento = Mantenimiento.objects.get(pk=insercion.mantenimiento.pk)
+        mantenimiento.estado_revisiones = estadoRevisiones
+        mantenimiento.mantenimiento_previo_entrega = mantenimientoPrevioEntrega
+        mantenimiento.correa_servicio = correaServicio
+        mantenimiento.estado_bateria = estadoBateria
+        mantenimiento.correa_distribucion = correaDistribucion
+        mantenimiento.ultimo_mantenimiento = ultimoMantenimiento
+        mantenimiento.proximo_mantenimiento = proximoMantenimiento
+        mantenimiento.ultima_ITV = ultimaITV
+        mantenimiento.save()
 
         # EXAMEN VISUAL
-        insercion.examen_visual.carroceria = carroceria
-        insercion.examen_visual.descripcion_carroceria = descripcionCarroceria
-        insercion.examen_visual.habitaculo_tapiceria_1 = habitaculoTapiceria
-        insercion.examen_visual.descripcion_habitaculo_tapiceria_1 = descripcionHabitaculoTapiceria
-        insercion.examen_visual.habitaculo_tapiceria_2 = habitaculoTapiceria2
-        insercion.examen_visual.descripcion_habitaculo_tapiceria_2 = descripcionHabitaculoTapiceria2
-        insercion.examen_visual.asiento_revestimiento_asiento = asientoRevestimientoAsiento
-        insercion.examen_visual.descripcion_asiento_revestimiento_asiento = descripcionAsientoRevestimientoAsiento
-        insercion.examen_visual.neumaticos_delanteros = neumaticosDelanteros
-        insercion.examen_visual.descripcion_neumaticos_delanteros = descripcionNeumaticosDelanteros
-        insercion.examen_visual.neumaticos_traseros = neumaticosTraseros
-        insercion.examen_visual.descripcion_neumaticos_traseros = descripcionNeumaticosTraseros
-        insercion.examen_visual.volante_motor = volanteMotor
-        insercion.examen_visual.explicacion_detallada_volante_motor = descripcionVolanteMotor
-        insercion.examen_visual.motor = motor
-        insercion.examen_visual.explicacion_detallada_motor = Explicacionmotor
-        insercion.examen_visual.sistema_escape = sistemaEscape
-        insercion.examen_visual.explicacion_detallada_sistema_escape = explicacionsistemaEscape
-        insercion.examen_visual.embrague = embrague
-        insercion.examen_visual.explicacion_detallada_embrague = descripcionEmbrague
-        insercion.examen_visual.alimentacion_inyeccion = alimentacionInyeccion
-        insercion.examen_visual.explicacion_detallada_alimentacion_inyeccion = explicacionAlimentacionInyeccion
-        insercion.examen_visual.cambio = cambio
-        insercion.examen_visual.explicacion_detallada_cambio = explicacionCambio
-        insercion.examen_visual.moto_arranque_alternador = motorArranqueAlternador
-        insercion.examen_visual.explicacion_detallada_moto_arranque_alternador = explicacionMotorArranqueAlternador
-        insercion.examen_visual.diferencial_repartidor = diferencialRepartidor
-        insercion.examen_visual.explicacion_detallada_diferencial_repartidor = explicacionDiferencialRepartidor
-        insercion.examen_visual.caja_transferencia = cajaTranferencia
-        insercion.examen_visual.explicacion_detallada_caja_transferencia = explicacionCajaTranferencia
-        insercion.examen_visual.organo_direccion = organoDireccion
-        insercion.examen_visual.explicacion_detallada_organo_direccion = explicacionOrganoDireccion
-        insercion.examen_visual.rodamiento_neumaticos = rodamientoNeumaticos
-        insercion.examen_visual.explicacion_detallada_rodamiento_neumaticos = ExplicacionRodamientoNeumaticos
-        insercion.examen_visual.direccion_asistida = direccionAsistida
-        insercion.examen_visual.explicacion_detallada_direccion_asistida = explicacionDireccionAsistida
-        insercion.examen_visual.bomba_direccion_asistida = bombaDireccionAsistida
-        insercion.examen_visual.explicacion_detallada_bomba_direccion_asistida = explicacionbombaDireccionAsistida
-        insercion.examen_visual.sistema_frenado = sistemaFrenado
-        insercion.examen_visual.explicacion_detallada_sistema_frenado = explicacionSistemaFrenado
-        insercion.examen_visual.sistema_refrigeracion = sistemaRefrigeracion
-        insercion.examen_visual.explicacion_detallada_sistema_refrigeracion = explicacionSistemaRefrigeracion
-        insercion.examen_visual.sistema_calefaccion = sistemaCalefaccion
-        insercion.examen_visual.explicacion_detallada_sistema_calefaccion = explicacionSistemaCalefaccion
-        insercion.examen_visual.aire_acondicionado = aireAcondicionado
-        insercion.examen_visual.explicacion_detallada_aire_acondicionado = expliacionAireAcondicionado
-        insercion.examen_visual.abs_esp = AbsEsp
-        insercion.examen_visual.explicacion_detallada_abs_esp = explicacionAbsEsp
-        insercion.examen_visual.cuadro_instrumentos = cuadroInstrumentos
-        insercion.examen_visual.explicacion_detallada_cuadro_instrumentos = explicacionCuadroInstrumentos
-        insercion.examen_visual.limpiaparabrisas = limpiaParabrisas
-        insercion.examen_visual.explicacion_detallada_limpiaparabrisas = explicacionLimpiaParabrisas
-        insercion.examen_visual.bomba_limpiaparabrisas = bombaLimpiaparabrisas
-        insercion.examen_visual.explicacion_detallada_bomba_limpiaparabrisas = explicacionbombaLimpiaparabrisas
-        insercion.examen_visual.sistema_electrico = sistemaElectrico
-        insercion.examen_visual.explicacion_detallada_sistema_electrico = explicacionSistemaElectrico
-        insercion.examen_visual.cierre_centralizado = cierreCentralizado
-        insercion.examen_visual.explicacion_detallada_cierre_centralizado = expliacionCierreCentralizado
-        insercion.examen_visual.alumbrado_señalizacion = alumbradoSeñalizacion
-        insercion.examen_visual.explicacion_detallada_alumbrado_señalizacion = expliacionAlumbradoSeñalizacion
-        insercion.examen_visual.radio_lectorCD = radioLector
-        insercion.examen_visual.explicacion_detallada_radio_lectorCD = explicacionRadioLector
-        insercion.examen_visual.navegador = navegador
-        insercion.examen_visual.explicacion_detallada_navegador = explicacionNavegador
-        insercion.examen_visual.elevalunas_electrico = elevalunasElectrico
-        insercion.examen_visual.explicacion_detallada_elevalunas_electrico = explicacionElevalunasElectrico
-        insercion.examen_visual.airbag = airBag
-        insercion.examen_visual.explicacion_detallada_airbag = explicacionAirBag
-        insercion.examen_visual.antirrobo = antirrobo
-        insercion.examen_visual.explicacion_detallada_antirrobo = explicacionAntirrobo
-        insercion.examen_visual.techo_solar = techoSolar
-        insercion.examen_visual.explicacion_detallada_techo_solar = expliacionTechoSolar
+        examenVisual = ExamenVisual.objects.get(pk=insercion.examen_visual.pk)
+        examenVisual.carroceria = carroceria
+        examenVisual.descripcion_carroceria = descripcionCarroceria
+        examenVisual.habitaculo_tapiceria_1 = habitaculoTapiceria
+        examenVisual.descripcion_habitaculo_tapiceria_1 = descripcionHabitaculoTapiceria
+        examenVisual.habitaculo_tapiceria_2 = habitaculoTapiceria2
+        examenVisual.descripcion_habitaculo_tapiceria_2 = descripcionHabitaculoTapiceria2
+        examenVisual.asiento_revestimiento_asiento = asientoRevestimientoAsiento
+        examenVisual.descripcion_asiento_revestimiento_asiento = descripcionAsientoRevestimientoAsiento
+        examenVisual.neumaticos_delanteros = neumaticosDelanteros
+        examenVisual.descripcion_neumaticos_delanteros = descripcionNeumaticosDelanteros
+        examenVisual.neumaticos_traseros = neumaticosTraseros
+        examenVisual.descripcion_neumaticos_traseros = descripcionNeumaticosTraseros
+        examenVisual.volante_motor = volanteMotor
+        examenVisual.explicacion_detallada_volante_motor = descripcionVolanteMotor
+        examenVisual.motor = motor
+        examenVisual.explicacion_detallada_motor = Explicacionmotor
+        examenVisual.sistema_escape = sistemaEscape
+        examenVisual.explicacion_detallada_sistema_escape = explicacionsistemaEscape
+        examenVisual.embrague = embrague
+        examenVisual.explicacion_detallada_embrague = descripcionEmbrague
+        examenVisual.alimentacion_inyeccion = alimentacionInyeccion
+        examenVisual.explicacion_detallada_alimentacion_inyeccion = explicacionAlimentacionInyeccion
+        examenVisual.cambio = cambio
+        examenVisual.explicacion_detallada_cambio = explicacionCambio
+        examenVisual.moto_arranque_alternador = motorArranqueAlternador
+        examenVisual.explicacion_detallada_moto_arranque_alternador = explicacionMotorArranqueAlternador
+        examenVisual.diferencial_repartidor = diferencialRepartidor
+        examenVisual.explicacion_detallada_diferencial_repartidor = explicacionDiferencialRepartidor
+        examenVisual.caja_transferencia = cajaTranferencia
+        examenVisual.explicacion_detallada_caja_transferencia = explicacionCajaTranferencia
+        examenVisual.organo_direccion = organoDireccion
+        examenVisual.explicacion_detallada_organo_direccion = explicacionOrganoDireccion
+        examenVisual.rodamiento_neumaticos = rodamientoNeumaticos
+        examenVisual.explicacion_detallada_rodamiento_neumaticos = ExplicacionRodamientoNeumaticos
+        examenVisual.direccion_asistida = direccionAsistida
+        examenVisual.explicacion_detallada_direccion_asistida = explicacionDireccionAsistida
+        examenVisual.bomba_direccion_asistida = bombaDireccionAsistida
+        examenVisual.explicacion_detallada_bomba_direccion_asistida = explicacionbombaDireccionAsistida
+        examenVisual.sistema_frenado = sistemaFrenado
+        examenVisual.explicacion_detallada_sistema_frenado = explicacionSistemaFrenado
+        examenVisual.sistema_refrigeracion = sistemaRefrigeracion
+        examenVisual.explicacion_detallada_sistema_refrigeracion = explicacionSistemaRefrigeracion
+        examenVisual.sistema_calefaccion = sistemaCalefaccion
+        examenVisual.explicacion_detallada_sistema_calefaccion = explicacionSistemaCalefaccion
+        examenVisual.aire_acondicionado = aireAcondicionado
+        examenVisual.explicacion_detallada_aire_acondicionado = expliacionAireAcondicionado
+        examenVisual.abs_esp = AbsEsp
+        examenVisual.explicacion_detallada_abs_esp = explicacionAbsEsp
+        examenVisual.cuadro_instrumentos = cuadroInstrumentos
+        examenVisual.explicacion_detallada_cuadro_instrumentos = explicacionCuadroInstrumentos
+        examenVisual.limpiaparabrisas = limpiaParabrisas
+        examenVisual.explicacion_detallada_limpiaparabrisas = explicacionLimpiaParabrisas
+        examenVisual.bomba_limpiaparabrisas = bombaLimpiaparabrisas
+        examenVisual.explicacion_detallada_bomba_limpiaparabrisas = explicacionbombaLimpiaparabrisas
+        examenVisual.sistema_electrico = sistemaElectrico
+        examenVisual.explicacion_detallada_sistema_electrico = explicacionSistemaElectrico
+        examenVisual.cierre_centralizado = cierreCentralizado
+        examenVisual.explicacion_detallada_cierre_centralizado = expliacionCierreCentralizado
+        examenVisual.alumbrado_señalizacion = alumbradoSeñalizacion
+        examenVisual.explicacion_detallada_alumbrado_señalizacion = expliacionAlumbradoSeñalizacion
+        examenVisual.radio_lectorCD = radioLector
+        examenVisual.explicacion_detallada_radio_lectorCD = explicacionRadioLector
+        examenVisual.navegador = navegador
+        examenVisual.explicacion_detallada_navegador = explicacionNavegador
+        examenVisual.elevalunas_electrico = elevalunasElectrico
+        examenVisual.explicacion_detallada_elevalunas_electrico = explicacionElevalunasElectrico
+        examenVisual.airbag = airBag
+        examenVisual.explicacion_detallada_airbag = explicacionAirBag
+        examenVisual.antirrobo = antirrobo
+        examenVisual.explicacion_detallada_antirrobo = explicacionAntirrobo
+        examenVisual.techo_solar = techoSolar
+        examenVisual.explicacion_detallada_techo_solar = expliacionTechoSolar
+        examenVisual.save()
 
         insercion.save()
         messages.success(self.request, 'Inserción Editada Exitosamente')
-        return redirect('core:contrato')
+        return redirect('core:editar-insercion', pk=idPost)
 
 class ContratoEditView(LoginRequiredMixin, DetailView):
     model = Insercion
@@ -947,6 +961,23 @@ class UserView(LoginRequiredMixin, ListView):
                     }
         return queryset
 
+class UserProfile(LoginRequiredMixin, View):
+    model = User
+    def get(self, request, *args, **kwargs):
+        user = self.model.objects.get(pk=self.request.user.pk)
+        context = { 'user': user }
+        return render(self.request, 'perfilUsuario.html', context)
+
+    def post(self, request, *args, **kwargs):
+        archivo = self.request.FILES.get('image')
+        user = User.objects.get(pk=self.request.user.pk)
+        if user.imagen != archivo:
+            user.imagen.delete(save=False)
+        user.imagen = archivo
+        user.save()
+        context = { 'user': user }
+        return redirect('core:user-profile')
+
 def pdfInsercion(request, pk):
 
     def link_callback(uri, rel):
@@ -979,7 +1010,8 @@ def pdfInsercion(request, pk):
             context = {
                 'insercion': insercion,
                 'icon': '{}{}'.format(settings.STATIC_URL, 'img/autos.png'),
-                'icon1': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png')
+                'icon1': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png'),
+                'icon2': '{}{}'.format(settings.STATIC_URL, 'img/logo.png')
             }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')
@@ -1058,14 +1090,10 @@ def inicio(request):
     else:
         return redirect('accounts/login')
 
-# def add_user_logout_view(request):
-    # logout(request)
-    # return redirect('account_signup')
-
 def search(request):
     if request.method=='POST':
         matricula = request.POST['matricula']
-        insercion = Insercion.objects.filter(datos_del_Vehiculo__matricula=matricula)
+        insercion = Insercion.objects.filter(datos_del_Vehiculo__matricula__icontains=matricula)
         query = {
             'insercion': insercion
         }

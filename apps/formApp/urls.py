@@ -11,7 +11,8 @@ from .views import (
     # add_user_logout_view,
     search,
     InsercionEditView,
-    ContratoEditView
+    ContratoEditView,
+    UserProfile
 )
 
 app_name = 'core'
@@ -23,6 +24,7 @@ urlpatterns = [
     path('contrato/', FormContratoView.as_view(), name='contrato'),
     path('editarcontrato/<pk>/', ContratoEditView.as_view(), name='editar-contrato'),
     path('usuario/', UserView.as_view(), name='user'),
+    path('perfilUsuario/', UserProfile.as_view(), name='user-profile'),
     path('pdfInsercion/<pk>/', pdfInsercion, name='pdf-incersion'),
     path('pdfContrato/<pk>/', pdfContrato, name='pdf-contrato'),
     # path('signup/', add_user_logout_view, name="signup"),

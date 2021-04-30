@@ -7,12 +7,23 @@ Inserción de vehiculos
 {% block content %}
 <div class="cuadro-informacion">
   <div class="politica-privacidad">
-    <form method="POST" action="" id="form/">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+  {% endif %}
+    <form method="POST" id="form/">
       {% csrf_token %}
       <div id="politica-privacidad">
         <div class="form-check politica-privacidad_checkbox">
           <input type="hidden" name="id" value="{{ insercion.pk }}">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" class="form-check-input" checked>
           <label class="form-check-label" for="exampleCheck1">Acepto la política de privacidad</label>
         </div>
         <br><br>
@@ -52,7 +63,7 @@ Inserción de vehiculos
           </div>
           <div>
             <div class="form-group col insercion-vehiculos_informacion-form">
-              <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Nombre del Comercial" value="{{ insercion.insercion_de_vehiculo }}">
+              <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Nombre del Comercial" value="{{ insercion.insercion_de_Vehiculo }}">
             </div>
           </div>
         </div>
@@ -91,7 +102,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="primeraMatricula" class="col col-form-label">Prime matr.</label>
-                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" value="{{ insercion.datos_del_Vehiculo.prime_matr|date:'Y-m-d' }}">
+                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" value="{{ insercion.datos_del_Vehiculo.prime_matr}}">
                 </div>
               </div>
             </div>
@@ -133,10 +144,10 @@ Inserción de vehiculos
                 </div>
                 <div class="col">
                   <label for="transmision">Transmisión</label>
-                <select class="custom-select" id="transmision" name="transmision"  id="transmision" value="{{ insercion.datos_del_Vehiculo.transmision }}">
-                  <option value="Manual">Manual</option>
-                  <option value="automatico">Automatico</option>
-                  <option value="dual">Transmisión dual</option>
+                <select class="custom-select" id="transmision" name="transmision"  id="transmision">
+                  <option {% if insercion.datos_del_Vehiculo.transmision == 'Manual' %} selected {% endif %} value="Manual" >Manual</option>
+                  <option {% if insercion.datos_del_Vehiculo.transmision == 'automatico' %} selected {% endif %} value="automatico">Automatico</option>
+                  <option {% if insercion.datos_del_Vehiculo.transmision == 'dual' %} selected {% endif %} value="dual">Transmisión dual</option>
                 </select>
                 </div>
               </div>
@@ -166,22 +177,22 @@ Inserción de vehiculos
               <div class="col">
                 <label for="cuatroxcuatro">4 x 4</label>
                 <select class="custom-select" id="cuatroxcuatro" name="cuatroxcuatro" value="{{ insercion.suplementos.cuatro_por_cuatro }}">
-                  <option value="0">No</option>
-                  <option value="1">Si</option>
+                  <option {% if insercion.suplementos.cuatro_por_cuatro == 0 %} selected {% endif %} value="0">No</option>
+                  <option {% if insercion.suplementos.cuatro_por_cuatro == 1 %} selected {% endif %} value="1">Si</option>
                 </select>
               </div>
               <div class="col">
                 <label for="cambioautomatico">Cambio Autom.</label>
                 <select class="custom-select" id="cambioautomatico" name="cambioautomatico" value="{{ insercion.suplementos.cambio_autom }}">
-                  <option value="0">No</option>
-                  <option value="1">Si</option>
+                  <option {% if insercion.suplementos.cambio_autom == 0 %} selected {% endif %}  value="0">No</option>
+                  <option {% if insercion.suplementos.cambio_autom == 1 %} selected {% endif %}  value="1">Si</option>
                 </select>
               </div>
               <div class="col">
                 <label for="vehiculoComercial">Vehículo comercial</label>
                 <select class="custom-select" id="vehiculoComercial" name="vehiculoComercial" value="{{ insercion.suplementos.vehiculo_comercial }}">
-                  <option value="0">No</option>
-                  <option value="1">Si</option>
+                  <option {% if insercion.suplementos.vehiculo_comercial == 0 %} selected {% endif %}  value="0">No</option>
+                  <option {% if insercion.suplementos.vehiculo_comercial == 1 %} selected {% endif %}  value="1">Si</option>
                 </select>
               </div>
             </div>
@@ -191,22 +202,22 @@ Inserción de vehiculos
               <div class="col">
                 <label for="superCar">Super car</label>
                 <select class="custom-select" id="superCar" name="superCar" value="{{ insercion.suplementos.super_Car }}">
-                  <option value="0">No</option>
-                  <option value="1">Si</option>
+                  <option {% if insercion.suplementos.super_Car == 0 %} selected {% endif %}  value="0">No</option>
+                  <option {% if insercion.suplementos.super_Car == 1 %} selected {% endif %}  value="1">Si</option>
                 </select>
               </div>
               <div class="col">
                 <label for="suv">Suv</label>
                 <select class="custom-select" id="suv" name="suv" value="{{ insercion.suplementos.suv }}">
-                  <option value="0">No</option>
-                  <option value="1">Si</option>
+                  <option {% if insercion.suplementos.suv == 0 %} selected {% endif %}  value="0">No</option>
+                  <option {% if insercion.suplementos.suv == 1 %} selected {% endif %}  value="1">Si</option>
                 </select>
               </div>
               <div class="col">
                 <label for="cobertura">+ Cobertura</label>
-                <select class="custom-select" id="cobertura" name="cobertura" value="{{ insercion.suplementos.cobertura}">
-                  <option value="0">No</option>
-                  <option value="1">Si</option>
+                <select class="custom-select" id="cobertura" name="cobertura" value="{{ insercion.suplementos.cobertura}}">
+                  <option {% if insercion.suplementos.cobertura == 0 %} selected {% endif %}  value="0">No</option>
+                  <option {% if insercion.suplementos.cobertura == 1 %} selected {% endif %}  value="1">Si</option>
                 </select>
               </div>
             </div>
@@ -403,8 +414,8 @@ Inserción de vehiculos
                 <div class="col ">
                   <label for="itv">ITV</label>
                   <select class="custom-select" id="itv" name="itv" value="{{ insercion.documentacion.itv }}">
-                    <option value="vencido">Vencido</option>
-                    <option value="valido">Válido</option>
+                    <option {% if insercion.documentacion.itv == 'Vencido' %} selected {% endif %} value="vencido">Vencido</option>
+                    <option {% if insercion.documentacion.itv == 'valido' %} selected {% endif %} value="valido">Válido</option>
                   </select>
                 </div>
                 <div class="col insercion-vehiculos-date">
@@ -428,31 +439,31 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="estadoRevisiones">Estado revisiones</label>
                   <select class="custom-select" id="estadoRevisiones" name="estadoRevisiones" value="{{ insercion.mantenimiento.estado_revisiones }}">
-                    <option selected value="Segun plan del constructor">Según plan del constructor</option>
-                    <option value="regulados">Regulados</option>
-                    <option value="No Documentado">No documentados</option>
+                    <option {% if insercion.mantenimiento.estado_revisiones == 'Segun plan del constructor' %} selected {% endif %} selected value="Segun plan del constructor">Según plan del constructor</option>
+                    <option {% if insercion.mantenimiento.estado_revisiones == 'regulados' %} selected {% endif %} value="regulados">Regulados</option>
+                    <option {% if insercion.mantenimiento.estado_revisiones == 'No Documentado' %} selected {% endif %} value="No Documentado">No documentados</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="mantenimientoPrevioEntrega">Manten. Previo a entrega</label>
                   <select class="custom-select" id="mantenimientoPrevioEntrega" name="mantenimientoPrevioEntrega" value="{{ insercion.mantenimiento.mantenimiento_previo_entrega }}">
-                    <option selected value="Ninguno">Ninguno</option>
-                    <option value="Control/rellenoNiveles">Control/Relleno Niveles</option>
-                    <option value="Cambio Aceite y Filtro">Cambio de aceite y filtro</option>
-                    <option value="Revision Motor">Revisión de motor</option>
-                    <option value="Revision Completa">Revisión completa</option>
+                    <option {% if insercion.mantenimiento.mantenimiento_previo_entrega == 'Ninguno' %} selected {% endif %} selected value="Ninguno">Ninguno</option>
+                    <option {% if insercion.mantenimiento.mantenimiento_previo_entrega == 'Control/rellenoNiveles' %} selected {% endif %} value="Control/rellenoNiveles">Control/Relleno Niveles</option>
+                    <option {% if insercion.mantenimiento.mantenimiento_previo_entrega == 'Cambio Aceite y Filtro' %} selected {% endif %} value="Cambio Aceite y Filtro">Cambio de aceite y filtro</option>
+                    <option {% if insercion.mantenimiento.mantenimiento_previo_entrega == 'Revision Motor' %} selected {% endif %} value="Revision Motor">Revisión de motor</option>
+                    <option {% if insercion.mantenimiento.mantenimiento_previo_entrega == 'Revision Completa' %} selected {% endif %} value="Revision Completa">Revisión completa</option>
                   </select>
                 </div>
                 <div class="col">
                   <label for="correaServicio">Correa de servicio</label>
                   <select class="custom-select" id="correaServicio" name="correaServicio" value="{{ insercion.mantenimiento.correa_servicio }}">
-                    <option selected value="No Disponible">No disponible</option>
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="Condiciones Normales de Uso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'No Disponible' %} selected {% endif %} selected value="No Disponible">No disponible</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'Intervencion Recomendada' %} selected {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'No Disponible' %} selected {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'Condiciones Normales de Uso' %} selected {% endif %} value="Condiciones Normales de Uso">Condiciones normales de uso</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'Reacondicionado' %} selected {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.mantenimiento.correa_servicio == 'Reparacion Necesaria' %} selected {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
               </div>
@@ -463,24 +474,24 @@ Inserción de vehiculos
               <div class="col">
                 <label for="estadoBateria">Estado de batería</label>
                 <select class="custom-select" id="estadoBateria" name="estadoBateria" value="{{ insercion.mantenimiento.estado_bateria }}">
-                  <option selected value="Ninguno">Ninguno</option>
-                  <option value="Buenas Condiciones">Buenas condiciones</option>
-                  <option value="intervencionNecesaria">Intervención recomendada</option>
-                  <option value="No Disponible">No disponible</option>
-                  <option value="condicionesNormales">Condiciones normales de uso</option>
-                  <option value="Reacondicionado">Reacondicionado</option>
-                  <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'Ninguno' %} selected {% endif %} selected value="Ninguno">Ninguno</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'intervencionNecesaria' %} selected {% endif %} value="intervencionNecesaria">Intervención recomendada</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'No Disponible' %} selected {% endif %} value="No Disponible">No disponible</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'condicionesNormales' %} selected {% endif %} value="condicionesNormales">Condiciones normales de uso</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'Reacondicionado' %} selected {% endif %} value="Reacondicionado">Reacondicionado</option>
+                  <option {% if insercion.mantenimiento.estado_bateria == 'Reparacion Necesaria' %} selected {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                 </select>
               </div>
               <div class="col">
                 <label for="correaDistribucion">Correa de distribución</label>
                 <select class="custom-select" id="correaDistribucion" name="correaDistribucion" value="{{ insercion.mantenimiento.correa_distribucion }}">
-                  <option selected value="Ninguno">Buenas condiciones</option>
-                  <option value="Intervencion Recomendada">Intervención recomendada</option>
-                  <option value="No Disponible">No disponible</option>
-                  <option value="condicionesNormales">Condiciones normales de uso</option>
-                  <option value="Reacondicionado">Reacondicionado</option>
-                  <option value="Reparacion Necesaria">Reparación necesaria</option>
+                  <option {% if insercion.mantenimiento.correa_distribucion == 'Ninguno' %} selected {% endif %} selected value="Ninguno">Buenas condiciones</option>
+                  <option {% if insercion.mantenimiento.correa_distribucion == 'Intervencion Recomendada' %} selected {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                  <option {% if insercion.mantenimiento.correa_distribucion == 'No Disponible' %} selected {% endif %} value="No Disponible">No disponible</option>
+                  <option {% if insercion.mantenimiento.correa_distribucion == 'condicionesNormales' %} selected {% endif %} value="condicionesNormales">Condiciones normales de uso</option>
+                  <option {% if insercion.mantenimiento.correa_distribucion == 'Reacondicionado' %} selected {% endif %} value="Reacondicionado">Reacondicionado</option>
+                  <option {% if insercion.mantenimiento.correa_distribucion == 'Reparacion Necesaria' %} selected {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                 </select>
               </div>
             </div>
@@ -489,11 +500,11 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col">
                 <label for="ultimoMantenimiento">Último mantenimiento</label>
-                <input type="text" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento" value="{{ insercion.mantenimiento.ultimo_mantenimiento }}">
+                <input type="date" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento" value="{{ insercion.mantenimiento.ultimo_mantenimiento }}">
               </div>
               <div class="col">
                 <label for="proximoMantenimiento">Próximo mantenimiento</label>
-                <input type="text" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento"value="{{ insercion.mantenimiento.proximo_mantenimiento }}">
+                <input type="date" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento"value="{{ insercion.mantenimiento.proximo_mantenimiento }}">
               </div>
             </div>
           </div>
@@ -533,36 +544,36 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="carroceria">Carrocería</label>
                   <select class="custom-select" id="carroceria" name="carroceria" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.carroceria == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.carroceria == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.carroceria == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.carroceria == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.carroceria == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.carroceria == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción" name="descripcionCarroceria" id="descripcionCarroceria" value="{{ insercion.examen_visual.descripcion_carroceria }}">
                 </div>
                 <div class="col">
                   <label for="habitaculoTapiceria">Habitáculo y tapicería</label>
                   <select class="custom-select" id="habitaculoTapiceria" name="habitaculoTapiceria" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_1 == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_1 == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_1 == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_1 == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_1 == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_1 == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción" name="descripcionHabitaculoTapiceria" id="descripcionHabitaculoTapiceria" value="{{ insercion.examen_visual.descripcion_habitaculo_tapiceria_1 }}">
                 </div>
                 <div class="col">
                   <label for="habitaculoTapiceria2">Habitáculo y tapicería</label>
                   <select class="custom-select" id="habitaculoTapiceria2" name="habitaculoTapiceria2" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_2 == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_2 == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_2 == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_2 == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_2 == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.habitaculo_tapiceria_2 == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción..." name="descripcionHabitaculoTapiceria2" id="descripcionHabitaculoTapiceria2" value="{{ insercion.examen_visual.descripcion_habitaculo_tapiceria_2 }}">
                 </div>
@@ -573,36 +584,36 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="asientoRevestimientoAsiento">Asiento y revestimiento del asiento</label>
                   <select class="custom-select" id="asientoRevestimientoAsiento" name="asientoRevestimientoAsiento" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.asiento_revestimiento_asiento == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.asiento_revestimiento_asiento == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.asiento_revestimiento_asiento == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.asiento_revestimiento_asiento == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.asiento_revestimiento_asiento == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.asiento_revestimiento_asiento == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción..." name="descripcionAsientoRevestimientoAsiento" id="descripcionAsientoRevestimientoAsiento"  value="{{ insercion.examen_visual.descripcion_asiento_revestimiento_asiento }}">
                 </div>
                 <div class="col">
                   <label for="neumaticosDelanteros">Neumáticos delanteros</label>
                   <select class="custom-select" id="neumaticosDelanteros" name="neumaticosDelanteros" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.neumaticos_delanteros == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.neumaticos_delanteros == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.neumaticos_delanteros == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.neumaticos_delanteros == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.neumaticos_delanteros == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.neumaticos_delanteros == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción..." name="descripcionNeumaticosDelanteros" id="descripcionNeumaticosDelanteros" value="{{ insercion.examen_visual.descripcion_neumaticos_delanteros }}">
                 </div>
                 <div class="col">
                   <label for="neumaticosTraseros">Neumáticos traseros</label>
                   <select class="custom-select" id="neumaticosTraseros" name="neumaticosTraseros" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.neumaticos_traseros == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.neumaticos_traseros == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.neumaticos_traseros == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.neumaticos_traseros == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.neumaticos_traseros == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.neumaticos_traseros == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                   <input type="text" class="form-control" placeholder="Descripción" name="descripcionNeumaticosTraseros" id="descripcionNeumaticosTraseros" value="{{ insercion.examen_visual.descripcion_neumaticos_traseros }}">
                 </div>
@@ -613,12 +624,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="volanteMotor">Volante motor</label>
                   <select class="custom-select" id="volanteMotor" name="volanteMotor" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.volante_motor == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.volante_motor == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.volante_motor == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.volante_motor == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.volante_motor == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.volante_motor == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -632,12 +643,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="motor">Motor</label>
                   <select class="custom-select" id="motor" name="motor" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.motor == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.motor == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.motor == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.motor == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.motor == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.motor == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -651,12 +662,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaEscape">Sistema de escape</label>
                   <select class="custom-select" id="sistemaEscape" name="sistemaEscape" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.sistema_escape == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.sistema_escape == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.sistema_escape == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.sistema_escape == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.sistema_escape == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.sistema_escape == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -670,12 +681,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="embrague">Embrague</label>
                   <select class="custom-select" id="embrague" name="embrague" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.embrague == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.embrague == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.embrague == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.embrague == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.embrague == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.embrague == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -689,12 +700,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="alimentacionInyeccion">Alimentacíon e Inyección</label>
                   <select class="custom-select" id="alimentacionInyeccion" name="alimentacionInyeccion" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.alimentacion_inyeccion == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.alimentacion_inyeccion == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.alimentacion_inyeccion == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.alimentacion_inyeccion == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.alimentacion_inyeccion == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.alimentacion_inyeccion == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -708,12 +719,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cambio">Cambio</label>
                   <select class="custom-select" id="cambio" name="cambio" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.cambio == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.cambio == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.cambio == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.cambio == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.cambio == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.cambio == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -727,12 +738,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="motorArranqueAlternador">Motor de arranque/Alternador</label>
                   <select class="custom-select" id="motorArranqueAlternador" name="motorArranqueAlternador" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.moto_arranque_alternador == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.moto_arranque_alternador == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.moto_arranque_alternador == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.moto_arranque_alternador == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.moto_arranque_alternador == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.moto_arranque_alternador == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -746,12 +757,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="diferencialRepartidor">Diferencial / Repartidor</label>
                   <select class="custom-select" id="diferencialRepartidor" name="diferencialRepartidor" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.diferencial_repartidor == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.diferencial_repartidor == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.diferencial_repartidor == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.diferencial_repartidor == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.diferencial_repartidor == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.diferencial_repartidor == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -765,12 +776,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cajaTranferencia">Caja de trasferencia</label>
                   <select class="custom-select" id="cajaTranferencia" name="cajaTranferencia" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.caja_transferencia == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.caja_transferencia == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.caja_transferencia == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.caja_transferencia == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.caja_transferencia == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.caja_transferencia == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -784,12 +795,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="organoDireccion">Organo de direccíon</label>
                   <select class="custom-select" id="organoDireccion" name="organoDireccion" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.organo_direccion == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.organo_direccion == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.organo_direccion == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.organo_direccion == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.organo_direccion == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.organo_direccion == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -803,12 +814,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="rodamientoNeumaticos">Rodamiento de los neumáticos</label>
                   <select class="custom-select" id="rodamientoNeumaticos" name="rodamientoNeumaticos" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.rodamiento_neumaticos == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.rodamiento_neumaticos == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.rodamiento_neumaticos == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.rodamiento_neumaticos == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.rodamiento_neumaticos == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.rodamiento_neumaticos == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -822,12 +833,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="direccionAsistida">Dirección asistida</label>
                   <select class="custom-select" id="direccionAsistida" name="direccionAsistida" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.direccion_asistida == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.direccion_asistida == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.direccion_asistida == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.direccion_asistida == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.direccion_asistida == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.direccion_asistida == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -841,12 +852,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="bombaDireccionAsistida">Bomba de la dirección asistida</label>
                   <select class="custom-select" id="bombaDireccionAsistida" name="bombaDireccionAsistida" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.bomba_direccion_asistida == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.bomba_direccion_asistida == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.bomba_direccion_asistida == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.bomba_direccion_asistida == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.bomba_direccion_asistida == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.bomba_direccion_asistida == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -860,12 +871,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaFrenado">Sistema de frenado</label>
                   <select class="custom-select" id="sistemaFrenado" name="sistemaFrenado" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.sistema_frenado == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.sistema_frenado == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.sistema_frenado == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.sistema_frenado == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.sistema_frenado == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.sistema_frenado == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -879,12 +890,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaRefrigeracion">Sistema de refrigeración</label>
                   <select class="custom-select" id="sistemaRefrigeracion" name="sistemaRefrigeracion" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.sistema_refrigeracion == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.sistema_refrigeracion == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.sistema_refrigeracion == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.sistema_refrigeracion == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.sistema_refrigeracion == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.sistema_refrigeracion == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -898,12 +909,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaCalefaccion">Sistema de calefacción ( aire )</label>
                   <select class="custom-select" id="sistemaCalefaccion" name="sistemaCalefaccion" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.sistema_calefaccion == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.sistema_calefaccion == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.sistema_calefaccion == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.sistema_calefaccion == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.sistema_calefaccion == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.sistema_calefaccion == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -917,12 +928,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="aireAcondicionado">Aire acondicionado</label>
                   <select class="custom-select" id="aireAcondicionado" name="aireAcondicionado" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.aire_acondicionado == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.aire_acondicionado == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.aire_acondicionado == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.aire_acondicionado == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.aire_acondicionado == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.aire_acondicionado == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -936,12 +947,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="AbsEsp">ABS/ ESP</label>
                   <select class="custom-select" id="AbsEsp" name="AbsEsp" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.abs_esp == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.abs_esp == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.abs_esp == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.abs_esp == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.abs_esp == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.abs_esp == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -955,12 +966,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cuadroInstrumentos">Cuadro de instrumentos</label>
                   <select class="custom-select" id="cuadroInstrumentos" name="cuadroInstrumentos" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.cuadro_instrumentos == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.cuadro_instrumentos == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.cuadro_instrumentos == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.cuadro_instrumentos == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.cuadro_instrumentos == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.cuadro_instrumentos == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -974,12 +985,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="limpiaParabrisas">Limpiaparabrisas</label>
                   <select class="custom-select" id="limpiaParabrisas" name="limpiaParabrisas" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.limpiaparabrisas == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.limpiaparabrisas == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.limpiaparabrisas == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.limpiaparabrisas == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.limpiaparabrisas == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.limpiaparabrisas == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -993,12 +1004,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="bombaLimpiaparabrisas">Bomba Limpiaparabrisas</label>
                   <select class="custom-select" id="bombaLimpiaparabrisas" name="bombaLimpiaparabrisas" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.bomba_limpiaparabrisas == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.bomba_limpiaparabrisas == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.bomba_limpiaparabrisas == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.bomba_limpiaparabrisas == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.bomba_limpiaparabrisas == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.bomba_limpiaparabrisas == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1012,12 +1023,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="sistemaElectrico">Sistema eléctrico</label>
                   <select class="custom-select" id="sistemaElectrico" name="sistemaElectrico" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.sistema_electrico == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.sistema_electrico == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.sistema_electrico == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.sistema_electrico == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.sistema_electrico == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.sistema_electrico == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1031,12 +1042,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="cierreCentralizado">Cierre centralizado</label>
                   <select class="custom-select" id="cierreCentralizado" name="cierreCentralizado" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.cierre_centralizado == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.cierre_centralizado == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.cierre_centralizado == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.cierre_centralizado == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.cierre_centralizado == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.cierre_centralizado == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1050,12 +1061,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="alumbradoSeñalizacion">Alumbrado y señalización</label>
                   <select class="custom-select" id="alumbradoSeñalizacion" name="alumbradoSeñalizacion" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.alumbrado_señalizacion == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.alumbrado_señalizacion == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.alumbrado_señalizacion == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.alumbrado_señalizacion == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.alumbrado_señalizacion == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.alumbrado_señalizacion == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1069,12 +1080,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="radioLector">Radio / Lector CD</label>
                   <select class="custom-select" id="radioLector" name="radioLector" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.radio_lectorCDradio_lectorCD == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.radio_lectorCDradio_lectorCD == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.radio_lectorCDradio_lectorCD == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.radio_lectorCDradio_lectorCD == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.radio_lectorCDradio_lectorCD == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.radio_lectorCDradio_lectorCD == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1088,12 +1099,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="navegador">Navegador</label>
                   <select class="custom-select" id="navegador" name="navegador" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.radio_lectorCD == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.radio_lectorCD == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.radio_lectorCD == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.radio_lectorCD == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.radio_lectorCD == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.radio_lectorCD == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1107,12 +1118,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="elevalunasElectrico">Elevalunas eléctrico</label>
                   <select class="custom-select" id="elevalunasElectrico" name="elevalunasElectrico" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.elevalunas_electrico == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.elevalunas_electrico == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.elevalunas_electrico == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.elevalunas_electrico == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.elevalunas_electrico == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.elevalunas_electrico == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1126,12 +1137,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="airBag">Airbag</label>
                   <select class="custom-select" id="airBag" name="airBag" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.airbagantirrobo == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.airbagantirrobo == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.airbagantirrobo == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.airbagantirrobo == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.airbagantirrobo == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.airbagantirrobo == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1145,12 +1156,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="antirrobo">Antirrobo</label>
                   <select class="custom-select" id="antirrobo" name="antirrobo" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.antirrobo == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.antirrobo == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.antirrobo == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.antirrobo == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.antirrobo == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.antirrobo == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">
@@ -1164,12 +1175,12 @@ Inserción de vehiculos
                 <div class="col">
                   <label for="techoSolar">Techo solar</label>
                   <select class="custom-select" id="techoSolar" name="techoSolar" >
-                    <option value="Buenas Condiciones">Buenas condiciones</option>
-                    <option value="Intervencion Recomendada">Intervención recomendada</option>
-                    <option value="No Disponible">No disponible</option>
-                    <option value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
-                    <option value="Reacondicionado">Reacondicionado</option>
-                    <option value="Reparacion Necesaria">Reparación necesaria</option>
+                    <option {% if insercion.examen_visual.techo_solar == 'Buenas Condiciones' %} selected {% endif %} value="Buenas Condiciones">Buenas condiciones</option>
+                    <option {% if insercion.examen_visual.techo_solar == 'Intervencion Recomendada' %}selected  {% endif %} value="Intervencion Recomendada">Intervención recomendada</option>
+                    <option {% if insercion.examen_visual.techo_solar == 'No Disponible' %}selected  {% endif %} value="No Disponible">No disponible</option>
+                    <option {% if insercion.examen_visual.techo_solar == 'CondicionesNormalesDeUso' %}selected  {% endif %} value="CondicionesNormalesDeUso">Condiciones normales de uso</option>
+                    <option {% if insercion.examen_visual.techo_solar == 'Reacondicionado' %}selected  {% endif %} value="Reacondicionado">Reacondicionado</option>
+                    <option {% if insercion.examen_visual.techo_solar == 'Reparacion Necesaria' %}selected  {% endif %} value="Reparacion Necesaria">Reparación necesaria</option>
                   </select>
                 </div>
                 <div class="col">

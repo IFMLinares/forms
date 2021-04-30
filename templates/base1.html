@@ -36,9 +36,9 @@
         <div id="main-nav" class="collapse navbar-collapse">
             <nav>
                 <ul class="nav navbar-nav">
-                    <li><a href="#top">Inicio</a></li>
+                    <li><a href="{% url 'core:user' %}">Inicio</a></li>
                     <li>
-                        <li><a href="#top">Perfil de usuario</a></li>
+                        <li><a href="{% url 'core:user-profile' %}">Perfil de usuario</a></li>
                     <li>
                         <div class="input-group navbbar">
                             <form action="{% url 'core:search' %}" method="POST">
@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'core:user' %}">
+                    <a href="{% url 'core:user-profile' %}">
                         <span class="rect"></span>
                         <span class="circle"></span>
                         Perfil de usuario
