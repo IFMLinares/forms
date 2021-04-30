@@ -619,7 +619,6 @@ header {
 
 
 /* Responsive Style */
-
 @media (max-width: 1920px) {
 
   .responsive-nav {
@@ -637,7 +636,7 @@ header {
   }
   .sidebar-navigation nav{
     position:relative;
-    top: 70%;
+    top: 50%;
     left: 70%;
   }
   .sidebar-navigation nav a {
@@ -664,13 +663,13 @@ header {
   .sidebar-navigation .logo img {
     padding-top: 7px;
     position:absolute;
-    left: 28%;
+    left: 30%;
 
   }
   .sidebar-navigation nav{
     position:relative;
-    top: 55%;
-    left: 60%;
+    top: 58%;
+    left: 70%;
   }
   .sidebar-navigation nav a {
     font-size: 13px;
@@ -684,7 +683,6 @@ header {
     font-size: 15px;
   }
 }
-
 @media (max-width: 1280px) {
 
   .responsive-nav {
@@ -717,7 +715,8 @@ header {
     font-size: 15px;
   }
 }
-@media  (max-width: 1085px){
+@media (max-width: 1080px) {
+
   .responsive-nav {
     display: none;
   }
@@ -728,22 +727,19 @@ header {
   .sidebar-navigation .logo img {
     padding-top: 7px;
     position:absolute;
-    left: 27%;
+    left: 28%;
 
   }
   .sidebar-navigation nav{
     position:relative;
-    top: 75%;
-    left: 70%;
+    top: 60%;
+    left: 55%;
   }
-  .sidebar-navigation .input-group label{
-    font-size: 10px;
-  }
-  .sidebar-navigation .input-group input{
-    font-size: 10px;
+  .sidebar-navigation nav .input-group  input{
+    font-size: 13px;
   }
   .sidebar-navigation nav a {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .sidebar-navigation nav ul {
@@ -751,7 +747,7 @@ header {
   }
 
   .sidebar-navigation .social-icons li a {
-    font-size: 10px;
+    font-size: 15px;
   }
 }
 @media (max-width: 992px) {
@@ -779,36 +775,62 @@ header {
 }
 
 
-@media (min-width: 768px){
+@media (max-width: 767px) {
+
   .responsive-nav {
+    display: block;
+    height: 60px;
+  }
+
+  .page-content {
+    width: 100%;
+  }
+
+  .Modern-Slider .info {
+    text-align: center;
+    right: 0px;
+    padding: 0px 30px;
+  }
+
+  .Modern-Slider .NextArrow{
+    outline: none;
     display: none;
-  }
-
-  .sidebar-navigation .logo a {
-    font-size: 18px;
-  }
-  .sidebar-navigation .logo img {
-    padding-top: 7px;
     position:absolute;
-    left: 32%;
-
-  }
-  .sidebar-navigation nav{
-    position:relative;
-    top: 60%;
-    left: 70%;
-  }
-  .sidebar-navigation nav a {
-    font-size: 13px;
-  }
-
-  .sidebar-navigation nav ul {
-    margin-left: 30px;
+    top:120px;
+    right: 50%;
+    transform: translateX(50%);
+    margin-right: -30px;
+    width:50px;
+    height:50px;
+    background:rgba(0,0,0,.50);
+    border:0 none;
+    text-align:center;
+    font:32px/50px FontAwesome;
+    color:#FFF;
+    z-index:5;
   }
 
-  .sidebar-navigation .social-icons li a {
-    font-size: 80px;
+  .Modern-Slider .NextArrow:before{content:'\f105';}
+
+  .Modern-Slider .PrevArrow{
+    outline: none;
+    position:absolute;
+    top:120px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: -30px;
+    width:50px;
+    height:50px;
+    background:rgba(0,0,0,.50);
+    border:0 none;
+    text-align:center;
+    font:32px/50px FontAwesome;
+    color:#FFF;
+    z-index:5;
   }
+
+  
+
 }
 
 @media (max-width: 690px) {
@@ -866,7 +888,7 @@ header {
   }
 
 }
-@media  (min-width: 538px){
+@media only screen and (max-width: 1366px) and (min-width: 551px) {
   .responsive-nav {
     display: none;
   }
@@ -877,22 +899,19 @@ header {
   .sidebar-navigation .logo img {
     padding-top: 7px;
     position:absolute;
-    left: 27%;
+    left: 44%;
 
   }
   .sidebar-navigation nav{
     position:relative;
-    top: 68%;
-    left: 70%;
+    top: 60%;
+    left: 55%;
   }
-  .sidebar-navigation .input-group label{
-    font-size: 10px;
-  }
-  .sidebar-navigation .input-group input{
-    font-size: 10px;
+  .sidebar-navigation nav .input-group  input{
+    font-size: 13px;
   }
   .sidebar-navigation nav a {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .sidebar-navigation nav ul {
@@ -900,6 +919,6 @@ header {
   }
 
   .sidebar-navigation .social-icons li a {
-    font-size: 10px;
+    font-size: 15px;
   }
 }
