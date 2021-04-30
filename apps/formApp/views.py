@@ -1011,7 +1011,7 @@ def pdfInsercion(request, pk):
                 'insercion': insercion,
                 'icon': '{}{}'.format(settings.STATIC_URL, 'img/autos.png'),
                 'icon1': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png'),
-                'icon2': '{}{}'.format(settings.STATIC_URL, 'img/logo.png')
+                'icon2': '{}{}'.format(settings.STATIC_URL, 'img/logo-hosho.png')
             }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')
@@ -1067,7 +1067,8 @@ def pdfContrato(request, pk):
         if contrato.exists():
             context = {
                 'contrato': contrato,
-                'icon': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png')
+                'icon': '{}{}'.format(settings.STATIC_URL, 'img/uncheck.png'),
+                'icon2': '{}{}'.format(settings.STATIC_URL, 'img/logo-hosho.png')
             }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')
