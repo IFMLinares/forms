@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <style>
     .contrato {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: bold;
     }
     .contrato-texto{
@@ -22,7 +22,8 @@
 <body>
   {% for contrato in contrato %}
   <div>
-    <h1 style="text-align: center;">CONTRATO DE COMPRAVENTA</h1>
+    <img src="{{ icon2 }}" alt="" width="185px" style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <h1 style="text-align: center; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">CONTRATO DE COMPRAVENTA</h1>
     <p class="contrato">
       El/Suscrito/ a {{ contrato.datos_del_comprador.nombre_Completo|upper }}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -163,8 +164,11 @@
       Firma del Vendedor ____________________________________
     </p>
     <p class="contrato">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste voluptas, sint repellat est similique quidem, cum
-      rem vel placeat fugiat voluptate, numquam maxime dolorum! Incidunt rerum error alias beatae earum!
+      El abajo firmante declara haber sido informado previamente de la identidad del titular del tratamiento de los datos, de la finalidad a la que se
+      destinan los datos personales, de los destinatarios, de otros detalles que resultan de la información y del derecho a retirar el consentimiento, si
+      es legítimo, y en general de los derechos del interesado indicados en la información adjunta, mediante la firma del presente formulario, de
+      conformidad con el art. 7 y siguientes del Reglamento UE 2016/679, al tratamiento de datos personales en la forma y dentro de los límites de la
+      información adjunta.
     </p>
     <div style="text-align: center; position: absolute;" class="contrato">
       <img src="{{ icon }}" width="20px" height="20px">&nbsp;&nbsp;ACEPTADO
@@ -173,18 +177,17 @@
     </div>
     <br>
     <p class="contrato">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste corrupti necessitatibus itaque, asperiores quasi
-      enim consequatur officiis, nulla natus rem animi quam aliquid dolor recusandae, tenetur incidunt reiciendis quo
-      repellendus.
+      de conformidad con el art. 7 y siguientes del Reglamento UE 2016/679, al tratamiento de datos personales en la forma y dentro de los límites
+      de la información adjunta.
     </p>
     <br>
-    <p class="contrato">
+    <p class="contrato" style="padding-bottom: 0px; padding-top: 0px; margin-top: 0px; margin-bottom: 0px;">
       Firma del comprador _________________________________________
     </p>
     <br>
   </div>
   <div>
-  <h1 style="text-align: center;">EXPONEN</h1>
+  <h1 style="text-align: center; padding-bottom: 0px; margin-bottom: 0px;">EXPONEN</h1>
     <p class="contrato-texto" style="font-size: 11px;">
       <span class="contrato contrato-art">
         Art. 1. Definiciones
