@@ -31,6 +31,12 @@ class InsercionAdmin(admin.ModelAdmin):
         'pdf_actions',
     )
 
+    list_per_page = 50
+
+    # fieldsets = (
+    #     ("DATOS DEL VEHICULO", {'fields': ['datos_del_Vehiculo',]}),
+    # )
+
     def get_matricula(self, obj):
         return obj.datos_del_Vehiculo.matricula
     get_matricula.short_description = 'Matricula'
@@ -116,6 +122,8 @@ class ContratoAdmin(admin.ModelAdmin):
         'marca',
         'modelo',
     )
+
+    list_per_page = 50
 
 admin.site.register(User)
 admin.site.register(Insercion, InsercionAdmin)
