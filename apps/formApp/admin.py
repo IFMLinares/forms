@@ -30,7 +30,6 @@ class InsercionAdmin(admin.ModelAdmin):
         'visualizar',
         'pdf_actions',
     )
-
     list_per_page = 50
 
     # fieldsets = (
