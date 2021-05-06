@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.core.mail import EmailMessage
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView, View, DetailView, ListView
 from django.contrib.auth import logout
@@ -377,7 +377,7 @@ class FormInsercionView(LoginRequiredMixin, TemplateView):
             duracion_del_contrato=duracionContrato
         )
 
-        datosVehiculo = datosVehiculo
+        insercion.datos_del_Vehiculo = datosVehiculo
         insercion.suplementos = suplementos
         insercion.datos_del_comprador = datosDelComprador
         insercion.documentacion = documentacion
@@ -694,14 +694,20 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         insercion.insercion_de_Vehiculo = nombreComercial
 
         # DATOS DEL VEHICULO SAVE
-        datosVehiculo = DatosVehiculo.objects.get(pk=insercion.datos_del_Vehiculo.pk)
+        try:
+            datosVehiculo = DatosVehiculo.objects.get(pk=insercion.datos_del_Vehiculo.pk)
+        except AttributeError:
+            datosVehiculo = DatosVehiculo.objects.create()
         datosVehiculo.matricula = matricula
         datosVehiculo.transmision = transmision
         datosVehiculo.marca = marca
         datosVehiculo.modelo = modelo
         datosVehiculo.alimentacion = alimentacion
         datosVehiculo.clase_de_cont = claseControl
-        datosVehiculo.prime_matr = primeraMatricula
+        try:
+            datosVehiculo.prime_matr = primeraMatricula
+        except:
+            pass
         datosVehiculo.version = version
         datosVehiculo.potencia_KW = potenciaKW
         datosVehiculo.nro_propietarios_Privados = nroPropietariosPrivados
@@ -709,13 +715,26 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         datosVehiculo.cilindrada = cilindrada
         datosVehiculo.bastidor = bastidor
         datosVehiculo.color = color
-        datosVehiculo.fecha_entrega = fechaEntrega
-        datosVehiculo.fecha_inicio = fechaInicio
-        datosVehiculo.fecha_activacion = fechaActivacion
+        try:
+            datosVehiculo.fecha_entrega = fechaEntrega
+        except:
+            pass
+
+        try:
+            datosVehiculo.fecha_inicio = fechaInicio
+        except:
+            pass
+        try:
+            datosVehiculo.fecha_activacion = fechaActivacion
+        except:
+            pass
         datosVehiculo.save()
 
         # SUPLEMENTOS SAVE
-        suplementos = Suplemento.objects.get(pk=insercion.suplementos.pk)
+        try:
+            suplementos = Suplemento.objects.get(pk=insercion.suplementos.pk)
+        except AttributeError:
+            suplementos = Suplemento.objects.create()
         suplementos.cuatro_por_cuatro = cuatroxcuatro
         suplementos.super_Car = superCar
         suplementos.cambio_autom = cambioautomatico
@@ -725,7 +744,10 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         suplementos.save()
 
         # DATOS DEL COMPRADOR SAVE
-        datos_comprador = DatosComprador.objects.get(pk=insercion.datos_del_comprador.pk)
+        try:
+            datos_comprador = DatosComprador.objects.get(pk=insercion.datos_del_comprador.pk)
+        except AttributeError:
+            datos_comprador = DatosComprador.objects.create()
         datos_comprador.nombre_Completo = nombreCompleto
         datos_comprador.codigo_postal = codigoPostal
         datos_comprador.localidad_Provincia_Pais = localidad
@@ -737,7 +759,10 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         datos_comprador.save()
 
         # DOCUMENTACION SAVE
-        documentacion = Documentacion.objects.get(pk=insercion.documentacion.pk)
+        try:
+            documentacion = Documentacion.objects.get(pk=insercion.documentacion.pk)
+        except AttributeError:
+            documentacion = Documentacion.objects.create()
         documentacion.rueda_repuesto1 = ruedaRepuesto1
         documentacion.duplicado_llaves = duplicadoLlaves
         documentacion.kit_inflado = kitInflado
@@ -750,24 +775,42 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         documentacion.libre_uso_mantenimiento = libreUsoMantenimiento
         documentacion.ficha_tecnica = fichaTecnica
         documentacion.permiso_circulacion = permisoCirculacion
-        documentacion.fecha = fechaITV
+        try:
+            documentacion.fecha = fechaITV
+        except:
+            pass
         documentacion.itv = itv
         documentacion.save()
 
         # MANTENIMIENTO SAVE
-        mantenimiento = Mantenimiento.objects.get(pk=insercion.mantenimiento.pk)
+        try:
+            mantenimiento = Mantenimiento.objects.get(pk=insercion.mantenimiento.pk)
+        except AttributeError:
+            mantenimiento = Mantenimiento.objects.create()
         mantenimiento.estado_revisiones = estadoRevisiones
         mantenimiento.mantenimiento_previo_entrega = mantenimientoPrevioEntrega
         mantenimiento.correa_servicio = correaServicio
         mantenimiento.estado_bateria = estadoBateria
         mantenimiento.correa_distribucion = correaDistribucion
-        mantenimiento.ultimo_mantenimiento = ultimoMantenimiento
-        mantenimiento.proximo_mantenimiento = proximoMantenimiento
-        mantenimiento.ultima_ITV = ultimaITV
+        try:
+            mantenimiento.ultimo_mantenimiento = ultimoMantenimiento
+        except:
+            pass
+        try:
+            mantenimiento.proximo_mantenimiento = proximoMantenimiento
+        except:
+            pass
+        try:
+            mantenimiento.ultima_ITV = ultimaITV
+        except:
+            pass
         mantenimiento.save()
 
         # EXAMEN VISUAL
-        examenVisual = ExamenVisual.objects.get(pk=insercion.examen_visual.pk)
+        try:
+            examenVisual = ExamenVisual.objects.get(pk=insercion.examen_visual.pk)
+        except:
+            examenVisual = ExamenVisual.objects.create()
         examenVisual.carroceria = carroceria
         examenVisual.descripcion_carroceria = descripcionCarroceria
         examenVisual.habitaculo_tapiceria_1 = habitaculoTapiceria
@@ -842,6 +885,12 @@ class InsercionEditView(LoginRequiredMixin, DetailView):
         examenVisual.explicacion_detallada_techo_solar = expliacionTechoSolar
         examenVisual.save()
 
+        insercion.datos_del_Vehiculo = datosVehiculo
+        insercion.suplementos = suplementos
+        insercion.datos_del_comprador = datos_comprador
+        insercion.documentacion = documentacion
+        insercion.mantenimiento = mantenimiento
+        insercion.examen_visual = examenVisual
         insercion.save()
         messages.success(self.request, 'Inserción Editada Exitosamente')
         return redirect('core:editar-insercion', pk=idPost)

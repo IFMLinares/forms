@@ -90,7 +90,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="primeraMatricula" class="col col-form-label">Prime matr.</label>
-                  <input class="form-control" type="date" value="2021-03-25" id="primeraMatricula" name="primeraMatricula" >
+                  <input class="form-control" type="date"  value="" id="primeraMatricula" name="primeraMatricula" >
                 </div>
               </div>
             </div>
@@ -1631,4 +1631,24 @@ Inserción de vehiculos
     </form>
   </div>
 </div>
+<script>
+  window.onload = function(){
+    var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+  if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+  document.getElementById('primeraMatricula').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('fechaEntrega').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('fechaInicio').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('fechaActivacion').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('fechaITV').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('ultimoMantenimiento').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('proximoMantenimiento').value=ano+"-"+mes+"-"+dia;
+  document.getElementById('ultimaITV').value=ano+"-"+mes+"-"+dia;
+  }
+</script>
 {% endblock %}

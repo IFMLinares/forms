@@ -8,16 +8,16 @@ Inserción de vehiculos
 <div class="cuadro-informacion">
   <div class="politica-privacidad">
     {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        {{ message }}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
 
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endfor %}
-  {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
     <form method="POST" id="form/">
       {% csrf_token %}
       <div id="politica-privacidad">
@@ -102,7 +102,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="primeraMatricula" class="col col-form-label">Prime matr.</label>
-                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" value="{{ insercion.datos_del_Vehiculo.prime_matr}}">
+                  <input class="form-control" type="date"  id="primeraMatricula" name="primeraMatricula" {% if insercion.datos_del_Vehiculo.prime_matr %}value="{{ insercion.datos_del_Vehiculo.prime_matr|date:'Y-m-d' }}"{% else %} value="" {% endif %}>
                 </div>
               </div>
             </div>
@@ -157,15 +157,15 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col insercion-vehiculos-date">
                 <label for="fechaEntrega" class="col col-form-label">Fecha de entrega </label>
-                <input class="form-control" type="date"  id="fechaEntrega" name="fechaEntrega" value="{{ insercion.datos_del_Vehiculo.fecha_entrega|date:'Y-m-d' }}">
+                <input class="form-control" type="date"  name="fechaEntrega" {% if insercion.datos_del_Vehiculo.fecha_entrega %}value="{{ insercion.datos_del_Vehiculo.fecha_entrega|date:'Y-m-d' }}"{% else %} value="" {% endif %}>
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="fechaInicio" class="col col-form-label">Fecha de inicio</label>
-                <input class="form-control" type="date"  id="fechaInicio" name="fechaInicio" value="{{ insercion.datos_del_Vehiculo.fecha_inicio|date:'Y-m-d' }}">
+                <input class="form-control" type="date"  id="fechaInicio" name="fechaInicio" {% if insercion.datos_del_Vehiculo.fecha_inicio %}value="{{ insercion.datos_del_Vehiculo.fecha_inicio|date:'Y-m-d' }}"{% else %} value="" {% endif %}>
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="fechaActivacion" class="col col-form-label">Fecha de activación</label>
-                <input class="form-control" type="date"  id="fechaActivacion" name="fechaActivacion" value="{{ insercion.datos_del_Vehiculo.fecha_activacion|date:'Y-m-d' }}">
+                <input class="form-control" type="date"  id="fechaActivacion" name="fechaActivacion" {% if insercion.datos_del_Vehiculo.fecha_activacion %}value="{{ insercion.datos_del_Vehiculo.fecha_activacion|date:'Y-m-d' }}"{% else %} value="" {% endif %}>
               </div>
             </div>
           </div>
@@ -420,7 +420,7 @@ Inserción de vehiculos
                 </div>
                 <div class="col insercion-vehiculos-date">
                   <label for="fechaITV">Fecha</label>
-                  <input class="form-control" type="date"  id="fechaITV" name="fechaITV" value="{{ insercion.documentacion.fecha|date:'Y-m-d' }}">
+                  <input class="form-control" type="date"  id="fechaITV" name="fechaITV" {% if insercion.documentacion.fecha %}value="{{ insercion.documentacion.fecha|date:'Y-m-d' }}"{% else %} value="2021-05-05" {% endif %}>
                 </div>
               </div>
             </div>
@@ -500,11 +500,11 @@ Inserción de vehiculos
             <div class="form-row">
               <div class="col">
                 <label for="ultimoMantenimiento">Último mantenimiento</label>
-                <input type="date" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento" value="{{ insercion.mantenimiento.ultimo_mantenimiento }}">
+                <input type="date" class="form-control" placeholder="Escribe aquí" id="ultimoMantenimiento" name="ultimoMantenimiento" {% if insercion.mantenimiento.ultimo_mantenimiento %}value="{{ insercion.mantenimiento.ultimo_mantenimiento|date:'Y-m-d' }}"{% else %} value="2021-05-05" {% endif %}>
               </div>
               <div class="col">
                 <label for="proximoMantenimiento">Próximo mantenimiento</label>
-                <input type="date" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento"value="{{ insercion.mantenimiento.proximo_mantenimiento }}">
+                <input type="date" class="form-control" placeholder="Escribe aquí" id="proximoMantenimiento" name="proximoMantenimiento" {% if insercion.mantenimiento.proximo_mantenimiento %}value="{{ insercion.mantenimiento.proximo_mantenimiento|date:'Y-m-d' }}"{% else %} value="2021-05-05" {% endif %}>
               </div>
             </div>
           </div>
@@ -519,7 +519,7 @@ Inserción de vehiculos
               </div>
               <div class="col insercion-vehiculos-date">
                 <label for="ultimaITV">Última ITV</label>
-                <input class="form-control" type="date" value="{{ insercion.mantenimiento.ultima_ITV|date:'Y-m-d' }}" id="ultimaITV" name="ultimaITV" >
+                <input class="form-control" type="date" {% if insercion.mantenimiento.ultima_ITV %}value="{{ insercion.mantenimiento.ultima_ITV|date:'Y-m-d' }}"{% else %} value="2021-05-05" {% endif %} id="ultimaITV" name="ultimaITV" >
               </div>
             </div>
           </div>
@@ -1643,4 +1643,13 @@ Inserción de vehiculos
     </form>
   </div>
 </div>
+<script>
+  function date(){
+    var d = new Date();
+    var month = d.getMonth()+1;
+  var day = d.getDate();
+  var output = d.getFullYear() + '/' + (month<10 ? '0' : '') + month + '/' + (day<10 ? '0' : '') + day;
+  }
+
+</script>
 {% endblock %}

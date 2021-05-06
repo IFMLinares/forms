@@ -39,7 +39,7 @@ Contratos
         </div>
         <div class="col insercion-vehiculos-date">
           <label for="fecha">Fecha</label>
-          <input class="form-control" name="fecha" id="fecha" type="date" {% if contrato.contrato.contratofecha %}value="{{ contrato.contrato.contratofecha|date:'Y-m-d' }}" {% else %} value="2021-04-28" {% endif %}>
+          <input class="form-control" name="fecha" id="fecha" type="date" {% if contrato.contrato.contratofecha %}value="{{ contrato.contrato.contratofecha|date:'Y-m-d' }}" {% else %} value="" {% endif %}>
         </div>
         <div class="form-row" style="padding-left: 15px;">
           <div class="form-group col-md-4">
