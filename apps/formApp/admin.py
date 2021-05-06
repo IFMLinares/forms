@@ -22,11 +22,11 @@ class InsercionAdmin(admin.ModelAdmin):
         'datos_del_Vehiculo__matricula',
     ]
     list_display = (
-        # 'get_matricula',
-        # 'get_marca',
-        # 'get_modelo',
-        # 'concesionario',
-        # 'get_fecha_insercion',
+        'get_matricula',
+        'get_marca',
+        'get_modelo',
+        'concesionario',
+        'get_fecha_insercion',
         'visualizar',
         'pdf_actions',
     )
