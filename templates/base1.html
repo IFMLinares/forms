@@ -35,7 +35,9 @@
         <!--/.navbar-header-->
         <div id="main-nav" class="collapse navbar-collapse">
             <nav>
-                <ul class="nav navbar-nav"><li>
+                <ul class="nav navbar-nav">
+                    <li></li>
+                    <li>
                     <div class="input-group navbbar text-center">
                         <form action="{% url 'core:search' %}" method="POST">
                             {% csrf_token %}
