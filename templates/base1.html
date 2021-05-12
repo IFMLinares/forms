@@ -37,19 +37,19 @@
             <nav>
                 <ul class="nav navbar-nav">
                     <li>
-                    <div class="input-group navbbar text-center">
-                        <form action="{% url 'core:search' %}" method="POST">
-                            {% csrf_token %}
-                        <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
-                        <input type="text" name="matricula" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit" style="position: absolute; text-align: right;">
-                                <i class="fas fa-search" aria-hidden="true"></i>
-                            </button>
+                        <div class="input-group navbbar text-center">
+                            <form action="{% url 'core:search' %}" method="POST">
+                                {% csrf_token %}
+                            <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
+                            <input type="text" name="matricula" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" style="position: absolute; text-align: right;">
+                                    <i class="fas fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            </form>
                         </div>
-                        </form>
-                    </div>
-                </li>
+                    </li>
                     <li><a href="{% url 'core:user' %}">Inicio</a></li>
                     <li>
                         <li><a href="{% url 'core:user-profile' %}">Perfil de usuario</a></li>
@@ -88,9 +88,9 @@
         </div>
         <nav>
             <ul>
+                <li><br></li>
                 <li>
                     <div class="input-group mb-3">
-                        <li><br></li>
                         <form action="{% url 'core:search' %}" method="POST">
                             {% csrf_token %}
                         <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
