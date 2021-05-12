@@ -36,7 +36,6 @@
         <div id="main-nav" class="collapse navbar-collapse">
             <nav>
                 <ul class="nav navbar-nav">
-                    <li><br></li>
                     <li>
                     <div class="input-group navbbar text-center">
                         <form action="{% url 'core:search' %}" method="POST">
@@ -54,7 +53,6 @@
                     <li><a href="{% url 'core:user' %}">Inicio</a></li>
                     <li>
                         <li><a href="{% url 'core:user-profile' %}">Perfil de usuario</a></li>
-                    
                     <li>
                         <a href="#">
                             Llenar Información
@@ -92,6 +90,7 @@
             <ul>
                 <li>
                     <div class="input-group mb-3">
+                        <li><br></li>
                         <form action="{% url 'core:search' %}" method="POST">
                             {% csrf_token %}
                         <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
