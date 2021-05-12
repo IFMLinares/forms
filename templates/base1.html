@@ -35,24 +35,24 @@
         <!--/.navbar-header-->
         <div id="main-nav" class="collapse navbar-collapse">
             <nav>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav"><li>
+                    <div class="input-group navbbar text-center">
+                        <form action="{% url 'core:search' %}" method="POST">
+                            {% csrf_token %}
+                        <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
+                        <input type="text" name="matricula" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" style="position: absolute; text-align: right;">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </li>
                     <li><a href="{% url 'core:user' %}">Inicio</a></li>
                     <li>
                         <li><a href="{% url 'core:user-profile' %}">Perfil de usuario</a></li>
-                    <li>
-                        <div class="input-group navbbar">
-                            <form action="{% url 'core:search' %}" method="POST">
-                                {% csrf_token %}
-                            <label for="matricula-search" style="color: white;">Buscar Matrícula</label><br>
-                            <input type="text" name="matricula" style="border-radius: 7px;" class="form-control" placeholder="MATRICULA" aria-label="MATRICULA" id="matricula-search">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" style="position: absolute; text-align: right;">
-                                    <i class="fas fa-search" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            </form>
-                        </div>
-                    </li>
+                    
                     <li>
                         <a href="#">
                             Llenar Información
@@ -89,20 +89,6 @@
         <nav>
             <ul>
                 <li>
-                    <a href="{% url 'core:user' %}">
-                        <span class="rect"></span>
-                        <span class="circle"></span>
-                        Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'core:user-profile' %}">
-                        <span class="rect"></span>
-                        <span class="circle"></span>
-                        Perfil de usuario
-                    </a>
-                </li>
-                <li>
                     <div class="input-group mb-3">
                         <form action="{% url 'core:search' %}" method="POST">
                             {% csrf_token %}
@@ -115,6 +101,20 @@
                         </div>
                         </form>
                     </div>
+                </li>
+                <li>
+                    <a href="{% url 'core:user' %}">
+                        <span class="rect"></span>
+                        <span class="circle"></span>
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'core:user-profile' %}">
+                        <span class="rect"></span>
+                        <span class="circle"></span>
+                        Perfil de usuario
+                    </a>
                 </li>
                 <li>
                     <a href="#">
